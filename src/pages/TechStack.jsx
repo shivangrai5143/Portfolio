@@ -21,7 +21,7 @@ import {
 const TechStack = () => {
   const techCategories = [
     {
-      title: 'Frontend',
+      title: 'Frontend :',
       skills: [
         { name: 'JavaScript', icon: <SiJavascript className="text-yellow-400" /> },
         { name: 'TypeScript', icon: <SiTypescript className="text-blue-600" /> },
@@ -31,7 +31,7 @@ const TechStack = () => {
       ],
     },
     {
-      title: 'Backend',
+      title: 'Backend :',
       skills: [
         { name: 'Node.js', icon: <FaNodeJs className="text-green-600" /> },
         { name: 'Express', icon: <SiExpress className="text-gray-700" /> },
@@ -39,14 +39,14 @@ const TechStack = () => {
       ],
     },
     {
-      title: 'Databases',
+      title: 'Databases :',
       skills: [
         { name: 'MongoDB', icon: <SiMongodb className="text-green-500" /> },
         { name: 'MySQL', icon: <SiMysql className="text-blue-600" /> },
       ],
     },
     {
-      title: 'Tools & Others',
+      title: 'Tools & Others :',
       skills: [
         { name: 'Git', icon: <FaGitAlt className="text-orange-600" /> },
         { name: 'Docker', icon: <FaDocker className="text-blue-500" /> },

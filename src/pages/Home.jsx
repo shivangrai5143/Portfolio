@@ -11,19 +11,19 @@ const Home = () => {
     {
       name: 'GitHub',
       icon: <FaGithub size={28} />,
-      url: 'https://github.com/yourprofile',
+      url: 'https://github.com/shivangrai5143',
       color: 'hover:text-gray-800',
     },
     {
       name: 'Twitter',
       icon: <FaTwitter size={28} />,
-      url: 'https://twitter.com/yourprofile',
+      url: 'https://x.com/raishivang_69?s=09',
       color: 'hover:text-blue-400',
     },
     {
       name: 'Email',
       icon: <FaEnvelope size={28} />,
-      url: 'mailto:raishivang69@gmail.com',
+      url: 'raishivang69@gmail.com',
       color: 'hover:text-red-500',
     },
   ];
