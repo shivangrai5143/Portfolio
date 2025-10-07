@@ -7,7 +7,8 @@ import {
   SiPostgresql,
   SiExpress,
   SiJavascript,
-  SiPostman
+  SiPostman,
+  SiFirebase
 } from 'react-icons/si';
 
 const Projects = () => {
@@ -55,12 +56,14 @@ const Projects = () => {
     },
     {
       id: 6,
-      title: 'Recipe Finder',
+      title: 'Chat-App',
       description:
-        'A recipe discovery app with search functionality, meal planning, and nutritional information.',
+        '',
       techStack: [
         { name: 'React', icon: <SiReact className="text-cyan-500" /> },
         { name: 'Tailwind', icon: <SiTailwindcss className="text-cyan-400" /> },
+       { name: 'Javascript', icon:<SiJavascript className='text-yellow-500'/>},
+        { name: 'Firebase', icon:<SiFirebase className='text-red-500'/>},
       ],
       liveUrl: 'https://example.com',
       githubUrl: 'https://github.com/yourprofile/project',
