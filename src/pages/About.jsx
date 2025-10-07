@@ -1,4 +1,3 @@
-import { FaTrophy } from 'react-icons/fa';
 
 const About = () => {
   return (
@@ -29,24 +28,6 @@ const About = () => {
               open-source projects, or sharing knowledge with the developer community through
               blog posts and mentorship.
             </p>
-          </div>
-        </div>
-
-        <div className="bg-gradient-to-r from-primary to-secondary rounded-lg shadow-xl p-8 text-blue">
-          <div className="flex items-start gap-6">
-            <div className="flex-shrink-0">
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                <FaTrophy className="text-primary text-3xl" />
-              </div>
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold mb-3">Key Achievement</h1>
-              <p className="text-lg leading-relaxed">
-                Led the development of a high-traffic e-commerce platform that scaled to serve
-                over 1 million users, resulting in a 40% increase in conversion rates and
-                recognition as "Developer of the Year" at my previous company.
-              </p>
-            </div>
           </div>
         </div>
       </div>
