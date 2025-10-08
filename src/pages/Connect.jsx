@@ -185,7 +185,7 @@ const Connect = () => {
 
             <button
               type="submit"
-              className="w-full bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"
+              className="w-full bg-primary text-blue px-6 py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"
             >
               <FaPaperPlane />
               Send Message

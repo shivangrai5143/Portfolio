@@ -58,7 +58,7 @@ const Projects = () => {
       id: 6,
       title: 'Chat-App',
       description:
-        '',
+        '💬 Real-Time Chat Application (2025) A full-stack real-time chat application built with React.js and Firebase Authentication, designed for seamless, secure, and instant communication. Users can sign up, log in, and chat in real time, with support for private and group conversations. 🚀 Features 🔑 User Authentication with Firebase Auth (Email)',
       techStack: [
         { name: 'React', icon: <SiReact className="text-cyan-500" /> },
         { name: 'Tailwind', icon: <SiTailwindcss className="text-cyan-400" /> },
