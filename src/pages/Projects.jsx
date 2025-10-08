@@ -4,11 +4,10 @@ import {
   SiTailwindcss,
   SiNodedotjs,
   SiMongodb,
-  SiPostgresql,
   SiExpress,
   SiJavascript,
   SiPostman,
-  SiFirebase
+  SiFirebase,
 } from 'react-icons/si';
 
 const Projects = () => {
@@ -43,16 +42,15 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: 'Portfolio Builder',
+      title: '  Amazon Clone',
       description:
-        'A platform that allows users to create and customize their own portfolio websites with drag-and-drop functionality.',
+        'This project is a frontend-only clone of the Amazon website , created using HTML , CSS , JavaScript . It aims to replicate the visual design and basic interactivity of Amazon homepage and product listing pages . The focus is on building a clean and responsive user interface that mimics the real amazon shopping experience.',
       techStack: [
         { name: 'React', icon: <SiReact className="text-cyan-500" /> },
-        { name: 'Node.js', icon: <SiNodedotjs className="text-green-600" /> },
-        { name: 'PostgreSQL', icon: <SiPostgresql className="text-blue-700" /> },
+        { name: 'Javascript', icon:<SiJavascript className='text-yellow-500'/>},
+       
       ],
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com/yourprofile/project',
+      githubUrl: 'https://github.com/shivangrai5143/Amazon-clone',
     },
     {
       id: 6,
