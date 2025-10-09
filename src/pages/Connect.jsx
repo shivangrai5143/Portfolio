@@ -10,6 +10,7 @@ const Connect = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // ✅ Validate form before submission
   const validateForm = () => {
     const newErrors = {};
 
@@ -33,6 +34,7 @@ const Connect = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  // ✅ Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -48,16 +50,38 @@ const Connect = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  // ✅ Handle form submit with Formcarry integration
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (validateForm()) {
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
+      try {
+        const res = await fetch('https://formcarry.com/s/nnNdnJnt4gg', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
 
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
+        const result = await res.json();
+
+        if (result.code === 200) {
+          setIsSubmitted(true);
+          setFormData({ name: '', email: '', message: '' }); // Clear the form
+
+          setTimeout(() => {
+            setIsSubmitted(false);
+          }, 5000);
+        } else {
+          console.error('Submission failed:', result.message);
+          alert('Sorry, there was an error sending your message.');
+        }
+      } catch (error) {
+        console.error('Network error:', error);
+        alert('Sorry, there was a network error.');
+      }
     }
   };
 
@@ -71,6 +95,7 @@ const Connect = () => {
           Have a project in mind or just want to chat? Feel free to reach out!
         </p>
 
+        {/* Contact Options */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <a
             href="mailto:your.email@example.com"
@@ -101,6 +126,7 @@ const Connect = () => {
           </a>
         </div>
 
+        {/* Message Form */}
         <div className="bg-white rounded-lg shadow-lg p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Send a Message</h2>
 
@@ -115,10 +141,7 @@ const Connect = () => {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                 Name
               </label>
               <input
@@ -132,16 +155,11 @@ const Connect = () => {
                 }`}
                 placeholder="Your name"
               />
-              {errors.name && (
-                <p className="mt-1 text-sm text-red-500">{errors.name}</p>
-              )}
+              {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
             </div>
 
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                 Email
               </label>
               <input
@@ -155,16 +173,11 @@ const Connect = () => {
                 }`}
                 placeholder="your.email@example.com"
               />
-              {errors.email && (
-                <p className="mt-1 text-sm text-red-500">{errors.email}</p>
-              )}
+              {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
             </div>
 
             <div>
-              <label
-                htmlFor="message"
-                className="block text-sm font-medium text-gray-700 mb-2"
-              >
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                 Message
               </label>
               <textarea
@@ -178,14 +191,12 @@ const Connect = () => {
                 }`}
                 placeholder="Your message..."
               ></textarea>
-              {errors.message && (
-                <p className="mt-1 text-sm text-red-500">{errors.message}</p>
-              )}
+              {errors.message && <p className="mt-1 text-sm text-red-500">{errors.message}</p>}
             </div>
 
             <button
               type="submit"
-              className="w-full bg-primary text-blue px-6 py-3 rounded-lg font-semibold hover:bg-secondary transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"
+              className="w-full bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"
             >
               <FaPaperPlane />
               Send Message
