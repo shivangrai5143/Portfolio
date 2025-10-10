@@ -98,7 +98,7 @@ const Connect = () => {
         {/* Contact Options */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <a
-            href="mailto:your.email@example.com"
+            href="mailto:raishivang69@gmail.com"
             className="flex items-center gap-4 bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
           >
             <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
@@ -106,12 +106,12 @@ const Connect = () => {
             </div>
             <div>
               <h3 className="font-semibold text-gray-900 text-lg">Email</h3>
-              <p className="text-gray-600">your.email@example.com</p>
+              <p className="text-gray-600">raishivang69@gmail.com</p>
             </div>
           </a>
 
           <a
-            href="https://linkedin.com/in/yourprofile"
+            href="https://www.linkedin.com/in/shivang-rai-58b45728b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
