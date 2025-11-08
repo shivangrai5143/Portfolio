@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 const Navbar = ({ activeSection, onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -75,5 +76,10 @@ const Navbar = ({ activeSection, onNavigate }) => {
     </nav>
   );
 };
+Navbar.propTypes = {
+  activeSection: PropTypes.string.isRequired,
+  onNavigate: PropTypes.func.isRequired,
+};
 
 export default Navbar;
+

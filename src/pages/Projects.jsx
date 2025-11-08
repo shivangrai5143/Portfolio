@@ -53,7 +53,7 @@ const Projects = () => {
       githubUrl: 'https://github.com/shivangrai5143/Amazon-clone',
     },
     {
-      id: 6,
+      id: 4,
       title: 'Chat-App',
       description:
         '💬 Real-Time Chat Application (2025) A full-stack real-time chat application built with React.js and Firebase Authentication, designed for seamless, secure, and instant communication. Users can sign up, log in, and chat in real time, with support for private and group conversations. 🚀 Features 🔑 User Authentication with Firebase Auth (Email)',
@@ -69,7 +69,7 @@ const Projects = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-yellow-100  py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 text-center">
           Projects

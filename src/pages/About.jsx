@@ -1,13 +1,13 @@
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-yellow-100  py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-8 text-center">
+        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-8 text-center bg-yellow-100">
           About Me
         </h1>
 
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <div className="bg-gradient-to-br from-blue-100 to-gray-200 rounded-lg shadow-lg p-8 mb-8">
           <div className="prose max-w-none">
             <p className="text-lg text-black-700 leading-relaxed mb-6">
               I&#39;m a passionate Full Stack Developer  building
