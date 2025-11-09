@@ -1,75 +1,107 @@
-import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import {
   SiReact,
-  SiTailwindcss,
   SiNodedotjs,
-  SiMongodb,
   SiExpress,
+  SiMongodb,
+  SiTailwindcss,
   SiJavascript,
+  SiRedux,
+  SiVercel,
+  SiCloudinary,
+  SiRender,
+  SiAxios,
+  SiJsonwebtokens,
   SiPostman,
+  SiSocketdotio,
+  SiOpenai,
   SiFirebase,
-} from 'react-icons/si';
+} from "react-icons/si";
 
 const Projects = () => {
   const projects = [
-   
-
     {
       id: 1,
-      title: 'Weather Dashboard',
+      title: "Weather Dashboard",
       description:
-        'A responsive weather dashboard that provides real-time weather data, forecasts, and interactive maps.',
+        "A responsive weather dashboard that provides real-time weather data, forecasts, and interactive maps.",
       techStack: [
-        { name: 'React', icon: <SiReact className="text-cyan-500" /> },
-        { name: 'Tailwind', icon: <SiTailwindcss className="text-cyan-400" /> },
+        { name: "React", icon: <SiReact className="text-cyan-500" /> },
+        { name: "Tailwind", icon: <SiTailwindcss className="text-cyan-400" /> },
       ],
-      githubUrl: 'https://github.com/shivangrai5143/Weather-App',
+      githubUrl: "https://github.com/shivangrai5143/Weather-App",
     },
     {
       id: 2,
-      title: 'URL Shortner',
+      title: "URL Shortener",
       description:
-        'A simple URL Shortener built with Node.js, Express, and MongoDB. This application allows users to shorten long URLs into compact links that are easier to share and test with Postman.',
+        "A simple URL Shortener built with Node.js, Express, and MongoDB. It shortens long URLs and can be tested with Postman.",
       techStack: [
-        { name: 'React', icon: <SiReact className="text-cyan-500" /> },
-        { name: 'Express', icon: <SiExpress className="text-gray-700" /> },
-        { name: 'MongoDB', icon: <SiMongodb className="text-green-500" /> },
-        { name: 'Javascript', icon:<SiJavascript className='text-yellow-500'/>},
-        {name: 'Postman' , icon:<SiPostman className='text-orange-500'/>},
-        {name: 'Node.js' , icon:<SiNodedotjs className='text-green-500'/>}
+        { name: "React", icon: <SiReact className="text-cyan-500" /> },
+        { name: "Express", icon: <SiExpress className="text-gray-700" /> },
+        { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
+        { name: "JavaScript", icon: <SiJavascript className="text-yellow-500" /> },
+        { name: "Postman", icon: <SiPostman className="text-orange-500" /> },
+        { name: "Node.js", icon: <SiNodedotjs className="text-green-500" /> },
       ],
-      githubUrl: 'https://github.com/shivangrai5143/URL-Shortner',
+      githubUrl: "https://github.com/shivangrai5143/URL-Shortner",
     },
     {
       id: 3,
-      title: '  Amazon Clone',
+      title: "Amazon Clone",
       description:
-        'This project is a frontend-only clone of the Amazon website , created using HTML , CSS , JavaScript . It aims to replicate the visual design and basic interactivity of Amazon homepage and product listing pages . The focus is on building a clean and responsive user interface that mimics the real amazon shopping experience.',
+        "A frontend-only Amazon clone created with HTML, CSS, and JavaScript. It replicates Amazon's homepage and product listings with a responsive UI.",
       techStack: [
-        { name: 'React', icon: <SiReact className="text-cyan-500" /> },
-        { name: 'Javascript', icon:<SiJavascript className='text-yellow-500'/>},
-       
+        { name: "React", icon: <SiReact className="text-cyan-500" /> },
+        { name: "JavaScript", icon: <SiJavascript className="text-yellow-500" /> },
       ],
-      githubUrl: 'https://github.com/shivangrai5143/Amazon-clone',
+      githubUrl: "https://github.com/shivangrai5143/Amazon-clone",
     },
     {
       id: 4,
-      title: 'Chat-App',
+      title: "Chat-App",
       description:
-        '💬 Real-Time Chat Application (2025) A full-stack real-time chat application built with React.js and Firebase Authentication, designed for seamless, secure, and instant communication. Users can sign up, log in, and chat in real time, with support for private and group conversations. 🚀 Features 🔑 User Authentication with Firebase Auth (Email)',
+        "💬 Real-Time Chat App (2025) — A full-stack real-time chat app built with React.js and Firebase Auth for instant, secure communication.",
       techStack: [
-        { name: 'React', icon: <SiReact className="text-cyan-500" /> },
-        { name: 'Tailwind', icon: <SiTailwindcss className="text-cyan-400" /> },
-       { name: 'Javascript', icon:<SiJavascript className='text-yellow-500'/>},
-        { name: 'Firebase', icon:<SiFirebase className='text-red-500'/>},
+        { name: "React", icon: <SiReact className="text-cyan-500" /> },
+        { name: "Tailwind", icon: <SiTailwindcss className="text-cyan-400" /> },
+        { name: "JavaScript", icon: <SiJavascript className="text-yellow-500" /> },
+        { name: "Firebase", icon: <SiFirebase className="text-red-500" /> },
+        { name: "Cloudinary", icon: <SiCloudinary className="text-blue-500" /> },
+        {name: "Node.js", icon: <SiNodedotjs className="text-green-500" /> },
       ],
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com/yourprofile/project',
+      liveUrl: "https://example.com",
+      githubUrl: "https://github.com/yourprofile/project",
+    },
+    {
+      id: 5,
+      title: "Coffee Shop Application",
+      description:
+        "A mobile-friendly platform to browse coffee products, customize orders, and make secure payments easily.",
+      techStack: [
+        { name: "React", icon: <SiReact className="text-cyan-500" /> },
+        { name: "Node.js", icon: <SiNodedotjs className="text-green-500" /> },
+        { name: "Express", icon: <SiExpress className="text-gray-700" /> },
+        { name: "MongoDB", icon: <SiMongodb className="text-green-600" /> },
+        { name: "Tailwind", icon: <SiTailwindcss className="text-cyan-400" /> },
+        { name: "JavaScript", icon: <SiJavascript className="text-yellow-500" /> },
+        { name: "Redux", icon: <SiRedux className="text-purple-500" /> },
+        { name: "Vercel", icon: <SiVercel className="text-black dark:text-white" /> },
+        { name: "Cloudinary", icon: <SiCloudinary className="text-blue-500" /> },
+        { name: "Render", icon: <SiRender className="text-indigo-500" /> },
+        { name: "Axios", icon: <SiAxios className="text-blue-400" /> },
+        { name: "JWT", icon: <SiJsonwebtokens className="text-orange-400" /> },
+        { name: "Postman", icon: <SiPostman className="text-orange-500" /> },
+        { name: "socket.io", icon: <SiSocketdotio className="text-gray-700" /> },
+        { name: "Generative AI", icon: <SiOpenai className="text-green-500" /> },
+      ],
+      githubUrl: "https://github.com/VivekYadav-77/Coffee-Shop-Web-App",
+      liveUrl: "https://the-roasting-house.vercel.app/",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-yellow-100  py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-yellow-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 text-center">
           Projects
@@ -84,41 +116,45 @@ const Projects = () => {
               key={project.id}
               className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
             >
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600 mb-4 min-h-[80px]">
-                  {project.description}
-                </p>
+              <div className="p-6 flex flex-col justify-between h-full">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4 min-h-[80px]">
+                    {project.description}
+                  </p>
 
-                <div className="mb-4">
-                  <h4 className="text-sm font-semibold text-gray-700 mb-2">
-                    Tech Stack:
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {project.techStack.map((tech) => (
-                      <div
-                        key={tech.name}
-                        className="flex items-center gap-1 bg-gray-100 px-3 py-1 rounded-full text-sm"
-                      >
-                        <span className="text-lg">{tech.icon}</span>
-                        <span className="text-gray-700">{tech.name}</span>
-                      </div>
-                    ))}
+                  <div className="mb-4">
+                    <h4 className="text-sm font-semibold text-gray-700 mb-2">
+                      Tech Stack:
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.map((tech) => (
+                        <div
+                          key={`${project.id}-${tech.name}`}
+                          className="flex items-center gap-1 bg-gray-100 px-3 py-1 rounded-full text-sm"
+                        >
+                          <span className="text-lg">{tech.icon}</span>
+                          <span className="text-gray-700">{tech.name}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex gap-3">
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-secondary transition-colors duration-200"
-                  >
-                    <FaExternalLinkAlt size={14} />
-                    Live Demo
-                  </a>
+                <div className="flex gap-3 mt-4">
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition-colors duration-200"
+                    >
+                      <FaExternalLinkAlt size={14} />
+                      Live Demo
+                    </a>
+                  )}
                   <a
                     href={project.githubUrl}
                     target="_blank"
