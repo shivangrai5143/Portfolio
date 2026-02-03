@@ -13,7 +13,6 @@ import {
   SiAxios,
   SiJsonwebtokens,
   SiPostman,
-  SiSocketdotio,
   SiOpenai,
   SiFirebase,
 } from "react-icons/si";
@@ -22,7 +21,7 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Weather Dashboard",
+      title: "Weather App",
       description:
         "A responsive weather dashboard that provides real-time weather data, forecasts, and interactive maps.",
       techStack: [
@@ -30,6 +29,7 @@ const Projects = () => {
         { name: "Tailwind", icon: <SiTailwindcss className="text-cyan-400" /> },
       ],
       githubUrl: "https://github.com/shivangrai5143/Weather-App",
+      liveUrl: "https://thunder-weather-app.vercel.app/",
     },
     {
       id: 2,
@@ -56,6 +56,7 @@ const Projects = () => {
         { name: "JavaScript", icon: <SiJavascript className="text-yellow-500" /> },
       ],
       githubUrl: "https://github.com/shivangrai5143/Amazon-clone",
+      liveUrl: "https://shivangrai5143.github.io/Amazon-clone/"
     },
     {
       id: 4,
@@ -83,20 +84,26 @@ const Projects = () => {
         { name: "Node.js", icon: <SiNodedotjs className="text-green-500" /> },
         { name: "Express", icon: <SiExpress className="text-gray-700" /> },
         { name: "MongoDB", icon: <SiMongodb className="text-green-600" /> },
-        { name: "Tailwind", icon: <SiTailwindcss className="text-cyan-400" /> },
         { name: "JavaScript", icon: <SiJavascript className="text-yellow-500" /> },
-        { name: "Redux", icon: <SiRedux className="text-purple-500" /> },
-        { name: "Vercel", icon: <SiVercel className="text-black dark:text-white" /> },
-        { name: "Cloudinary", icon: <SiCloudinary className="text-blue-500" /> },
-        { name: "Render", icon: <SiRender className="text-indigo-500" /> },
-        { name: "Axios", icon: <SiAxios className="text-blue-400" /> },
-        { name: "JWT", icon: <SiJsonwebtokens className="text-orange-400" /> },
-        { name: "Postman", icon: <SiPostman className="text-orange-500" /> },
-        { name: "socket.io", icon: <SiSocketdotio className="text-gray-700" /> },
         { name: "Generative AI", icon: <SiOpenai className="text-green-500" /> },
+        { name: "Vercel", icon: <SiVercel className="text-black" /> },
       ],
       githubUrl: "https://github.com/VivekYadav-77/Coffee-Shop-Web-App",
       liveUrl: "https://the-roasting-house.vercel.app/",
+    },
+    {
+      id: 6,
+      title: "Project Management App",
+      description:
+        "A full-stack project management application built with React, Node.js, Express, and MongoDB. Features include task creation, assignment, and progress tracking.",
+      techStack: [
+        { name: "React", icon: <SiReact className="text-cyan-500" /> },
+        { name: "Node.js", icon: <SiNodedotjs className="text-green-500" /> },
+        { name: "Express", icon: <SiExpress className="text-gray-700" /> },
+        { name: "MongoDB", icon: <SiMongodb className="text-green-600" /> },
+        { name: "JavaScript", icon: <SiJavascript className="text-yellow-500" /> },
+      ],
+      githubUrl: "https://github.com/shivangrai5143/Project-Management-App",
     },
   ];
 

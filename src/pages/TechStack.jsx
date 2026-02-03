@@ -1,10 +1,8 @@
 import {
   FaReact,
   FaNodeJs,
-  FaPython,
   FaGitAlt,
   FaDocker,
-  FaAws,
 } from 'react-icons/fa';
 import {
   SiJavascript,
@@ -35,8 +33,7 @@ const TechStack = () => {
       skills: [
         { name: 'Node.js', icon: <FaNodeJs className="text-green-600" /> },
         { name: 'Express', icon: <SiExpress className="text-gray-700" /> },
-        { name: 'Python', icon: <FaPython className="text-blue-500" /> },
-      ],
+      ]
     },
     {
       title: 'Databases :',
@@ -50,7 +47,6 @@ const TechStack = () => {
       skills: [
         { name: 'Git', icon: <FaGitAlt className="text-orange-600" /> },
         { name: 'Docker', icon: <FaDocker className="text-blue-500" /> },
-        { name: 'AWS', icon: <FaAws className="text-orange-500" /> },
         { name: 'Vite', icon: <SiVite className="text-purple-500" /> },
         { name: 'Postman', icon: <SiPostman className="text-orange-600" /> },
       ],

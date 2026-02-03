@@ -10,7 +10,7 @@ const About = () => {
         <div className="bg-gradient-to-br from-blue-100 to-gray-200 rounded-lg shadow-lg p-8 mb-8">
           <div className="prose max-w-none">
             <p className="text-lg text-black-700 leading-relaxed mb-6">
-              I&#39;m a passionate Full Stack Developer  building
+              I&#39;m a passionate Mern Stack Developer  building
               modern web applications. My journey in software development started with a
               curiosity for problem-solving and has evolved into a career dedicated to creating
               elegant, user-centered solutions.

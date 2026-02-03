@@ -5,7 +5,7 @@ const Home = () => {
     {
       name: 'LinkedIn',
       icon: <FaLinkedin size={28} />,
-      url: 'https://www.linkedin.com/in/shivang-rai-58b45728b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+      url: 'https://www.linkedin.com/in/shivang-rai-58b45728b/',
       color: 'hover:text-blue-600',
     },
     {
@@ -17,7 +17,7 @@ const Home = () => {
     {
       name: 'Twitter',
       icon: <FaTwitter size={28} />,
-      url: 'https://x.com/raishivang_69?s=09',
+      url: 'https://x.com/raishivang_69/',
       color: 'hover:text-blue-400',
     },
     {
@@ -46,7 +46,7 @@ const Home = () => {
         </h1>
 
         <p className="text-xl sm:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto">
-          Full Stack Developer | Creating Beautiful & Functional Web Experiences
+          Mern Stack Developer | Creating Beautiful & Functional Web Experiences
         </p>
 
         <div className="flex justify-center gap-6 mb-8">
