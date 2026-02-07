@@ -13,27 +13,37 @@ import {
   SiMongodb,
   SiMysql,
   SiVite,
+  SiOpenjdk,
+  SiPython,
+  SiC,
   SiPostman,
+  SiHtml5,
+  SiCss3,
 } from 'react-icons/si';
 
 const TechStack = () => {
   const techCategories = [
     {
-      title: 'Frontend :',
-      skills: [
+      title: 'Programming :',
+      skills:[
+        {name: 'java', icon: <SiOpenjdk className="text-red-600" />},
+        {name: 'Python', icon: <SiPython className="text-yellow-500" />},
         { name: 'JavaScript', icon: <SiJavascript className="text-yellow-400" /> },
         { name: 'TypeScript', icon: <SiTypescript className="text-blue-600" /> },
+        {name: 'C', icon: <SiC className="text-blue-500" />}
+      ]
+    },
+    {
+      title: 'Web Development :',
+      skills: [
+        {name : 'HTML', icon: <SiHtml5 className="text-orange-600" />},
+        {name : 'CSS', icon: <SiCss3 className="text-blue-600" />},
+        { name: 'Node.js', icon: <FaNodeJs className="text-green-600" /> },
+        { name: 'Express', icon: <SiExpress className="text-gray-700" /> },
         { name: 'React', icon: <FaReact className="text-cyan-500" /> },
         { name: 'Redux', icon: <SiRedux className="text-purple-600" /> },
         { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-cyan-400" /> },
       ],
-    },
-    {
-      title: 'Backend :',
-      skills: [
-        { name: 'Node.js', icon: <FaNodeJs className="text-green-600" /> },
-        { name: 'Express', icon: <SiExpress className="text-gray-700" /> },
-      ]
     },
     {
       title: 'Databases :',
