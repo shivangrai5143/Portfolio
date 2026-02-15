@@ -1,92 +1,120 @@
-import { FaLinkedin, FaGithub, FaTwitter, FaEnvelope, FaFileDownload } from "react-icons/fa";
+import { motion } from 'framer-motion';
+import { FaFileDownload, FaChevronDown } from 'react-icons/fa';
+import SocialLinks from '../components/ui/SocialLinks';
+import Button from '../components/ui/Button';
 
 const Home = () => {
-  const socialLinks = [
-    {
-      name: "LinkedIn",
-      icon: <FaLinkedin size={28} />,
-      url: "https://www.linkedin.com/in/shivang-rai-58b45728b/",
-      color: "hover:text-blue-600",
-    },
-    {
-      name: "GitHub",
-      icon: <FaGithub size={28} />,
-      url: "https://github.com/shivangrai5143",
-      color: "hover:text-gray-800",
-    },
-    {
-      name: "Twitter",
-      icon: <FaTwitter size={28} />,
-      url: "https://x.com/raishivang_69/",
-      color: "hover:text-sky-500",
-    },
-    {
-      name: "Email",
-      icon: <FaEnvelope size={28} />,
-      // FIXED (mailto added)
-      url: "mailto:raishivang69@gmail.com",
-      color: "hover:text-red-500",
-    },
-  ];
+  const scrollToProjects = () => {
+    const element = document.getElementById('projects');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-gray-200">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-slate-900 dark:via-blue-900 dark:to-slate-900 transition-colors duration-300">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
         {/* Profile Image */}
-        <div className="mb-8 flex justify-center">
-          <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-blue-500 shadow-2xl">
-
-            {/* Clicking photo opens resume */}
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="mb-8 flex justify-center"
+        >
+          <div className="relative">
+            <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-primary shadow-2xl">
               <img
                 src="/copy.jpeg"
                 alt="Shivang Rai"
-                className="w-full h-full object-cover cursor-pointer"
+                className="w-full h-full object-cover"
               />
-            </a>
-
+            </div>
+            {/* Gradient ring animation */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-secondary to-accent opacity-0 hover:opacity-20 transition-opacity duration-300"></div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Name */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4">
-          Hi, I'm <span className="text-blue-600">Shivang Rai</span>
-        </h1>
+        {/* Name & Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold font-heading text-gray-900 dark:text-white mb-4">
+            Hi, I'm{' '}
+            <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+              Shivang Rai
+            </span>
+          </h1>
+          <p className="text-2xl sm:text-3xl font-semibold text-gray-700 dark:text-gray-300 mb-4">
+            MERN Stack Developer
+          </p>
+        </motion.div>
 
-        {/* Tagline */}
-        <p className="text-xl sm:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto">
-          MERN Stack Developer | Building Scalable & Interactive Web Applications
-        </p>
+        {/* Short Intro */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed"
+        >
+          Building scalable and interactive web applications with modern technologies.
+          Passionate about creating elegant solutions to complex problems.
+        </motion.p>
 
         {/* Social Icons */}
-        <div className="flex justify-center gap-6 mb-10">
-          {socialLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`text-blue-600 ${link.color} transition-all duration-300 transform hover:scale-110`}
-              aria-label={link.name}
-            >
-              {link.icon}
-            </a>
-          ))}
-        </div>
-
-      
-        <a
-          href="/resume.pdf"
-          download="Shivang_Rai_Resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mb-10"
         >
-          <FaFileDownload size={20} />
-          Download Resume
-        </a>
+          <SocialLinks iconSize={32} />
+        </motion.div>
 
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+          <Button
+            variant="primary"
+            size="lg"
+            icon={FaFileDownload}
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            download="Shivang_Rai_Resume.pdf"
+          >
+            Download Resume
+          </Button>
+          <Button
+            variant="secondary"
+            size="lg"
+            icon={FaChevronDown}
+            onClick={scrollToProjects}
+          >
+            View Projects
+          </Button>
+        </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.2 }}
+          className="mt-16"
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="flex justify-center"
+          >
+            <FaChevronDown className="text-gray-400 dark:text-gray-600 text-2xl" />
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );

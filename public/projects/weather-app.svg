@@ -1,0 +1,22 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E88E5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#64B5F6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#sky)"/>
+  <circle cx="200" cy="150" r="80" fill="#FDD835"/>
+  <text x="400" y="280" font-family="Arial, sans-serif" font-size="64" fill="white" text-anchor="middle" font-weight="bold">72°F</text>
+  <text x="400" y="340" font-family="Arial, sans-serif" font-size="32" fill="#E3F2FD" text-anchor="middle">Partly Cloudy</text>
+  <text x="400" y="420" font-family="Arial, sans-serif" font-size="20" fill="#BBDEFB" text-anchor="middle">New York, NY</text>
+  <rect x="150" y="480" width="120" height="80" rx="10" fill="rgba(255,255,255,0.2)"/>
+  <text x="210" y="510" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">Mon</text>
+  <text x="210" y="540" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="bold">68°</text>
+  <rect x="290" y="480" width="120" height="80" rx="10" fill="rgba(255,255,255,0.2)"/>
+  <text x="350" y="510" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">Tue</text>
+  <text x="350" y="540" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="bold">70°</text>
+  <rect x="430" y="480" width="120" height="80" rx="10" fill="rgba(255,255,255,0.2)"/>
+  <text x="490" y="510" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">Wed</text>
+  <text x="490" y="540" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="bold">75°</text>
+</svg>

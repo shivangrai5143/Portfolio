@@ -1,0 +1,13 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6B4423;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3E2723;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <text x="400" y="250" font-family="Arial, sans-serif" font-size="48" fill="#D7CCC8" text-anchor="middle" font-weight="bold">☕ Coffee Shop</text>
+  <text x="400" y="320" font-family="Arial, sans-serif" font-size="24" fill="#BCAAA4" text-anchor="middle">MERN E-Commerce Platform</text>
+  <rect x="200" y="380" width="400" height="60" rx="30" fill="#8D6E63"/>
+  <text x="400" y="418" font-family="Arial, sans-serif" font-size="20" fill="white" text-anchor="middle" font-weight="bold">Order Now</text>
+</svg>

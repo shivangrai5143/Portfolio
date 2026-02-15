@@ -1,1 +1,7 @@
 @import 'tailwindcss';
+
+/* Load custom config (colors, fonts, animations) */
+@config '../tailwind.config.js';
+
+/* Override dark mode to use class-based strategy instead of media query */
+@custom-variant dark (&:where(.dark, .dark *));
