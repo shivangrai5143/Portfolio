@@ -31,21 +31,6 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: "URL Shortener",
-      description:
-        "A simple URL Shortener built with Node.js, Express, and MongoDB. It shortens long URLs and can be tested with Postman.",
-      techStack: [
-        { name: "React", icon: <SiReact className="text-cyan-500" /> },
-        { name: "Express", icon: <SiExpress className="text-gray-700" /> },
-        { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
-        { name: "JavaScript", icon: <SiJavascript className="text-yellow-500" /> },
-        { name: "Postman", icon: <SiPostman className="text-orange-500" /> },
-        { name: "Node.js", icon: <SiNodedotjs className="text-green-500" /> },
-      ],
-      githubUrl: "https://github.com/shivangrai5143/URL-Shortner",
-    },
-    {
-      id: 3,
       title: "Amazon Clone",
       description:
         "A frontend-only Amazon clone created with HTML, CSS, and JavaScript. It replicates Amazon's homepage and product listings with a responsive UI.",
@@ -57,7 +42,7 @@ const Projects = () => {
       liveUrl: "https://shivangrai5143.github.io/Amazon-clone/"
     },
     {
-      id: 4,
+      id: 3,
       title: "Chat-App",
       description:
         "💬 Real-Time Chat App (2025) — A full-stack real-time chat app built with React.js and Firebase Auth for instant, secure communication.",
@@ -73,7 +58,7 @@ const Projects = () => {
       githubUrl: "https://github.com/yourprofile/project",
     },
     {
-      id: 5,
+      id: 4,
       title: "Coffee Shop Application",
       description:
         "A mobile-friendly platform to browse coffee products, customize orders, and make secure payments easily.",
@@ -90,7 +75,7 @@ const Projects = () => {
       liveUrl: "https://the-roasting-house.vercel.app/",
     },
     {
-      id: 6,
+      id: 5,
       title: "Project Management App",
       description:
         "A full-stack project management application built with React, Node.js, Express, and MongoDB. Features include task creation, assignment, and progress tracking.",
