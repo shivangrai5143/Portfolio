@@ -24,10 +24,11 @@ const Home = () => {
           <div className="relative">
             <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-primary shadow-2xl">
               <img
-                src="/copy.jpeg"
+                src="/assets/copy.jpeg"
                 alt="Shivang Rai"
                 className="w-full h-full object-cover"
               />
+
             </div>
             {/* Gradient ring animation */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-secondary to-accent opacity-0 hover:opacity-20 transition-opacity duration-300"></div>
