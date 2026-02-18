@@ -43,7 +43,7 @@ export const projectsData = [
             { name: 'OpenAI', icon: SiOpenai, color: 'text-green-500' },
         ],
         githubUrl: 'https://github.com/shivangrai5143/Project-Management-App',
-        liveUrl: 'https://project-management-shivang.vercel.app',
+        liveUrl: 'https://yojnaflow.vercel.app/',
         featured: true,
     },
     {
