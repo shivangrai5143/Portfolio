@@ -8,7 +8,7 @@ const Experience = () => {
             id: 1,
             title: 'Web Development Intern',
             company: 'Prodigy Infotech',
-            duration: 'December 2024 - January 2025',
+            duration: 'July 2024 - August 2024',
             type: 'Remote',
             responsibilities: [
                 'Developed responsive web applications using React.js and modern CSS frameworks',
