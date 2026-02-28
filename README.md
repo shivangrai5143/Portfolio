@@ -1,5 +1,5 @@
 💼 Portfolio Website (React + Vite) 
-snidsnvnc;dskclk:dsncoai;sd'EOIKHFNIJO/.Z/XDBGK.ZSPO/.PODVSKNLDFN'OKJNDVSJPONBKJ ZDBS.F,H BINOZVHS;BKJ
+snidsnvnc;dskclk:dsncoai;sd'EOIKHFNIJO/.Z/XDBGK.ZSPO/.PODVSKNLDFN'OKJNDVS
 A modern, responsive personal portfolio website built using React.js, JavaScript, and Vite for fast and optimized development. The website showcases my projects, skills, and experience in a visually appealing and interactive way.
 
 It features a smooth navigation experience, animated sections, and dynamic project cards that highlight the technologies used in each project. The site is fully responsive across devices and optimized for performance using Vite’s fast build system.
