@@ -28,7 +28,7 @@ const Navbar = ({ activeSection, onNavigate }) => {
             onClick={() => handleNavClick('home')}
             className="text-2xl font-bold font-heading bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
           >
-            Shivang Rai
+            Portfolio
           </button>
 
           {/* Desktop Menu */}
