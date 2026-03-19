@@ -1,4 +1,4 @@
-💼 Portfolio Website (React + Vite)  hihihi
+💼 Portfolio Website (React + Vite)  hihi
 
 A modern, responsive personal portfolio website built using React.js, JavaScript, and Vite for fast and optimized development. The website showcases my projects, skills, and experience in a visually appealing and interactive way.
 
