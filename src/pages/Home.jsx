@@ -87,7 +87,7 @@ const Home = () => {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            download="Shivang_Rai_Resume.pdf"
+            download="Resume.pdf"
           >
             Download Resume
           </Button>
