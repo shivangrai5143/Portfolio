@@ -84,7 +84,7 @@ const Home = () => {
             variant="primary"
             size="lg"
             icon={FaFileDownload}
-            href="/resume.pdf"
+            href="/Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             download="Resume.pdf"
