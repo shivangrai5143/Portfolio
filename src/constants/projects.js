@@ -26,7 +26,7 @@ export const projectsData = [
             { name: 'JavaScript', icon: SiJavascript, color: 'text-yellow-400' },
         ],
         githubUrl: 'https://github.com/shivangrai5143/Chat-App',
-        liveUrl: 'https://chat-app-demo.vercel.app',
+        liveUrl: 'https://chat-app-brown-zeta-84.vercel.app/',
         featured: true,
     },
     {
