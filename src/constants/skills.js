@@ -15,6 +15,7 @@ import {
     SiCloudinary,
     SiPython,
     SiC,
+    SiMysql,
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
 
@@ -49,6 +50,7 @@ export const skillsData = [
             { name: 'MongoDB', icon: SiMongodb, color: 'text-green-500' },
             { name: 'Firebase', icon: SiFirebase, color: 'text-yellow-500' },
             { name: 'Firestore', icon: SiFirebase, color: 'text-orange-500' },
+            {name: 'Mysql', icon: SiMysql, color: 'text-blue-500'},
         ],
     },
     {
