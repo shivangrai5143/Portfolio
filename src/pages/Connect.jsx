@@ -1,16 +1,48 @@
-import { useState } from 'react';
-import { FaEnvelope, FaLinkedin, FaPaperPlane } from 'react-icons/fa';
+import { useState } from "react";
 
-const Connect = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+// Material Symbols Icon Component
+function Icon({ name, className = "" }) {
+  return (
+    <span
+      className={`material-symbols-outlined ${className}`}
+      style={{ fontVariationSettings: "'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24" }}
+    >
+      {name}
+    </span>
+  );
+}
+
+function ContactCard({ icon, label, title, linkText, href, linkIcon }) {
+  return (
+    <div className="group col-span-12 md:col-span-6 lg:col-span-5 flex flex-col h-full">
+      <div className="relative overflow-hidden p-10 h-full transition-all duration-300 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl border border-gray-100 dark:border-slate-700 hover:-translate-y-1">
+        <div className="absolute top-0 right-0 p-8 transition-opacity duration-300 opacity-5 dark:opacity-10 group-hover:opacity-10 dark:group-hover:opacity-20 pointer-events-none">
+          <Icon name={icon} className="text-6xl text-gray-900 dark:text-gray-100" />
+        </div>
+        <p className="text-xs tracking-widest uppercase mb-4 text-primary font-sans">
+          {label}
+        </p>
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 break-words text-gray-900 dark:text-white" style={{ fontFamily: "Manrope, sans-serif" }}>
+          {title}
+        </h2>
+        <a
+          href={href || "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 transition-all duration-200 text-primary border-b border-primary/20 hover:border-primary pb-1 font-sans"
+        >
+          {linkText}
+          <Icon name={linkIcon} className="text-sm" />
+        </a>
+      </div>
+    </div>
+  );
+}
+
+function ContactForm({ onSuccess }) {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // ✅ Validate form before submission
   const validateForm = () => {
     const newErrors = {};
 
@@ -34,7 +66,6 @@ const Connect = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  // ✅ Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -50,7 +81,6 @@ const Connect = () => {
     }
   };
 
-  // ✅ Handle form submit with Formcarry integration
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -68,12 +98,8 @@ const Connect = () => {
         const result = await res.json();
 
         if (result.code === 200) {
-          setIsSubmitted(true);
-          setFormData({ name: '', email: '', message: '' }); // Clear the form
-
-          setTimeout(() => {
-            setIsSubmitted(false);
-          }, 5000);
+          setFormData({ name: '', email: '', message: '' });
+          if (onSuccess) onSuccess();
         } else {
           console.error('Submission failed:', result.message);
           alert('Sorry, there was an error sending your message.');
@@ -85,126 +111,139 @@ const Connect = () => {
     }
   };
 
+  const baseInputClass = "w-full bg-transparent border-0 border-b border-gray-300 dark:border-slate-600 focus:border-primary dark:focus:border-primary focus:ring-0 px-2 py-4 text-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 font-sans transition-colors outline-none";
+  const errorInputClass = `${baseInputClass} !border-red-500`;
+
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-slate-900 py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
-      <div className="max-w-4xl mx-auto">
+    <div className="flex justify-center w-full">
+      <div className="w-full max-w-4xl relative bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-slate-700" style={{ padding: "clamp(2rem, 6vw, 4rem)" }}>
         <div className="text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl font-bold font-heading text-gray-900 dark:text-white mb-4">
-            Let's Connect
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400">
-            Have a project in mind or just want to chat? Feel free to reach out!
-          </p>
+          <span className="text-xs tracking-widest uppercase block mb-4 text-primary font-sans">
+            Drop a line
+          </span>
+          <h3 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white" style={{ fontFamily: "Manrope, sans-serif" }}>
+            Project Inquiry
+          </h3>
         </div>
 
-
-        {/* Contact Options */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          <a
-            href="mailto:raishivang69@gmail.com"
-            className="flex items-center gap-4 bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-100 dark:border-slate-700"
-          >
-            <div className="w-14 h-14 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center flex-shrink-0">
-              <FaEnvelope className="text-red-500 dark:text-red-400 text-2xl" />
-            </div>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             <div>
-              <h3 className="font-semibold text-gray-900 dark:text-white text-lg">Email</h3>
-              <p className="text-gray-600 dark:text-gray-400">raishivang69@gmail.com</p>
-            </div>
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/shivang-rai-58b45728b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-4 bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-100 dark:border-slate-700"
-          >
-            <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
-              <FaLinkedin className="text-blue-600 dark:text-blue-400 text-2xl" />
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-900 dark:text-white text-lg">LinkedIn</h3>
-              <p className="text-gray-600 dark:text-gray-400">Connect with me</p>
-            </div>
-          </a>
-        </div>
-
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8 border border-gray-100 dark:border-slate-700">
-          <h2 className="text-2xl font-bold font-heading text-gray-900 dark:text-white mb-6">Send a Message</h2>
-
-          {isSubmitted && (
-            <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg flex items-center gap-3">
-              <FaPaperPlane />
-              <span>
-                Thank you for your message! I'll get back to you as soon as possible.
-              </span>
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Name
-              </label>
+              <label className="block text-[10px] font-sans tracking-[0.15em] uppercase text-gray-500 dark:text-gray-400 mb-2 ml-1">Name</label>
               <input
-                type="text"
-                id="name"
                 name="name"
+                type="text"
+                placeholder="John Doe"
                 value={formData.name}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 bg-white dark:bg-slate-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 ${errors.name ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                placeholder="Your name"
+                className={errors.name ? errorInputClass : baseInputClass}
               />
-              {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
+              {errors.name && <p className="mt-2 text-sm text-red-500 font-sans">{errors.name}</p>}
             </div>
-
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Email
-              </label>
+              <label className="block text-[10px] font-sans tracking-[0.15em] uppercase text-gray-500 dark:text-gray-400 mb-2 ml-1">Email</label>
               <input
-                type="email"
-                id="email"
                 name="email"
+                type="email"
+                placeholder="john@example.com"
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 bg-white dark:bg-slate-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 ${errors.email ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
-                  }`}
-                placeholder="your.email@example.com"
+                className={errors.email ? errorInputClass : baseInputClass}
               />
-              {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
+              {errors.email && <p className="mt-2 text-sm text-red-500 font-sans">{errors.email}</p>}
             </div>
-
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows="5"
-                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 bg-white dark:bg-slate-700 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 ${errors.message ? 'border-red-500' : 'border-gray-300 dark:border-slate-600'
-                  }`}
-                placeholder="Your message..."
-              ></textarea>
-              {errors.message && <p className="mt-1 text-sm text-red-500">{errors.message}</p>}
-            </div>
-
+          </div>
+          <div>
+            <label className="block text-[10px] font-sans tracking-[0.15em] uppercase text-gray-500 dark:text-gray-400 mb-2 ml-1">Message</label>
+            <textarea
+              name="message"
+              placeholder="Tell me about your vision..."
+              rows={4}
+              value={formData.message}
+              onChange={handleChange}
+              className={`${errors.message ? errorInputClass : baseInputClass} resize-none`}
+            />
+            {errors.message && <p className="mt-2 text-sm text-red-500 font-sans">{errors.message}</p>}
+          </div>
+          <div className="flex justify-center pt-6">
             <button
               type="submit"
-              className="w-full bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"
+              className="relative inline-flex items-center gap-2 justify-center font-bold text-lg transition-all duration-300 hover:scale-105 bg-primary hover:bg-primary-dark text-white px-10 py-4 rounded-xl shadow-lg border-none cursor-pointer"
+              style={{ fontFamily: "Manrope, sans-serif" }}
             >
-              <FaPaperPlane />
-              Send Message
+              🚀 Send Message
             </button>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   );
-};
+}
 
-export default Connect;
+export default function Connect({ onSuccess }) {
+  return (
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;700;800&family=Inter:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+      `}</style>
+
+      <div className="w-full min-h-screen bg-gray-50 dark:bg-slate-900 transition-colors duration-300">
+        <main
+          className="pb-24 px-8 max-w-[1440px] mx-auto"
+          style={{ paddingTop: "8rem" }}
+        >
+          <section className="mb-24">
+            {/* Hero heading */}
+            <div className="grid grid-cols-12 gap-8 mb-20">
+              <div className="col-span-12">
+                <h1
+                  className="font-extrabold tracking-tighter leading-none mb-6 text-gray-900 dark:text-white"
+                  style={{
+                    fontFamily: "Manrope, sans-serif",
+                    fontSize: "clamp(4rem, 10vw, 8rem)",
+                    lineHeight: 0.9,
+                  }}
+                >
+                  LET'S CONNECT
+                </h1>
+                <p 
+                  className="text-lg md:text-xl font-medium tracking-tight text-gray-600 dark:text-gray-400 ml-1"
+                  style={{
+                    fontFamily: "Inter, sans-serif",
+                  }}
+                >
+                  Have a project in mind or just want to chat? Feel free to reach out!
+                </p>
+              </div>
+            </div>
+
+            {/* Contact cards */}
+            <div className="grid grid-cols-12 gap-8 mb-32">
+              <ContactCard
+                icon="alternate_email"
+                label="Email"
+                title="raishivang69@gmail.com"
+                linkText="Shoot an inquiry"
+                href="mailto:raishivang69@gmail.com"
+                linkIcon="arrow_forward"
+              />
+              <div className="hidden lg:block lg:col-span-2" />
+              <ContactCard
+                icon="share"
+                label="LinkedIn"
+                title="Connect with me"
+                linkText="View Professional Profile"
+                href="https://www.linkedin.com/in/shivang-rai-58b45728b"
+                linkIcon="north_east"
+              />
+            </div>
+
+            {/* Contact form */}
+            <ContactForm onSuccess={onSuccess} />
+          </section>
+        </main>
+      </div>
+    </>
+  );
+}

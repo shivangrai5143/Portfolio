@@ -7,9 +7,11 @@ import TechStack from './pages/TechStack';
 import Projects from './pages/Projects';
 import Experience from './pages/Experience';
 import Connect from './pages/Connect';
+import ThankYou from './pages/ThankYou';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
+  const [showThankYou, setShowThankYou] = useState(false);
 
   // Handle Scroll Detection
   useEffect(() => {
@@ -53,6 +55,14 @@ function App() {
     }
   };
 
+  if (showThankYou) {
+    return (
+      <ThemeProvider>
+        <ThankYou onBack={() => { setShowThankYou(false); window.scrollTo(0, 0); }} />
+      </ThemeProvider>
+    );
+  }
+
   return (
     <ThemeProvider>
       <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
@@ -75,7 +85,7 @@ function App() {
           <Experience />
         </div>
         <div id="connect">
-          <Connect />
+          <Connect onSuccess={() => setShowThankYou(true)} />
         </div>
       </div>
     </ThemeProvider>
