@@ -12,7 +12,25 @@ function Icon({ name, className = "" }) {
   );
 }
 
-function ContactCard({ icon, label, title, linkText, href, linkIcon }) {
+function ContactCard({ icon, label, title, linkText, href, actionLink, linkIcon }) {
+  const handleClick = (e) => {
+    if (actionLink && actionLink.startsWith('#')) {
+      e.preventDefault();
+      const element = document.querySelector(actionLink);
+      if (element) {
+        const navbarHeight = 64;
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({
+          top: elementPosition - navbarHeight,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
+  const finalHref = actionLink || href || "#";
+  const isSelf = finalHref.startsWith("mailto:") || finalHref.startsWith("#");
+
   return (
     <div className="group col-span-12 md:col-span-6 lg:col-span-5 flex flex-col h-full">
       <div className="relative overflow-hidden p-10 h-full transition-all duration-300 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl border border-gray-100 dark:border-slate-700 hover:-translate-y-1">
@@ -26,9 +44,10 @@ function ContactCard({ icon, label, title, linkText, href, linkIcon }) {
           {title}
         </h2>
         <a
-          href={href || "#"}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={finalHref}
+          onClick={handleClick}
+          target={isSelf ? "_self" : "_blank"}
+          rel={isSelf ? undefined : "noopener noreferrer"}
           className="inline-flex items-center gap-2 transition-all duration-200 text-primary border-b border-primary/20 hover:border-primary pb-1 font-sans"
         >
           {linkText}
@@ -116,7 +135,7 @@ function ContactForm({ onSuccess }) {
 
   return (
     <div className="flex justify-center w-full">
-      <div className="w-full max-w-4xl relative bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-slate-700" style={{ padding: "clamp(2rem, 6vw, 4rem)" }}>
+      <div id="contact" className="w-full max-w-4xl relative bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-slate-700" style={{ padding: "clamp(2rem, 6vw, 4rem)" }}>
         <div className="text-center mb-12">
           <span className="text-xs tracking-widest uppercase block mb-4 text-primary font-sans">
             Drop a line
@@ -225,7 +244,8 @@ export default function Connect({ onSuccess }) {
                 label="Email"
                 title="raishivang69@gmail.com"
                 linkText="Shoot an inquiry"
-                href="mailto:raishivang69@gmail.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=raishivang69@gmail.com"
+                actionLink="#contact"
                 linkIcon="arrow_forward"
               />
               <div className="hidden lg:block lg:col-span-2" />
