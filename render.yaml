@@ -1,0 +1,22 @@
+# Render deployment configuration
+# Docs: https://render.com/docs/render-yaml
+
+services:
+  - type: web
+    name: portfolio-github-api
+    env: node
+    region: oregon
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node index.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: 18
+      - key: GITHUB_USERNAME
+        value: shivangrai5143
+      - key: GITHUB_TOKEN
+        sync: false   # Set this manually in Render dashboard
+      - key: ALLOWED_ORIGINS
+        sync: false   # Set to: https://shivang-2005.vercel.app

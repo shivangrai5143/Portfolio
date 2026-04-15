@@ -1,107 +1,191 @@
 import { motion } from 'framer-motion';
-import { FaBriefcase, FaCalendar } from 'react-icons/fa';
-import SectionTitle from '../components/ui/SectionTitle';
+import { FaBriefcase, FaCalendar, FaGraduationCap } from 'react-icons/fa';
 
 const Experience = () => {
-    const experiences = [
-        {
-            id: 1,
-            title: 'Web Development Intern',
-            company: 'Prodigy Infotech',
-            duration: 'July 2024 - August 2024',
-            type: 'Remote',
-            responsibilities: [
-                'Developed responsive web applications using React.js and modern CSS frameworks',
-                'Collaborated with the development team to implement new features and fix bugs',
-                'Created reusable component libraries to improve development efficiency',
-                'Participated in code reviews and followed best practices for clean code',
-                'Gained hands-on experience with version control using Git and GitHub',
-            ],
-            technologies: ['React', 'JavaScript', 'HTML/CSS', 'Tailwind CSS', 'Git'],
-        },
-    ];
+  const experiences = [
+    {
+      id: 1,
+      type: 'work',
+      title: 'Web Development Intern',
+      org: 'Prodigy Infotech',
+      duration: 'July 2024 – August 2024',
+      badge: 'Remote',
+      badgeColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
+      points: [
+        'Developed responsive web applications using React.js and Tailwind CSS',
+        'Collaborated with the dev team to implement features and fix bugs',
+        'Created reusable component libraries to improve development efficiency',
+        'Participated in code reviews and followed clean-code best practices',
+        'Used Git & GitHub for version control across all projects',
+      ],
+      tags: ['React', 'JavaScript', 'HTML/CSS', 'Tailwind CSS', 'Git'],
+    },
+  ];
 
-    return (
-        <div className="min-h-screen bg-white dark:bg-slate-800 py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
-            <div className="max-w-5xl mx-auto">
-                <SectionTitle
-                    title="Experience"
-                    subtitle="My professional journey and internship experience"
-                />
+  const education = [
+    {
+      id: 2,
+      type: 'education',
+      title: 'B.Tech in Computer Science & Engineering',
+      org: 'Babu Banarasi Das University',
+      duration: '2023 - 2027',
+      badge: 'Pursuing',
+      badgeColor: 'text-blue-400 bg-blue-500/10 border-blue-500/30',
+      points: [
+        'Core subjects: Data Structures, DBMS, OS, Computer Networks, OOP',
+        'Built multiple full-stack projects as part of coursework and self-learning',
+        'Relevant coursework: Web Development, Software Engineering, Algorithms',
+      ],
+      tags: ['Java', 'Python', 'C', 'Web Dev'],
+    },
+  ];
 
-                <div className="relative max-w-4xl mx-auto">
-                    {/* Central Timeline Line */}
-                    <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-primary/20 via-primary/50 to-primary/20"></div>
+  const allEntries = [...experiences, ...education];
 
-                    {/* Experience Cards */}
-                    <div className="space-y-12">
-                        {experiences.map((exp, index) => (
-                            <motion.div
-                                key={exp.id}
-                                initial={{ opacity: 0, y: 50 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6 }}
-                                className={`relative flex flex-col md:flex-row gap-8 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                                    }`}
-                            >
-                                {/* Timeline Dot */}
-                                <div className="absolute left-0 md:left-1/2 transform -translate-x-[9px] w-5 h-5 bg-primary rounded-full border-4 border-white dark:border-slate-800 shadow-xl z-10 mt-6 md:mt-8"></div>
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.55, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] },
+    }),
+  };
 
-                                {/* Content Card */}
-                                <div className="ml-8 md:ml-0 md:w-1/2">
-                                    <div
-                                        className={`bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-slate-700 hover:shadow-xl hover:border-primary/30 dark:hover:border-primary/30 transition-all duration-300 group ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
-                                            }`}
-                                    >
-                                        <div className="flex flex-col gap-2 mb-4 border-b border-gray-100 dark:border-slate-700 pb-4">
-                                            <div className="flex justify-between items-start flex-wrap gap-2">
-                                                <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
-                                                    {exp.title}
-                                                </h3>
-                                                <span className="px-3 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full">
-                                                    {exp.type}
-                                                </span>
-                                            </div>
-                                            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 font-medium">
-                                                <FaBriefcase className="text-primary text-sm" />
-                                                {exp.company}
-                                            </div>
-                                            <div className="flex items-center gap-2 text-sm text-gray-500">
-                                                <FaCalendar className="text-primary text-sm" />
-                                                {exp.duration}
-                                            </div>
-                                        </div>
+  return (
+    <div className="min-h-screen bg-slate-950 py-24 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+      <div className="max-w-5xl mx-auto">
 
-                                        <ul className="space-y-3 mb-6">
-                                            {exp.responsibilities.map((resp, idx) => (
-                                                <li key={idx} className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
-                                                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                                                    <span className="leading-relaxed">{resp}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <span className="text-xs tracking-[0.25em] uppercase text-blue-400 font-sans font-medium block mb-3">
+            My journey
+          </span>
+          <h2 className="text-4xl sm:text-5xl font-extrabold font-heading text-white tracking-tight mb-4">
+            Experience &{' '}
+            <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
+              Education
+            </span>
+          </h2>
+          <p className="text-slate-400 text-lg max-w-xl mx-auto">
+            A timeline of my professional milestones and academic background.
+          </p>
+        </motion.div>
 
-                                        <div className="flex flex-wrap gap-2">
-                                            {exp.technologies.map((tech) => (
-                                                <motion.span
-                                                    key={tech}
-                                                    whileHover={{ scale: 1.05, y: -2 }}
-                                                    className="px-3 py-1 bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 text-xs font-medium rounded-md border border-gray-200 dark:border-slate-600 hover:border-primary dark:hover:border-primary hover:text-primary dark:hover:text-primary transition-colors cursor-default"
-                                                >
-                                                    {tech}
-                                                </motion.span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
+        {/* Timeline */}
+        <div className="relative">
+          {/* Central vertical line */}
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-500/40 via-violet-500/40 to-slate-800" />
+
+          <div className="space-y-14">
+            {allEntries.map((entry, index) => {
+              const isWork = entry.type === 'work';
+              const isRight = index % 2 === 0;
+
+              return (
+                <motion.div
+                  key={entry.id}
+                  custom={index}
+                  variants={cardVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: '-60px' }}
+                  className={`relative flex flex-col md:flex-row items-start gap-6 ${
+                    isRight ? 'md:flex-row' : 'md:flex-row-reverse'
+                  }`}
+                >
+                  {/* Spacer half */}
+                  <div className="hidden md:block md:w-1/2" />
+
+                  {/* Timeline dot */}
+                  <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 top-8 z-10 flex-col items-center">
+                    <div className={`w-10 h-10 rounded-full border-2 flex items-center justify-center shadow-lg ${
+                      isWork
+                        ? 'bg-emerald-500/20 border-emerald-500/60'
+                        : 'bg-blue-500/20 border-blue-500/60'
+                    }`}>
+                      {isWork
+                        ? <FaBriefcase className="text-emerald-400 text-sm" />
+                        : <FaGraduationCap className="text-blue-400 text-sm" />
+                      }
                     </div>
-                </div>
-            </div>
+                  </div>
+
+                  {/* Card */}
+                  <div className="md:w-1/2">
+                    <motion.div
+                      whileHover={{ y: -4 }}
+                      transition={{ duration: 0.2 }}
+                      className={`relative bg-slate-900 border border-slate-800 hover:border-slate-600 rounded-2xl p-7 shadow-lg hover:shadow-xl transition-all duration-300 group ${
+                        isRight ? 'md:ml-8' : 'md:mr-8'
+                      }`}
+                    >
+                      {/* Top row */}
+                      <div className="flex items-start justify-between gap-3 mb-1 flex-wrap">
+                        <h3 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors font-heading">
+                          {entry.title}
+                        </h3>
+                        <span className={`text-xs font-semibold px-3 py-1 rounded-full border whitespace-nowrap ${entry.badgeColor}`}>
+                          {entry.badge}
+                        </span>
+                      </div>
+
+                      {/* Org */}
+                      <div className="flex items-center gap-2 text-slate-400 text-sm font-medium mb-1">
+                        {isWork
+                          ? <FaBriefcase className="text-emerald-400 flex-shrink-0" size={12} />
+                          : <FaGraduationCap className="text-blue-400 flex-shrink-0" size={13} />
+                        }
+                        {entry.org}
+                      </div>
+
+                      {/* Duration */}
+                      <div className="flex items-center gap-2 text-slate-500 text-xs mb-5">
+                        <FaCalendar size={11} />
+                        {entry.duration}
+                      </div>
+
+                      {/* Divider */}
+                      <div className="border-t border-slate-800 mb-4" />
+
+                      {/* Points */}
+                      <ul className="space-y-2.5 mb-5">
+                        {entry.points.map((pt, i) => (
+                          <li key={i} className="flex items-start gap-2.5 text-sm text-slate-400">
+                            <span className={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 ${
+                              isWork ? 'bg-emerald-400' : 'bg-blue-400'
+                            }`} />
+                            <span className="leading-relaxed">{pt}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-2">
+                        {entry.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-3 py-1 bg-slate-800 border border-slate-700 hover:border-slate-500 text-slate-300 text-xs font-medium rounded-full transition-colors cursor-default"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Experience;

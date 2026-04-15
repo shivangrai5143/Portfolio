@@ -33,14 +33,14 @@ function ContactCard({ icon, label, title, linkText, href, actionLink, linkIcon 
 
   return (
     <div className="group col-span-12 md:col-span-6 lg:col-span-5 flex flex-col h-full">
-      <div className="relative overflow-hidden p-10 h-full transition-all duration-300 bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl border border-gray-100 dark:border-slate-700 hover:-translate-y-1">
+      <div className="relative overflow-hidden p-10 h-full transition-all duration-300 bg-slate-900 rounded-2xl shadow-lg hover:shadow-xl border border-slate-800 hover:border-slate-600 hover:-translate-y-1">
         <div className="absolute top-0 right-0 p-8 transition-opacity duration-300 opacity-5 dark:opacity-10 group-hover:opacity-10 dark:group-hover:opacity-20 pointer-events-none">
           <Icon name={icon} className="text-6xl text-gray-900 dark:text-gray-100" />
         </div>
         <p className="text-xs tracking-widest uppercase mb-4 text-primary font-sans">
           {label}
         </p>
-        <h2 className="text-2xl md:text-3xl font-bold mb-6 break-words text-gray-900 dark:text-white" style={{ fontFamily: "Manrope, sans-serif" }}>
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 break-words text-white" style={{ fontFamily: "Manrope, sans-serif" }}>
           {title}
         </h2>
         <a
@@ -130,12 +130,12 @@ function ContactForm({ onSuccess }) {
     }
   };
 
-  const baseInputClass = "w-full bg-transparent border-0 border-b border-gray-300 dark:border-slate-600 focus:border-primary dark:focus:border-primary focus:ring-0 px-2 py-4 text-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 font-sans transition-colors outline-none";
+  const baseInputClass = "w-full bg-transparent border-0 border-b border-slate-700 focus:border-blue-500 focus:ring-0 px-2 py-4 text-lg text-white placeholder-slate-500 font-sans transition-colors outline-none";
   const errorInputClass = `${baseInputClass} !border-red-500`;
 
   return (
     <div className="flex justify-center w-full">
-      <div id="contact" className="w-full max-w-4xl relative bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-slate-700" style={{ padding: "clamp(2rem, 6vw, 4rem)" }}>
+      <div id="contact" className="w-full max-w-4xl relative bg-slate-900 rounded-2xl shadow-lg border border-slate-800" style={{ padding: "clamp(2rem, 6vw, 4rem)" }}>
         <div className="text-center mb-12">
           <span className="text-xs tracking-widest uppercase block mb-4 text-primary font-sans">
             Drop a line
@@ -207,7 +207,7 @@ export default function Connect({ onSuccess }) {
         @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
       `}</style>
 
-      <div className="w-full min-h-screen bg-gray-50 dark:bg-slate-900 transition-colors duration-300">
+      <div className="w-full min-h-screen bg-slate-950 transition-colors duration-300">
         <main
           className="pb-24 px-8 max-w-[1440px] mx-auto"
           style={{ paddingTop: "8rem" }}
@@ -217,24 +217,23 @@ export default function Connect({ onSuccess }) {
             <div className="grid grid-cols-12 gap-8 mb-20">
               <div className="col-span-12">
                 <h1
-                  className="font-extrabold tracking-tighter leading-none mb-6 text-gray-900 dark:text-white"
+                  className="font-extrabold tracking-tighter leading-none mb-6 text-white"
                   style={{
                     fontFamily: "Manrope, sans-serif",
                     fontSize: "clamp(4rem, 10vw, 8rem)",
                     lineHeight: 0.9,
                   }}
                 >
-                  LET'S CONNECT
+                  LET&apos;S CONNECT
                 </h1>
-                <p 
-                  className="text-lg md:text-xl font-medium tracking-tight text-gray-600 dark:text-gray-400 ml-1"
-                  style={{
-                    fontFamily: "Inter, sans-serif",
-                  }}
+                <p
+                  className="text-lg md:text-xl font-medium tracking-tight text-slate-400 ml-1"
+                  style={{ fontFamily: "Inter, sans-serif" }}
                 >
                   Have a project in mind or just want to chat? Feel free to reach out!
                 </p>
               </div>
+
             </div>
 
             {/* Contact cards */}

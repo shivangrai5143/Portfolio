@@ -1,0 +1,10 @@
+{
+  "_comment": "Add extra techs per repo that GitHub can't auto-detect (e.g., services, databases, APIs).",
+  "_format": "{ 'repo-name-on-github': ['Tech1', 'Tech2'] }",
+
+  "Chat-App": ["Firebase", "Cloudinary", "Socket.io", "Real-time"],
+  "Project-Management-App": ["MongoDB", "OpenAI API", "WebRTC", "Socket.io"],
+  "Coffee-Shop-Web-App": ["MongoDB", "Stripe"],
+  "Weather-App": ["OpenWeather API"],
+  "Portfolio": ["Vite", "Framer Motion", "Vercel"]
+}

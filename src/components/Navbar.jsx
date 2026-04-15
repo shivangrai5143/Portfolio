@@ -21,12 +21,12 @@ const Navbar = ({ activeSection, onNavigate }) => {
   };
 
   return (
-    <nav className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-lg fixed w-full top-0 z-50 transition-colors duration-300">
+    <nav className="bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-lg border-b border-gray-200/50 dark:border-slate-800/50 fixed w-full top-0 z-50 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <button
             onClick={() => handleNavClick('home')}
-            className="text-2xl font-bold font-heading bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+            className="text-2xl font-bold font-heading bg-gradient-to-r from-blue-600 to-violet-600 dark:from-blue-400 dark:to-violet-400 bg-clip-text text-transparent"
           >
             Portfolio
           </button>
@@ -37,16 +37,16 @@ const Navbar = ({ activeSection, onNavigate }) => {
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`relative flex items-center text-sm font-medium transition-colors duration-300 h-full px-1 ${activeSection === item.id
-                    ? 'text-primary dark:text-primary-light'
-                    : 'text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light'
+                className={`relative flex items-center text-sm font-medium transition-colors duration-300 h-full px-1 ${
+                    activeSection === item.id
+                      ? 'text-blue-600 dark:text-blue-400'
+                      : 'text-gray-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400'
                   }`}
               >
                 {item.label}
                 {/* Underline Element */}
                 <span
-                  className={`absolute bottom-0 left-0 h-0.5 bg-primary dark:bg-primary-light transition-all duration-300 ${activeSection === item.id ? 'w-full' : 'w-0'
-                    }`}
+                  className={`absolute bottom-0 left-0 h-0.5 bg-blue-600 dark:bg-blue-400 transition-all duration-300 ${activeSection === item.id ? 'w-full' : 'w-0'}`}
                 />
               </button>
             ))}
@@ -70,15 +70,16 @@ const Navbar = ({ activeSection, onNavigate }) => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-slate-700">
+        <div className="md:hidden bg-white dark:bg-slate-950 border-t border-gray-100 dark:border-slate-800">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium border-l-4 transition-all ${activeSection === item.id
-                    ? 'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary-light border-primary dark:border-primary-light'
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 border-transparent'
+                className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium border-l-4 transition-all ${
+                    activeSection === item.id
+                      ? 'bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-600 dark:border-blue-400'
+                      : 'text-gray-600 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-slate-800 border-transparent'
                   }`}
               >
                 {item.label}

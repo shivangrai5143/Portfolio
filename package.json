@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",
     "@tailwindcss/postcss": "^4.1.13",
+    "axios": "^1.15.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.34.0",
     "react": "^18.3.1",
