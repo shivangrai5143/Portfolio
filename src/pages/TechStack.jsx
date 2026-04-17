@@ -5,7 +5,7 @@ import {
   SiReact, SiJavascript, SiNodedotjs, SiMongodb, SiFirebase,
   SiGit, SiTailwindcss, SiHtml5, SiCss3, SiExpress,
   SiMysql, SiPython, SiC, SiGithub, SiPostman,
-  SiDocker, SiPostgresql, SiTypescript, SiSocketdotio, SiWebrtc
+  SiDocker, SiPostgresql, SiTypescript, SiSocketdotio, SiWebrtc, SiDjango
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
 
@@ -13,30 +13,31 @@ import { FaJava } from 'react-icons/fa';
 const categories = {
   All: null,
   Frontend: [
-    { label: 'React',       Icon: SiReact,       color: '#61DAFB' },
-    { label: 'JavaScript',  Icon: SiJavascript,  color: '#F7DF1E' },
-    { label: 'TypeScript',  Icon: SiTypescript,  color: '#3178C6' },
-    { label: 'HTML5',       Icon: SiHtml5,       color: '#E34F26' },
-    { label: 'CSS3',         Icon: SiCss3,        color: '#2965F1' },
-    { label: 'Tailwind',    Icon: SiTailwindcss, color: '#38BDF8' },
+    { label: 'React', Icon: SiReact, color: '#61DAFB' },
+    { label: 'JavaScript', Icon: SiJavascript, color: '#F7DF1E' },
+    { label: 'TypeScript', Icon: SiTypescript, color: '#3178C6' },
+    { label: 'HTML5', Icon: SiHtml5, color: '#E34F26' },
+    { label: 'CSS3', Icon: SiCss3, color: '#2965F1' },
+    { label: 'Tailwind', Icon: SiTailwindcss, color: '#38BDF8' },
   ],
   Backend: [
-    { label: 'Node.js',    Icon: SiNodedotjs,   color: '#68A063' },
-    { label: 'Express',    Icon: SiExpress,     color: '#c0bebe' },
-    { label: 'MongoDB',    Icon: SiMongodb,     color: '#4DB33D' },
-    { label: 'MySQL',      Icon: SiMysql,       color: '#4479A1' },
-    { label: 'PostgreSQL', Icon: SiPostgresql,  color: '#336791' },
-    { label: 'Socket.io',  Icon: SiSocketdotio, color: '#8e8e8e' },
-    { label: 'WebRTC',     Icon: SiWebrtc,      color: '#EC5F59' },
-    { label: 'Firebase',   Icon: SiFirebase,    color: '#FFCA28' },
-    { label: 'Python',     Icon: SiPython,      color: '#3776AB' },
-    { label: 'Java',       Icon: FaJava,        color: '#F89820' },
-    { label: 'C',          Icon: SiC,           color: '#A8B9CC' },
+    { label: 'Node.js', Icon: SiNodedotjs, color: '#68A063' },
+    { label: 'Express', Icon: SiExpress, color: '#c0bebe' },
+    { label: 'MongoDB', Icon: SiMongodb, color: '#4DB33D' },
+    { label: 'MySQL', Icon: SiMysql, color: '#4479A1' },
+    { label: 'PostgreSQL', Icon: SiPostgresql, color: '#336791' },
+    { label: 'Socket.io', Icon: SiSocketdotio, color: '#8e8e8e' },
+    { label: 'WebRTC', Icon: SiWebrtc, color: '#EC5F59' },
+    { label: 'Firebase', Icon: SiFirebase, color: '#FFCA28' },
+    { label: 'Python', Icon: SiPython, color: '#3776AB' },
+    { label: 'Java', Icon: FaJava, color: '#F89820' },
+    { label: 'C', Icon: SiC, color: '#A8B9CC' },
+    { label: 'Django', Icon: SiDjango, color: '#092E20' },
   ],
   'Tools & DevOps': [
-    { label: 'Git',     Icon: SiGit,     color: '#F05032' },
-    { label: 'GitHub',  Icon: SiGithub,  color: '#c0bebe' },
-    { label: 'Docker',  Icon: SiDocker,  color: '#2496ED' },
+    { label: 'Git', Icon: SiGit, color: '#F05032' },
+    { label: 'GitHub', Icon: SiGithub, color: '#c0bebe' },
+    { label: 'Docker', Icon: SiDocker, color: '#2496ED' },
     { label: 'Postman', Icon: SiPostman, color: '#FF6C37' },
   ],
 };
@@ -170,11 +171,10 @@ const TechStack = () => {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-5 py-2 rounded-full text-sm font-medium font-sans transition-all duration-300 border ${
-                activeTab === tab
-                  ? 'bg-blue-500 border-blue-500 text-white shadow-lg shadow-blue-500/25'
-                  : 'border-gray-300 dark:border-slate-700 text-gray-600 dark:text-slate-400 hover:border-gray-400 dark:hover:border-slate-500 hover:text-gray-900 dark:hover:text-slate-200 bg-transparent'
-              }`}
+              className={`px-5 py-2 rounded-full text-sm font-medium font-sans transition-all duration-300 border ${activeTab === tab
+                ? 'bg-blue-500 border-blue-500 text-white shadow-lg shadow-blue-500/25'
+                : 'border-gray-300 dark:border-slate-700 text-gray-600 dark:text-slate-400 hover:border-gray-400 dark:hover:border-slate-500 hover:text-gray-900 dark:hover:text-slate-200 bg-transparent'
+                }`}
             >
               {tab}
             </button>

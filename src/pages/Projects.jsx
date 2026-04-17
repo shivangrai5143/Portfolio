@@ -4,13 +4,14 @@ import ProjectCard from '../components/ui/ProjectCard';
 import { useGitHubStats } from '../hooks/useGitHubStats';
 import { formatTechStack } from '../utils/githubUtils';
 import SkeletonCard from '../components/ui/SkeletonCard';
+import CurrentProject from '../components/CurrentProject';
 import { projectsData as fallbackProjects } from '../constants/projects';
 
 const FILTERS = ['All', 'Featured', 'Open Source'];
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('All');
-  const { projects: githubProjects, loading, error } = useGitHubStats();
+  const { projects: githubProjects, current: latestRepo, loading, error } = useGitHubStats();
 
   // Only show projects defined in fallbackProjects, but enrich them with GitHub data
   const allProjects = useMemo(() => {
@@ -47,6 +48,11 @@ const Projects = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 py-24 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
+
+        {/* Real-time "Currently Working On" Card */}
+        <div className="mb-10">
+          <CurrentProject current={latestRepo} loading={loading} />
+        </div>
 
         {/* Header */}
         <motion.div

@@ -13,6 +13,7 @@ import {
     SiPostman,
     SiVercel,
     SiCloudinary,
+    SiDjango,
     SiPython,
     SiC,
     SiMysql,
@@ -40,6 +41,7 @@ export const skillsData = [
         skills: [
             { name: 'Node.js', icon: SiNodedotjs, color: 'text-green-600' },
             { name: 'Express.js', icon: SiExpress, color: 'text-gray-700 dark:text-gray-300' },
+            { name: 'Django', icon: SiDjango, color: 'text-green-800 dark:text-green-400' },
         ],
     },
     {

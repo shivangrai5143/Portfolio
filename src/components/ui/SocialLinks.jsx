@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
-import { FaLinkedin, FaGithub, FaTwitter, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
 
 const socialData = [
     {
@@ -20,12 +20,6 @@ const socialData = [
         icon: FaTwitter,
         url: 'https://x.com/raishivang_69/',
         color: 'hover:text-sky-500 dark:hover:text-sky-400',
-    },
-    {
-        name: 'Email',
-        icon: FaEnvelope,
-        url: 'mailto:raishivang69@gmail.com',
-        color: 'hover:text-red-500 dark:hover:text-red-400',
     },
 ];
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaFileDownload, FaChevronDown, FaEnvelope, FaGithub } from 'react-icons/fa';
+import { FaFileDownload, FaChevronDown, FaGithub } from 'react-icons/fa';
 import SocialLinks from '../components/ui/SocialLinks';
 import Button from '../components/ui/Button';
 import { useGitHubStats } from '../hooks/useGitHubStats';
@@ -235,7 +235,6 @@ const Home = () => {
             onClick={() => scrollTo('connect')}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-300 dark:border-slate-600 hover:border-blue-500 dark:hover:border-blue-400 text-slate-700 dark:text-slate-300 hover:text-blue-500 dark:hover:border-blue-400 font-semibold text-base transition-all duration-300 hover:bg-blue-50 dark:hover:bg-blue-400/5"
           >
-            <FaEnvelope size={16} />
             Contact Me
           </button>
         </motion.div>
