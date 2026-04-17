@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Falls back to localhost:3001 when VITE_API_URL is not set
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+const API_BASE = import.meta.env.VITE_API_URL || 'https://portfolio-api-sy0g.onrender.com';
 
 const api = axios.create({
   baseURL: `${API_BASE}/api/github`,
