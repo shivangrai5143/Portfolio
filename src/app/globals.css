@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+/* ── Load custom Tailwind config via CSS ────────────────────────────────── */
+@theme {
+  /* Colors */
+  --color-primary: #3B82F6;
+  --color-primary-dark: #2563EB;
+  --color-primary-light: #60A5FA;
+  --color-secondary: #8B5CF6;
+  --color-secondary-dark: #7C3AED;
+  --color-secondary-light: #A78BFA;
+  --color-accent: #10B981;
+  --color-accent-dark: #059669;
+  --color-accent-light: #34D399;
+
+  /* Fonts */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-heading: "Poppins", sans-serif;
+
+  /* Animations */
+  --animate-fade-in: fadeIn 0.6s ease-in-out;
+  --animate-fade-in-up: fadeInUp 0.6s ease-out;
+  --animate-slide-up: slideUp 0.6s ease-out;
+  --animate-slide-down: slideDown 0.6s ease-out;
+  --animate-scale-in: scaleIn 0.4s ease-out;
+  --animate-bounce-slow: bounce 3s infinite;
+  --animate-marquee: marquee 30s linear infinite;
+
+  /* Keyframes */
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideUp {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes slideDown {
+    0% { transform: translateY(-20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes scaleIn {
+    0% { transform: scale(0.95); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+}
+
+/* Override dark mode to use class-based strategy instead of media query */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Smooth scroll ──────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Custom scrollbar ───────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #3B82F6;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2563EB;
+}
+
+/* ── Hide scrollbar utility ─────────────────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Animated mesh gradient background ─────────────────────────────────── */
+@keyframes mesh-move-1 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  33%      { transform: translate(3%, -4%) scale(1.05); }
+  66%      { transform: translate(-3%, 4%) scale(0.97); }
+}
+@keyframes mesh-move-2 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  33%      { transform: translate(-4%, 3%) scale(1.08); }
+  66%      { transform: translate(4%, -3%) scale(0.96); }
+}
+@keyframes mesh-move-3 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  50%      { transform: translate(3%, 3%) scale(1.06); }
+}
+
+.mesh-orb-1 { animation: mesh-move-1 12s ease-in-out infinite; }
+.mesh-orb-2 { animation: mesh-move-2 16s ease-in-out infinite; }
+.mesh-orb-3 { animation: mesh-move-3 10s ease-in-out infinite; }
+
+/* ── Typing cursor blink ────────────────────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+.cursor-blink { animation: blink 1s step-end infinite; }
+
+/* ── Floating animation for profile ring ───────────────────────────────── */
+@keyframes float-ring {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50%      { transform: rotate(180deg) scale(1.04); }
+}
+.ring-spin { animation: float-ring 8s linear infinite; }
+
+/* ── Counter pulse ──────────────────────────────────────────────────────── */
+@keyframes count-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.03); }
+}
+.stat-pulse { animation: count-pulse 2s ease-in-out infinite; }
+
+/* ── Loading bar ────────────────────────────────────────────────────────── */
+@keyframes load-progress {
+  0%   { width: 0%; }
+  60%  { width: 75%; }
+  100% { width: 100%; }
+}
+.loading-bar { animation: load-progress 1.4s ease-out forwards; }
+
+/* ── Glassmorphism helpers ──────────────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.glass-dark {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Selection colors ───────────────────────────────────────────────────── */
+::selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: inherit;
+}
