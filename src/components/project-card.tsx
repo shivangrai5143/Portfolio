@@ -103,16 +103,16 @@ const ProjectCard = ({ project, index = 0 }: ProjectCardProps) => {
 
         {/* Tech badges */}
         <div className="flex flex-wrap gap-2">
-          {techStack.slice(0, 5).map((tech) => {
-            const details = getTechDetails(tech.name);
+          {techStack.slice(0, 5).map((techName) => {
+            const details = getTechDetails(techName);
             const Icon = details.icon;
             return (
               <span
-                key={tech.name}
+                key={techName}
                 className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gray-100 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-slate-300 text-xs font-medium hover:border-gray-300 dark:hover:border-slate-500 transition-colors"
               >
                 <Icon className="text-sm" style={{ color: details.color }} />
-                {tech.name}
+                {techName}
               </span>
             );
           })}

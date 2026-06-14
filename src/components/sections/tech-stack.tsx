@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { skillCategories, allSkills, skillTabs } from "@/constants/skills";
 import { getIconByName } from "@/utils/github-utils";
-import type { Skill, SkillCategory } from "@/types";
+import type { Skill } from "@/types";
 
 // ── Skill Pill ──────────────────────────────────────────────────────────────
 interface SkillPillProps {
@@ -39,7 +38,7 @@ const SkillPill = ({ item, index }: SkillPillProps) => {
         <Icon size={32} style={{ color: hovered ? color : "#64748b", transition: "color 0.3s" }} />
       </div>
       <span
-        className="font-sans text-[0.6rem] uppercase tracking-widest transition-colors duration-300"
+        className="font-sans text-[0.6rem] uppercase tracking-widest transition-colors duration-300 text-center"
         style={{ color: hovered ? color : "#64748b" }}
       >
         {label}
@@ -72,7 +71,7 @@ const MarqueePill = ({ item }: MarqueePillProps) => {
         <Icon size={36} style={{ color: hovered ? color : "#64748b", transition: "color 0.3s" }} />
       </div>
       <span
-        className="font-sans text-[0.65rem] uppercase tracking-widest"
+        className="font-sans text-[0.65rem] uppercase tracking-widest text-center"
         style={{ color: hovered ? color : "#94a3b8" }}
       >
         {label}
@@ -82,16 +81,45 @@ const MarqueePill = ({ item }: MarqueePillProps) => {
 };
 
 // ── Main component ─────────────────────────────────────────────────────────
-const TechStack = () => {
+interface TechStackProps {
+  skills: Skill[] | null;
+  loading: boolean;
+}
+
+const TechStack = ({ skills, loading }: TechStackProps) => {
   const [activeTab, setActiveTab] = useState<string>("All");
 
+  const safeSkills = skills || [];
+
+  // Dynamically derive categories from the skills list
+  const skillCategories = useMemo(() => {
+    const cats: Record<string, Skill[]> = {};
+    safeSkills.forEach(skill => {
+      const cat = skill.category || "Tools";
+      if (!cats[cat]) cats[cat] = [];
+      cats[cat].push(skill);
+    });
+    return cats;
+  }, [safeSkills]);
+
+  const skillTabs = ["All", ...Object.keys(skillCategories)];
+
   const visibleSkills: Skill[] =
-    activeTab === "All"
-      ? allSkills
-      : skillCategories[activeTab as SkillCategory] ?? [];
+    activeTab === "All" ? safeSkills : skillCategories[activeTab] || [];
 
   // Duplicate for infinite marquee loop
-  const marqueeItems = [...allSkills, ...allSkills];
+  const marqueeItems = [...safeSkills, ...safeSkills];
+
+  if (loading && !skills) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-pulse flex flex-col items-center">
+          <div className="h-8 w-64 bg-gray-200 dark:bg-slate-800 rounded mb-4"></div>
+          <div className="h-4 w-48 bg-gray-200 dark:bg-slate-800 rounded"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-slate-950 transition-colors duration-300 overflow-hidden py-24 px-4 sm:px-6 lg:px-8">

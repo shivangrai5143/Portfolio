@@ -24,6 +24,7 @@ export default function HomePage() {
     current,
     stats,
     projects,
+    skills,
     loading: githubLoading,
     error: githubError,
   } = useGitHubStats();
@@ -88,7 +89,7 @@ export default function HomePage() {
         </div>
 
         <div id="stack">
-          <TechStack />
+          <TechStack skills={skills} loading={githubLoading} />
         </div>
 
         <div id="projects">

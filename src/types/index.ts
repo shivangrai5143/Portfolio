@@ -5,7 +5,7 @@ export interface Project {
   title: string;
   description: string;
   image: string;
-  techStack: TechItem[];
+  techStack: string[];
   githubUrl: string;
   liveUrl: string;
   featured: boolean;
@@ -25,6 +25,8 @@ export interface Skill {
   label: string;
   iconName: string;
   color: string;
+  category?: string;
+  proficiency?: number;
 }
 
 export type SkillCategory = "Frontend" | "Backend" | "Tools & DevOps";

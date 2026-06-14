@@ -1,0 +1,17 @@
+name: Sync GitHub Data to Portfolio
+
+on:
+  schedule:
+    # Run at midnight every day
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Sync Webhook
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.SYNC_SECRET }}" \
+            ${{ secrets.PORTFOLIO_URL }}/api/github/sync

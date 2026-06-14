@@ -1,18 +1,19 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import type { GitHubRepo, GitHubStats } from '@/types';
+import type { GitHubRepo, GitHubStats, Skill } from '@/types';
 
-interface GitHubStatsState {
+export interface GitHubStatsState {
   current: GitHubRepo | null;
   stats: GitHubStats | null;
   projects: GitHubRepo[] | null;
+  skills: Skill[] | null;
   loading: boolean;
   error: string | null;
 }
 
 /**
- * Fetches all three GitHub API endpoints in parallel.
+ * Fetches all GitHub API endpoints in parallel.
  * Any endpoint failure resolves to null — the UI degrades gracefully.
  */
 export function useGitHubStats(): GitHubStatsState {
@@ -20,6 +21,7 @@ export function useGitHubStats(): GitHubStatsState {
     current: null,
     stats: null,
     projects: null,
+    skills: null,
     loading: true,
     error: null,
   });
@@ -29,7 +31,7 @@ export function useGitHubStats(): GitHubStatsState {
 
     async function fetchAll() {
       try {
-        const [currentResult, statsResult, projectsResult] =
+        const [currentResult, statsResult, projectsResult, skillsResult] =
           await Promise.allSettled([
             fetch('/api/github/current').then((r) =>
               r.ok ? (r.json() as Promise<GitHubRepo>) : null
@@ -39,6 +41,9 @@ export function useGitHubStats(): GitHubStatsState {
             ),
             fetch('/api/github/projects').then((r) =>
               r.ok ? (r.json() as Promise<GitHubRepo[]>) : null
+            ),
+            fetch('/api/github/skills').then((r) =>
+              r.ok ? (r.json() as Promise<Skill[]>) : null
             ),
           ]);
 
@@ -54,6 +59,10 @@ export function useGitHubStats(): GitHubStatsState {
           projects:
             projectsResult.status === 'fulfilled'
               ? projectsResult.value
+              : null,
+          skills:
+            skillsResult.status === 'fulfilled'
+              ? skillsResult.value
               : null,
           loading: false,
           error: null,
