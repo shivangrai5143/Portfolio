@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaFileDownload, FaChevronDown, FaGithub } from "react-icons/fa";
 import Image from "next/image";
+import Link from "next/link";
 import SocialLinks from "@/components/social-links";
 import { siteConfig, ROLES } from "@/constants/site-config";
 import { getTechDetails } from "@/utils/github-utils";
@@ -229,16 +230,13 @@ const Hero = ({ current: latestRepo, loading }: HeroProps) => {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <a
-            href="/Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            download="Resume.pdf"
+          <Link
+            href="/resume"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-500 hover:bg-blue-600 text-white font-semibold text-base transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
           >
             <FaFileDownload />
-            Download Resume
-          </a>
+            View Resume
+          </Link>
 
           <button
             onClick={() => scrollTo("projects")}
