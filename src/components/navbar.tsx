@@ -5,16 +5,23 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import ThemeToggle from "@/components/theme-toggle";
 import { NAV_LINKS } from "@/constants/site-config";
 
+import { useRouter } from "next/navigation";
+
 interface NavbarProps {
   activeSection: string;
-  onNavigate: (id: string) => void;
+  onNavigate?: (id: string) => void;
 }
 
 const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
   const handleNavClick = (id: string) => {
-    onNavigate(id);
+    if (onNavigate) {
+      onNavigate(id);
+    } else {
+      router.push(`/#${id}`);
+    }
     setIsOpen(false);
   };
 
