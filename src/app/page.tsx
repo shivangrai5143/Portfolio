@@ -95,7 +95,6 @@ export default function HomePage() {
         <div id="projects">
           <Projects
             githubData={{
-              projects,
               current,
               loading: githubLoading,
               error: githubError,

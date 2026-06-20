@@ -114,7 +114,7 @@ export default function AdminDashboard() {
               {greeting}, {firstName} 👋
             </h1>
             <p className="text-slate-400 text-sm mt-1">
-              Here's an overview of your portfolio platform.
+              Here&apos;s an overview of your portfolio platform.
             </p>
           </div>
           <button

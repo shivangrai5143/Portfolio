@@ -22,10 +22,10 @@ export async function GET() {
       summary: siteConfig.description,
       skills: skills.slice(0, 20).map((s) => s.name || (s as any).label).filter(Boolean),
       projects: projects.slice(0, 4).map(p => ({
-        title: p.title || p.name,
+        title: p.title,
         description: p.description,
         techStack: p.techStack || [],
-        githubUrl: p.githubUrl || p.htmlUrl,
+        githubUrl: p.githubUrl,
         liveUrl: p.liveUrl
       })),
       experience: experiences.map(e => ({

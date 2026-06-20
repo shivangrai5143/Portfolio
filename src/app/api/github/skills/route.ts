@@ -11,7 +11,7 @@ export async function GET() {
       if ((b.proficiency || 0) !== (a.proficiency || 0)) {
         return (b.proficiency || 0) - (a.proficiency || 0);
       }
-      return a.name.localeCompare(b.name);
+      return a.label.localeCompare(b.label);
     });
 
     return NextResponse.json(skills);
