@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { GitHubCalendarComponent } from "@/components/github-calendar";
 
 const About = () => {
   return (
@@ -124,6 +125,25 @@ const About = () => {
             </motion.div>
           </div>
         </div>
+
+        {/* GitHub Contributions */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-16"
+        >
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold font-heading text-gray-900 dark:text-white mb-2">
+              GitHub Contributions
+            </h3>
+            <p className="text-gray-600 dark:text-slate-400 text-sm">
+              My code commits and activity over the last year
+            </p>
+          </div>
+          <GitHubCalendarComponent username="shivangrai5143" />
+        </motion.div>
       </div>
     </div>
   );

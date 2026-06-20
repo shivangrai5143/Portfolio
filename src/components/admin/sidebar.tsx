@@ -16,6 +16,7 @@ import {
   Github,
   RefreshCw,
   ChevronRight,
+  MessageSquare,
 } from "lucide-react";
 
 const NAV_ITEMS = [
@@ -23,6 +24,7 @@ const NAV_ITEMS = [
   { href: "/admin/projects", label: "Projects", icon: FolderOpen },
   { href: "/admin/skills", label: "Skills", icon: Cpu },
   { href: "/admin/experience", label: "Experience", icon: Briefcase },
+  { href: "/admin/messages", label: "Messages", icon: MessageSquare },
   { href: "/admin/settings", label: "Settings", icon: Settings },
 ];
 
