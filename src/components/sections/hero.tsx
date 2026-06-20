@@ -172,6 +172,7 @@ const Hero = ({ current: latestRepo, loading }: HeroProps) => {
                 src="/assets/copy.jpeg"
                 alt={siteConfig.name}
                 fill
+                sizes="(max-width: 640px) 160px, 192px"
                 className="object-cover"
                 priority
               />
