@@ -39,7 +39,7 @@ const About = () => {
             </h3>
             <div className="space-y-4 text-gray-600 dark:text-slate-400 leading-relaxed">
               <p>
-                I&apos;m a passionate <span className="font-semibold text-primary">MERN Stack Developer</span> with a keen interest in building modern, scalable web applications. My journey in software development started with a curiosity for problem-solving and has evolved into a dedication to creating elegant, user-centered solutions.
+                I&apos;m a passionate <span className="font-semibold text-primary">Full Stack Developer</span> with a keen interest in building modern, scalable web applications. My journey in software development started with a curiosity for problem-solving and has evolved into a dedication to creating elegant, user-centered solutions.
               </p>
               <p>
                 I specialize in the <span className="font-semibold">MERN stack</span> (MongoDB, Express.js, React, Node.js) and love working on full-stack projects where I can bring ideas to life from concept to deployment. My approach combines technical expertise with a strong focus on user experience and clean code practices.
