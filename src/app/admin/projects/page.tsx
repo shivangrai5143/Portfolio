@@ -266,7 +266,7 @@ export default function ProjectsAdmin() {
             <div className="flex items-start gap-3 p-4 bg-violet-500/5 border border-violet-500/20 rounded-xl mb-2">
               <GitFork size={16} className="text-violet-400 shrink-0 mt-0.5" />
               <p className="text-slate-400 text-sm">
-                These are repositories you've <strong className="text-violet-300">forked or contributed to</strong> on GitHub.
+                These are repositories you&apos;ve <strong className="text-violet-300">forked or contributed to</strong> on GitHub.
                 Click <strong className="text-white">Import</strong> to add them to your Projects list.
               </p>
             </div>

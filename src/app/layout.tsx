@@ -61,11 +61,28 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Shivang Rai",
+    url: "https://shivang-2005.vercel.app",
+    jobTitle: "Full Stack Developer",
+    sameAs: [
+      "https://github.com/shivangrai5143",
+      "https://linkedin.com/in/shivang-rai",
+    ],
+    knowsAbout: ["React", "Node.js", "MongoDB", "TypeScript", "Next.js"],
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${poppins.variable} font-sans antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
