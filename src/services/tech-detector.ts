@@ -14,24 +14,24 @@ const TECH_DICTIONARY: Record<string, { name: string, category: SkillCategory, i
   
   // Backend
   'express': { name: 'Express', category: 'Backend', iconName: 'SiExpress' },
-  'mongoose': { name: 'MongoDB', category: 'Database', iconName: 'SiMongodb' },
-  'mongodb': { name: 'MongoDB', category: 'Database', iconName: 'SiMongodb' },
-  'firebase': { name: 'Firebase', category: 'Cloud', iconName: 'SiFirebase' },
-  'firebase-admin': { name: 'Firebase', category: 'Cloud', iconName: 'SiFirebase' },
+  'mongoose': { name: 'MongoDB', category: 'Backend', iconName: 'SiMongodb' },
+  'mongodb': { name: 'MongoDB', category: 'Backend', iconName: 'SiMongodb' },
+  'firebase': { name: 'Firebase', category: 'Backend', iconName: 'SiFirebase' },
+  'firebase-admin': { name: 'Firebase', category: 'Backend', iconName: 'SiFirebase' },
   'socket.io': { name: 'Socket.io', category: 'Backend', iconName: 'SiSocketdotio' },
-  'prisma': { name: 'Prisma', category: 'Database', iconName: 'SiPrisma' },
+  'prisma': { name: 'Prisma', category: 'Backend', iconName: 'SiPrisma' },
   
   // Languages
-  'typescript': { name: 'TypeScript', category: 'Languages', iconName: 'SiTypescript' },
-  'javascript': { name: 'JavaScript', category: 'Languages', iconName: 'SiJavascript' },
-  'python': { name: 'Python', category: 'Languages', iconName: 'SiPython' },
-  'java': { name: 'Java', category: 'Languages', iconName: 'FaJava' },
-  'c++': { name: 'C++', category: 'Languages', iconName: 'SiC' },
+  'typescript': { name: 'TypeScript', category: 'Frontend', iconName: 'SiTypescript' },
+  'javascript': { name: 'JavaScript', category: 'Frontend', iconName: 'SiJavascript' },
+  'python': { name: 'Python', category: 'Backend', iconName: 'SiPython' },
+  'java': { name: 'Java', category: 'Backend', iconName: 'FaJava' },
+  'c++': { name: 'C++', category: 'Backend', iconName: 'SiC' },
   
   // Tools
-  'vite': { name: 'Vite', category: 'Tools', iconName: 'SiVite' },
-  'eslint': { name: 'ESLint', category: 'Tools', iconName: 'SiEslint' },
-  'jest': { name: 'Jest', category: 'Tools', iconName: 'SiJest' },
+  'vite': { name: 'Vite', category: 'Tools & DevOps', iconName: 'SiVite' },
+  'eslint': { name: 'ESLint', category: 'Tools & DevOps', iconName: 'SiEslint' },
+  'jest': { name: 'Jest', category: 'Tools & DevOps', iconName: 'SiJest' },
 };
 
 /**
@@ -127,7 +127,7 @@ export function aggregateSkills(allRepoTechs: string[][]): Skill[] {
     const dictEntry = Object.values(TECH_DICTIONARY).find(d => d.name === techName);
     
     // Default fallback if not in dictionary
-    const category = dictEntry?.category || 'Tools';
+    const category = dictEntry?.category || 'Tools & DevOps';
     const iconName = dictEntry?.iconName || 'SiGithub';
 
     // Calculate a basic proficiency score based on frequency (max 100)
