@@ -7,6 +7,7 @@ import {
   setDoc,
   updateDoc,
   deleteDoc,
+  addDoc,
   query,
   DocumentData,
   QueryConstraint,
@@ -14,6 +15,18 @@ import {
 
 // Re-export commonly used Firestore query helpers for convenience
 export { where, orderBy, limit } from 'firebase/firestore';
+
+/**
+ * Add a new document to a collection with an auto-generated ID.
+ */
+export async function addDocument<T>(
+  collectionName: string,
+  data: DocumentData
+): Promise<string> {
+  const colRef = collection(db, collectionName);
+  const docRef = await addDoc(colRef, data);
+  return docRef.id;
+}
 
 /**
  * Fetch a single document by ID.

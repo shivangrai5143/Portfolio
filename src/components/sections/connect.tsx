@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaLinkedin, FaArrowRight, FaExternalLinkAlt } from "react-icons/fa";
 import { siteConfig } from "@/constants/site-config";
+import { addDocument } from "@/lib/firestore";
 
 // ── Contact Card ───────────────────────────────────────────────────────────
 interface ContactCardProps {
@@ -144,28 +145,20 @@ const ContactForm = () => {
     if (validateForm()) {
       setIsSubmitting(true);
       try {
-        const res = await fetch("https://formcarry.com/s/nnNdnJnt4gg", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
+        const messageData = {
+          ...formData,
+          createdAt: new Date().toISOString(),
+          read: false,
+        };
 
-        const result = await res.json();
+        await addDocument("messages", messageData);
 
-        if (result.code === 200) {
-          setFormData({ name: "", email: "", message: "" });
-          setSubmitted(true);
-          setTimeout(() => setSubmitted(false), 5000);
-        } else {
-          console.error("Submission failed:", result.message);
-          alert("Sorry, there was an error sending your message.");
-        }
+        setFormData({ name: "", email: "", message: "" });
+        setSubmitted(true);
+        setTimeout(() => setSubmitted(false), 5000);
       } catch (error) {
-        console.error("Network error:", error);
-        alert("Sorry, there was a network error.");
+        console.error("Submission failed:", error);
+        alert("Sorry, there was an error sending your message.");
       } finally {
         setIsSubmitting(false);
       }
