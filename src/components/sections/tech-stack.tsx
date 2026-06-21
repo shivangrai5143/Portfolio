@@ -1,8 +1,13 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getIconByName } from "@/utils/github-utils";
+import {
+  skillCategories as staticCategories,
+  allSkills as staticAll,
+  skillTabs as staticTabs,
+} from "@/constants/skills";
 import type { Skill } from "@/types";
 
 // ── Skill Pill ──────────────────────────────────────────────────────────────
@@ -47,7 +52,7 @@ const SkillPill = ({ item, index }: SkillPillProps) => {
   );
 };
 
-// ── Marquee pill (no animation stagger — just hover) ───────────────────────
+// ── Marquee pill ────────────────────────────────────────────────────────────
 interface MarqueePillProps {
   item: Skill;
 }
@@ -81,45 +86,19 @@ const MarqueePill = ({ item }: MarqueePillProps) => {
 };
 
 // ── Main component ─────────────────────────────────────────────────────────
-interface TechStackProps {
-  skills: Skill[] | null;
-  loading: boolean;
-}
-
-const TechStack = ({ skills, loading }: TechStackProps) => {
+const TechStack = () => {
   const [activeTab, setActiveTab] = useState<string>("All");
 
-  const safeSkills = skills || [];
-
-  // Dynamically derive categories from the skills list
-  const skillCategories = useMemo(() => {
-    const cats: Record<string, Skill[]> = {};
-    safeSkills.forEach(skill => {
-      const cat = skill.category || "Tools";
-      if (!cats[cat]) cats[cat] = [];
-      cats[cat].push(skill);
-    });
-    return cats;
-  }, [safeSkills]);
-
-  const skillTabs = ["All", ...Object.keys(skillCategories)];
+  // Always use static constants — no GitHub/Firestore dependency
+  const categoryMap = staticCategories as Record<string, Skill[]>;
+  const allSkillsList: Skill[] = staticAll;
+  const tabNames: string[] = staticTabs as unknown as string[];
 
   const visibleSkills: Skill[] =
-    activeTab === "All" ? safeSkills : skillCategories[activeTab] || [];
+    activeTab === "All" ? allSkillsList : categoryMap[activeTab] || [];
 
   // Duplicate for infinite marquee loop
-  const marqueeItems = [...safeSkills, ...safeSkills];
-
-  if (loading && !skills) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-pulse flex flex-col items-center">
-          <div className="h-8 w-64 bg-gray-200 dark:bg-slate-800 rounded mb-4"></div>
-          <div className="h-4 w-48 bg-gray-200 dark:bg-slate-800 rounded"></div>
-        </div>
-      </div>
-    );
-  }
+  const marqueeItems = [...allSkillsList, ...allSkillsList];
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-slate-950 transition-colors duration-300 overflow-hidden py-24 px-4 sm:px-6 lg:px-8">
@@ -157,14 +136,15 @@ const TechStack = ({ skills, loading }: TechStackProps) => {
           transition={{ duration: 0.5, delay: 0.15 }}
           className="flex flex-wrap justify-center gap-2 mb-12"
         >
-          {skillTabs.map((tab) => (
+          {tabNames.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-5 py-2 rounded-full text-sm font-medium font-sans transition-all duration-300 border ${activeTab === tab
-                ? "bg-blue-500 border-blue-500 text-white shadow-lg shadow-blue-500/25"
-                : "border-gray-300 dark:border-slate-700 text-gray-600 dark:text-slate-400 hover:border-gray-400 dark:hover:border-slate-500 hover:text-gray-900 dark:hover:text-slate-200 bg-transparent"
-                }`}
+              className={`px-5 py-2 rounded-full text-sm font-medium font-sans transition-all duration-300 border ${
+                activeTab === tab
+                  ? "bg-blue-500 border-blue-500 text-white shadow-lg shadow-blue-500/25"
+                  : "border-gray-300 dark:border-slate-700 text-gray-600 dark:text-slate-400 hover:border-gray-400 dark:hover:border-slate-500 hover:text-gray-900 dark:hover:text-slate-200 bg-transparent"
+              }`}
             >
               {tab}
             </button>
@@ -183,7 +163,7 @@ const TechStack = ({ skills, loading }: TechStackProps) => {
               className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 justify-items-center"
             >
               {visibleSkills.map((item, i) => (
-                <SkillPill key={item.label} item={item} index={i} />
+                <SkillPill key={`${activeTab}-${item.label}-${i}`} item={item} index={i} />
               ))}
             </motion.div>
           </AnimatePresence>
@@ -207,6 +187,7 @@ const TechStack = ({ skills, loading }: TechStackProps) => {
             </div>
           </div>
         </div>
+
       </div>
     </div>
   );
