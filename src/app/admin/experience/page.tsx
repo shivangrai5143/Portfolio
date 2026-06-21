@@ -110,11 +110,11 @@ export default function ExperienceAdmin() {
         </div>
         <div className="flex gap-2">
           {items.length === 0 && !seeded && (
-            <button onClick={seedFromStatic} className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white font-medium rounded-xl text-sm transition-all">
+            <button suppressHydrationWarning onClick={seedFromStatic} className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white font-medium rounded-xl text-sm transition-all">
               Import from Code
             </button>
           )}
-          <button onClick={openNew} className="flex items-center gap-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-medium rounded-xl text-sm transition-all shadow-lg shadow-emerald-500/25">
+          <button suppressHydrationWarning onClick={openNew} className="flex items-center gap-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-medium rounded-xl text-sm transition-all shadow-lg shadow-emerald-500/25">
             <Plus size={16} /> Add Entry
           </button>
         </div>
@@ -123,7 +123,7 @@ export default function ExperienceAdmin() {
       {/* Tabs */}
       <div className="flex gap-2 mb-5 border-b border-slate-800 pb-4">
         {(["work", "education"] as const).map((t) => (
-          <button key={t} onClick={() => setTab(t)} className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${tab === t ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/20" : "text-slate-400 hover:text-white"}`}>
+          <button suppressHydrationWarning key={t} onClick={() => setTab(t)} className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${tab === t ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/20" : "text-slate-400 hover:text-white"}`}>
             {t === "work" ? <Briefcase size={14} /> : <GraduationCap size={14} />}
             {t === "work" ? "Work" : "Education"}
           </button>
@@ -157,8 +157,8 @@ export default function ExperienceAdmin() {
                   </div>
                 </div>
                 <div className="flex gap-1.5 shrink-0">
-                  <button onClick={() => openEdit(item)} className="p-1.5 text-slate-500 hover:text-emerald-400 rounded-lg hover:bg-slate-800 transition-colors"><Pencil size={15} /></button>
-                  <button onClick={() => handleDelete(item.id)} disabled={deletingId === item.id} className="p-1.5 text-slate-500 hover:text-red-400 rounded-lg hover:bg-slate-800 transition-colors">
+                  <button suppressHydrationWarning onClick={() => openEdit(item)} className="p-1.5 text-slate-500 hover:text-emerald-400 rounded-lg hover:bg-slate-800 transition-colors"><Pencil size={15} /></button>
+                  <button suppressHydrationWarning onClick={() => handleDelete(item.id)} disabled={deletingId === item.id} className="p-1.5 text-slate-500 hover:text-red-400 rounded-lg hover:bg-slate-800 transition-colors">
                     {deletingId === item.id ? <Loader2 size={15} className="animate-spin" /> : <Trash2 size={15} />}
                   </button>
                 </div>
@@ -180,7 +180,7 @@ export default function ExperienceAdmin() {
             <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} className="bg-slate-900 border border-slate-800 rounded-2xl p-6 w-full max-w-lg shadow-2xl max-h-[90vh] overflow-y-auto">
               <div className="flex items-center justify-between mb-5">
                 <h2 className="text-white font-semibold">{editing ? "Edit Entry" : "Add Entry"}</h2>
-                <button onClick={() => setShowForm(false)} className="text-slate-500 hover:text-white"><X size={18} /></button>
+                <button suppressHydrationWarning onClick={() => setShowForm(false)} className="text-slate-500 hover:text-white"><X size={18} /></button>
               </div>
               <form onSubmit={handleSave} className="space-y-4">
                 <div>
@@ -198,7 +198,7 @@ export default function ExperienceAdmin() {
                 ].map(({ key, label, placeholder }) => (
                   <div key={key}>
                     <label className="block text-slate-300 text-sm mb-1">{label}</label>
-                    <input required value={form[key as keyof ExpForm] as string} onChange={(e) => setForm({ ...form, [key]: e.target.value })} placeholder={placeholder} className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition-all" />
+                    <input suppressHydrationWarning required value={form[key as keyof ExpForm] as string} onChange={(e) => setForm({ ...form, [key]: e.target.value })} placeholder={placeholder} className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition-all" />
                   </div>
                 ))}
                 <div>
@@ -207,11 +207,11 @@ export default function ExperienceAdmin() {
                 </div>
                 <div>
                   <label className="block text-slate-300 text-sm mb-1">Tags (comma-separated)</label>
-                  <input value={form.tags} onChange={(e) => setForm({ ...form, tags: e.target.value })} placeholder="React, Node.js, PostgreSQL" className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition-all" />
+                  <input suppressHydrationWarning value={form.tags} onChange={(e) => setForm({ ...form, tags: e.target.value })} placeholder="React, Node.js, PostgreSQL" className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-500 transition-all" />
                 </div>
                 <div className="flex gap-3 pt-2">
-                  <button type="button" onClick={() => setShowForm(false)} className="flex-1 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-sm transition-all">Cancel</button>
-                  <button type="submit" disabled={saving} className="flex-1 flex items-center justify-center gap-2 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl text-sm font-medium transition-all">
+                  <button suppressHydrationWarning type="button" onClick={() => setShowForm(false)} className="flex-1 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-sm transition-all">Cancel</button>
+                  <button suppressHydrationWarning type="submit" disabled={saving} className="flex-1 flex items-center justify-center gap-2 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl text-sm font-medium transition-all">
                     {saving ? <Loader2 size={15} className="animate-spin" /> : <Save size={15} />}
                     {saving ? "Saving…" : "Save"}
                   </button>

@@ -67,7 +67,7 @@ export function AdminSidebar() {
             <span className="text-white font-semibold text-sm">Admin Panel</span>
           </div>
         )}
-        <button
+        <button suppressHydrationWarning
           onClick={() => setCollapsed(!collapsed)}
           className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors ml-auto"
         >
@@ -103,7 +103,7 @@ export function AdminSidebar() {
       {/* Bottom Section */}
       <div className="p-3 border-t border-slate-800 space-y-2">
         {/* GitHub Sync */}
-        <button
+        <button suppressHydrationWarning
           onClick={triggerSync}
           disabled={syncing}
           title={collapsed ? "Sync GitHub" : undefined}
@@ -142,7 +142,7 @@ export function AdminSidebar() {
         )}
 
         {/* Sign Out */}
-        <button
+        <button suppressHydrationWarning
           onClick={signOut}
           title={collapsed ? "Sign Out" : undefined}
           className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm font-medium text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-all duration-200"

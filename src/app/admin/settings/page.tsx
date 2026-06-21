@@ -75,7 +75,7 @@ export default function SettingsAdmin() {
           className="w-full px-3 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 transition-all resize-none"
         />
       ) : (
-        <input
+        <input suppressHydrationWarning
           type={type}
           value={settings[fieldKey] as string | number}
           onChange={(e) => setSettings({ ...settings, [fieldKey]: type === "number" ? Number(e.target.value) : e.target.value })}
@@ -147,7 +147,7 @@ export default function SettingsAdmin() {
             </label>
             <div className="flex items-center gap-3">
               <RefreshCw size={16} className="text-slate-400 shrink-0" />
-              <input
+              <input suppressHydrationWarning
                 type="number"
                 min={1}
                 max={60}
@@ -182,7 +182,7 @@ export default function SettingsAdmin() {
 
         {/* Save */}
         <div className="flex justify-end">
-          <button
+          <button suppressHydrationWarning
             type="submit"
             disabled={saving}
             className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-semibold text-sm transition-all shadow-lg ${

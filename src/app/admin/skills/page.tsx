@@ -75,7 +75,7 @@ export default function SkillsAdmin() {
           </h1>
           <p className="text-slate-400 text-sm mt-0.5">{skills.length} total skills detected</p>
         </div>
-        <button onClick={openNew} className="flex items-center gap-2 px-4 py-2 bg-violet-500 hover:bg-violet-600 text-white font-medium rounded-xl text-sm transition-all shadow-lg shadow-violet-500/25">
+        <button suppressHydrationWarning onClick={openNew} className="flex items-center gap-2 px-4 py-2 bg-violet-500 hover:bg-violet-600 text-white font-medium rounded-xl text-sm transition-all shadow-lg shadow-violet-500/25">
           <Plus size={16} /> Add Skill
         </button>
       </div>
@@ -83,7 +83,7 @@ export default function SkillsAdmin() {
       {/* Tabs */}
       <div className="flex gap-2 mb-5 border-b border-slate-800 pb-4">
         {tabs.map((tab) => (
-          <button
+          <button suppressHydrationWarning
             key={tab}
             onClick={() => setActiveTab(tab)}
             className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
@@ -114,8 +114,8 @@ export default function SkillsAdmin() {
                 </div>
               </div>
               <div className="flex gap-1 shrink-0">
-                <button onClick={() => openEdit(s)} className="p-1.5 text-slate-500 hover:text-violet-400 rounded-lg hover:bg-slate-800 transition-colors"><Pencil size={14} /></button>
-                <button onClick={() => handleDelete(s.id)} disabled={deletingId === s.id} className="p-1.5 text-slate-500 hover:text-red-400 rounded-lg hover:bg-slate-800 transition-colors">
+                <button suppressHydrationWarning onClick={() => openEdit(s)} className="p-1.5 text-slate-500 hover:text-violet-400 rounded-lg hover:bg-slate-800 transition-colors"><Pencil size={14} /></button>
+                <button suppressHydrationWarning onClick={() => handleDelete(s.id)} disabled={deletingId === s.id} className="p-1.5 text-slate-500 hover:text-red-400 rounded-lg hover:bg-slate-800 transition-colors">
                   {deletingId === s.id ? <Loader2 size={14} className="animate-spin" /> : <Trash2 size={14} />}
                 </button>
               </div>
@@ -132,12 +132,12 @@ export default function SkillsAdmin() {
             <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} className="bg-slate-900 border border-slate-800 rounded-2xl p-6 w-full max-w-md shadow-2xl">
               <div className="flex items-center justify-between mb-5">
                 <h2 className="text-white font-semibold">{editing ? "Edit Skill" : "Add Skill"}</h2>
-                <button onClick={() => setShowForm(false)} className="text-slate-500 hover:text-white"><X size={18} /></button>
+                <button suppressHydrationWarning onClick={() => setShowForm(false)} className="text-slate-500 hover:text-white"><X size={18} /></button>
               </div>
               <form onSubmit={handleSave} className="space-y-4">
                 <div>
                   <label className="block text-slate-300 text-sm mb-1">Skill Name</label>
-                  <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="React" className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-violet-500 transition-all" />
+                  <input suppressHydrationWarning required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="React" className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-violet-500 transition-all" />
                 </div>
                 <div>
                   <label className="block text-slate-300 text-sm mb-1">Category</label>
@@ -147,18 +147,18 @@ export default function SkillsAdmin() {
                 </div>
                 <div>
                   <label className="block text-slate-300 text-sm mb-1">Proficiency ({form.proficiency}%)</label>
-                  <input type="range" min={10} max={100} value={form.proficiency} onChange={(e) => setForm({ ...form, proficiency: Number(e.target.value) })} className="w-full accent-violet-500" />
+                  <input suppressHydrationWarning type="range" min={10} max={100} value={form.proficiency} onChange={(e) => setForm({ ...form, proficiency: Number(e.target.value) })} className="w-full accent-violet-500" />
                 </div>
                 <div>
                   <label className="block text-slate-300 text-sm mb-1">Color</label>
                   <div className="flex items-center gap-3">
-                    <input type="color" value={form.color} onChange={(e) => setForm({ ...form, color: e.target.value })} className="w-10 h-10 rounded-lg border border-slate-700 bg-slate-800 cursor-pointer" />
-                    <input value={form.color} onChange={(e) => setForm({ ...form, color: e.target.value })} className="flex-1 px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm focus:outline-none" />
+                    <input suppressHydrationWarning type="color" value={form.color} onChange={(e) => setForm({ ...form, color: e.target.value })} className="w-10 h-10 rounded-lg border border-slate-700 bg-slate-800 cursor-pointer" />
+                    <input suppressHydrationWarning value={form.color} onChange={(e) => setForm({ ...form, color: e.target.value })} className="flex-1 px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-white text-sm focus:outline-none" />
                   </div>
                 </div>
                 <div className="flex gap-3 pt-2">
-                  <button type="button" onClick={() => setShowForm(false)} className="flex-1 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-sm transition-all">Cancel</button>
-                  <button type="submit" disabled={saving} className="flex-1 flex items-center justify-center gap-2 py-2 bg-violet-500 hover:bg-violet-600 text-white rounded-xl text-sm font-medium transition-all">
+                  <button suppressHydrationWarning type="button" onClick={() => setShowForm(false)} className="flex-1 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-sm transition-all">Cancel</button>
+                  <button suppressHydrationWarning type="submit" disabled={saving} className="flex-1 flex items-center justify-center gap-2 py-2 bg-violet-500 hover:bg-violet-600 text-white rounded-xl text-sm font-medium transition-all">
                     {saving ? <Loader2 size={15} className="animate-spin" /> : <Save size={15} />}
                     {saving ? "Saving…" : "Save"}
                   </button>

@@ -117,7 +117,7 @@ export default function AdminDashboard() {
               Here&apos;s an overview of your portfolio platform.
             </p>
           </div>
-          <button
+          <button suppressHydrationWarning
             onClick={handleSync}
             disabled={syncing}
             className="flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 disabled:opacity-60 text-white font-medium rounded-xl text-sm transition-all shadow-lg shadow-blue-500/25"

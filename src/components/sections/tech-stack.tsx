@@ -137,7 +137,7 @@ const TechStack = () => {
           className="flex flex-wrap justify-center gap-2 mb-12"
         >
           {tabNames.map((tab) => (
-            <button
+            <button suppressHydrationWarning
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={`px-5 py-2 rounded-full text-sm font-medium font-sans transition-all duration-300 border ${

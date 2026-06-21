@@ -110,7 +110,7 @@ export default function MessagesAdmin() {
 
                 {/* Actions */}
                 <div className="flex flex-row md:flex-col gap-2 shrink-0 md:pl-2 md:border-l border-slate-800 justify-end md:justify-start pt-2 md:pt-0">
-                  <button
+                  <button suppressHydrationWarning
                     onClick={() => toggleReadStatus(msg)}
                     disabled={readingId === msg.id}
                     className={`flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
@@ -137,7 +137,7 @@ export default function MessagesAdmin() {
                   >
                     <Mail size={14} /> Reply
                   </a>
-                  <button
+                  <button suppressHydrationWarning
                     onClick={() => handleDelete(msg.id)}
                     disabled={deletingId === msg.id}
                     className="flex items-center justify-center gap-2 px-3 py-1.5 bg-red-500/10 text-red-400 hover:bg-red-500/20 rounded-lg text-xs font-medium transition-colors md:mt-auto"

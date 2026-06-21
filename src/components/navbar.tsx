@@ -29,7 +29,7 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
     <nav className="bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-lg border-b border-gray-200/50 dark:border-slate-800/50 fixed w-full top-0 z-50 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <button
+          <button suppressHydrationWarning
             onClick={() => handleNavClick("home")}
             className="text-2xl font-bold font-heading bg-gradient-to-r from-blue-600 to-violet-600 dark:from-blue-400 dark:to-violet-400 bg-clip-text text-transparent"
           >
@@ -39,7 +39,7 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6 h-full">
             {NAV_LINKS.map((item) => (
-              <button
+              <button suppressHydrationWarning
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
                 className={`relative flex items-center text-sm font-medium transition-colors duration-300 h-full px-1 ${
@@ -65,7 +65,7 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
           {/* Mobile Toggle */}
           <div className="md:hidden flex items-center gap-3">
             <ThemeToggle />
-            <button
+            <button suppressHydrationWarning
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none"
             >
@@ -80,7 +80,7 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
         <div className="md:hidden bg-white dark:bg-slate-950 border-t border-gray-100 dark:border-slate-800">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {NAV_LINKS.map((item) => (
-              <button
+              <button suppressHydrationWarning
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
                 className={`block w-full text-left px-4 py-3 rounded-lg text-base font-medium border-l-4 transition-all ${

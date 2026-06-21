@@ -160,7 +160,7 @@ export default function ProjectsAdmin() {
           </p>
         </div>
         {tab === "mine" && (
-          <button onClick={openNew} className="flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-xl text-sm transition-all shadow-lg shadow-blue-500/25">
+          <button suppressHydrationWarning onClick={openNew} className="flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-xl text-sm transition-all shadow-lg shadow-blue-500/25">
             <Plus size={16} /> Add Project
           </button>
         )}
@@ -168,7 +168,7 @@ export default function ProjectsAdmin() {
 
       {/* Tabs */}
       <div className="flex gap-2 mb-5 border-b border-slate-800 pb-4">
-        <button
+        <button suppressHydrationWarning
           onClick={() => handleTabChange("mine")}
           className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
             tab === "mine" ? "bg-blue-500/15 text-blue-400 border border-blue-500/20" : "text-slate-400 hover:text-white"
@@ -176,7 +176,7 @@ export default function ProjectsAdmin() {
         >
           <Github size={14} /> My Projects
         </button>
-        <button
+        <button suppressHydrationWarning
           onClick={() => handleTabChange("contributions")}
           className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
             tab === "contributions" ? "bg-violet-500/15 text-violet-400 border border-violet-500/20" : "text-slate-400 hover:text-white"
@@ -194,7 +194,7 @@ export default function ProjectsAdmin() {
       {/* Search */}
       <div className="relative mb-5">
         <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
-        <input
+        <input suppressHydrationWarning
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder={tab === "mine" ? "Search projects…" : "Search contributions…"}
@@ -238,11 +238,11 @@ export default function ProjectsAdmin() {
                 <div className="flex items-center gap-1.5 shrink-0">
                   {p.githubUrl && <a href={p.githubUrl} target="_blank" className="p-1.5 text-slate-500 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"><Github size={15} /></a>}
                   {p.liveUrl && <a href={p.liveUrl} target="_blank" className="p-1.5 text-slate-500 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"><ExternalLink size={15} /></a>}
-                  <button onClick={() => toggleFeatured(p)} className={`p-1.5 rounded-lg hover:bg-slate-800 transition-colors ${p.featured ? "text-amber-400" : "text-slate-500 hover:text-amber-400"}`}>
+                  <button suppressHydrationWarning onClick={() => toggleFeatured(p)} className={`p-1.5 rounded-lg hover:bg-slate-800 transition-colors ${p.featured ? "text-amber-400" : "text-slate-500 hover:text-amber-400"}`}>
                     {p.featured ? <Star size={15} /> : <StarOff size={15} />}
                   </button>
-                  <button onClick={() => openEdit(p)} className="p-1.5 text-slate-500 hover:text-blue-400 rounded-lg hover:bg-slate-800 transition-colors"><Pencil size={15} /></button>
-                  <button onClick={() => handleDelete(p.id)} disabled={deletingId === p.id} className="p-1.5 text-slate-500 hover:text-red-400 rounded-lg hover:bg-slate-800 transition-colors">
+                  <button suppressHydrationWarning onClick={() => openEdit(p)} className="p-1.5 text-slate-500 hover:text-blue-400 rounded-lg hover:bg-slate-800 transition-colors"><Pencil size={15} /></button>
+                  <button suppressHydrationWarning onClick={() => handleDelete(p.id)} disabled={deletingId === p.id} className="p-1.5 text-slate-500 hover:text-red-400 rounded-lg hover:bg-slate-800 transition-colors">
                     {deletingId === p.id ? <Loader2 size={15} className="animate-spin" /> : <Trash2 size={15} />}
                   </button>
                 </div>
@@ -311,7 +311,7 @@ export default function ProjectsAdmin() {
                   <a href={c.html_url} target="_blank" className="p-1.5 text-slate-500 hover:text-white rounded-lg hover:bg-slate-800 transition-colors">
                     <ExternalLink size={15} />
                   </a>
-                  <button
+                  <button suppressHydrationWarning
                     onClick={() => importContribution(c)}
                     className="px-3 py-1.5 bg-violet-500/15 hover:bg-violet-500/25 text-violet-400 border border-violet-500/20 rounded-lg text-xs font-medium transition-all"
                   >
@@ -340,7 +340,7 @@ export default function ProjectsAdmin() {
             >
               <div className="flex items-center justify-between mb-5">
                 <h2 className="text-white font-semibold">{editing ? "Edit Project" : "Add Project"}</h2>
-                <button onClick={() => setShowForm(false)} className="text-slate-500 hover:text-white"><X size={18} /></button>
+                <button suppressHydrationWarning onClick={() => setShowForm(false)} className="text-slate-500 hover:text-white"><X size={18} /></button>
               </div>
               <form onSubmit={handleSave} className="space-y-4">
                 {[
@@ -351,7 +351,7 @@ export default function ProjectsAdmin() {
                 ].map(({ key, label, placeholder }) => (
                   <div key={key}>
                     <label className="block text-slate-300 text-sm mb-1">{label}</label>
-                    <input value={form[key as keyof ProjectForm] as string} onChange={(e) => setForm({ ...form, [key]: e.target.value })}
+                    <input suppressHydrationWarning value={form[key as keyof ProjectForm] as string} onChange={(e) => setForm({ ...form, [key]: e.target.value })}
                       placeholder={placeholder}
                       className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500 transition-all"
                     />
@@ -365,12 +365,12 @@ export default function ProjectsAdmin() {
                   />
                 </div>
                 <label className="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" checked={form.featured} onChange={(e) => setForm({ ...form, featured: e.target.checked })} className="w-4 h-4 accent-blue-500" />
+                  <input suppressHydrationWarning type="checkbox" checked={form.featured} onChange={(e) => setForm({ ...form, featured: e.target.checked })} className="w-4 h-4 accent-blue-500" />
                   <span className="text-slate-300 text-sm">Featured on homepage</span>
                 </label>
                 <div className="flex gap-3 pt-2">
-                  <button type="button" onClick={() => setShowForm(false)} className="flex-1 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-sm transition-all">Cancel</button>
-                  <button type="submit" disabled={saving} className="flex-1 flex items-center justify-center gap-2 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-xl text-sm font-medium transition-all">
+                  <button suppressHydrationWarning type="button" onClick={() => setShowForm(false)} className="flex-1 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-sm transition-all">Cancel</button>
+                  <button suppressHydrationWarning type="submit" disabled={saving} className="flex-1 flex items-center justify-center gap-2 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-xl text-sm font-medium transition-all">
                     {saving ? <Loader2 size={15} className="animate-spin" /> : <Save size={15} />}
                     {saving ? "Saving…" : "Save"}
                   </button>

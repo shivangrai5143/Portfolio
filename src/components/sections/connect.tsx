@@ -201,7 +201,7 @@ const ContactForm = () => {
               <label className="block text-[10px] font-sans tracking-[0.15em] uppercase text-gray-500 dark:text-gray-400 mb-2 ml-1">
                 Name
               </label>
-              <input
+              <input suppressHydrationWarning
                 name="name"
                 type="text"
                 placeholder="John Doe"
@@ -219,7 +219,7 @@ const ContactForm = () => {
               <label className="block text-[10px] font-sans tracking-[0.15em] uppercase text-gray-500 dark:text-gray-400 mb-2 ml-1">
                 Email
               </label>
-              <input
+              <input suppressHydrationWarning
                 name="email"
                 type="email"
                 placeholder="john@example.com"
@@ -255,7 +255,7 @@ const ContactForm = () => {
             )}
           </div>
           <div className="flex justify-center pt-6">
-            <button
+            <button suppressHydrationWarning
               type="submit"
               disabled={isSubmitting}
               className="relative inline-flex items-center gap-2 justify-center font-bold text-lg transition-all duration-300 hover:scale-105 bg-primary hover:bg-primary-dark text-white px-10 py-4 rounded-xl shadow-lg border-none cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed font-heading"

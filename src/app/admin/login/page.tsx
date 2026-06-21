@@ -86,7 +86,7 @@ function LoginForm() {
               <label className="block text-sm font-medium text-slate-300 mb-1.5">Email</label>
               <div className="relative">
                 <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
-                <input
+                <input suppressHydrationWarning
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -102,7 +102,7 @@ function LoginForm() {
               <label className="block text-sm font-medium text-slate-300 mb-1.5">Password</label>
               <div className="relative">
                 <Lock size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
-                <input
+                <input suppressHydrationWarning
                   type={showPw ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -110,7 +110,7 @@ function LoginForm() {
                   placeholder="••••••••"
                   className="w-full pl-10 pr-10 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 transition-all text-sm"
                 />
-                <button
+                <button suppressHydrationWarning
                   type="button"
                   onClick={() => setShowPw(!showPw)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors"
@@ -133,7 +133,7 @@ function LoginForm() {
             )}
 
             {/* Submit */}
-            <button
+            <button suppressHydrationWarning
               type="submit"
               disabled={isSubmitting}
               className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-blue-500 hover:bg-blue-600 disabled:opacity-60 disabled:cursor-wait text-white font-semibold rounded-xl transition-all shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 text-sm"
@@ -155,7 +155,7 @@ function LoginForm() {
           </div>
 
           {/* Google */}
-          <button
+          <button suppressHydrationWarning
             onClick={handleGoogle}
             className="w-full flex items-center justify-center gap-2.5 py-2.5 px-4 bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-slate-600 text-white font-medium rounded-xl transition-all text-sm"
           >
