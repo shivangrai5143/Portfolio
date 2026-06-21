@@ -89,7 +89,7 @@ export default function HomePage() {
         </div>
 
         <div id="stack">
-          <TechStack skills={skills} loading={githubLoading} />
+          <TechStack />
         </div>
 
         <div id="projects">
