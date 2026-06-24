@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server';
 import { setDocument } from '@/lib/firestore';
 
+// Force dynamic rendering — prevents Next.js from executing this route
+// at build time when Firebase environment variables are not available.
+export const dynamic = 'force-dynamic';
+
 /**
  * POST /api/admin/seed-contributions
  * Seeds manually-known contribution projects into Firestore.

@@ -6,6 +6,8 @@ import type { FirestoreProject, FirestoreSkill, ResumeData } from '@/types';
 import { experiences, education } from '@/constants/experience';
 import { siteConfig } from '@/constants/site-config';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const [projects, skills] = await Promise.all([

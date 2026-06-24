@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { getCollection } from '@/lib/firestore';
 import type { Skill } from '@/types';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const skills = await getCollection<Skill>('skills');

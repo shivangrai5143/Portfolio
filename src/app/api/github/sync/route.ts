@@ -4,6 +4,8 @@ import { syncGitHubToFirestore } from '@/services/github-sync';
 import { logSync } from '@/services/sync-logger';
 import { getDocument, setDocument } from '@/lib/firestore';
 
+export const dynamic = 'force-dynamic';
+
 const SYNC_SECRET = process.env.GITHUB_SYNC_SECRET || 'default-secret-change-in-production';
 
 export async function POST(request: Request) {

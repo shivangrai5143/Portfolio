@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { GitHubService } from '@/lib/github';
 import { getDocument } from '@/lib/firestore';
+
+export const dynamic = 'force-dynamic';
 import type { GitHubRepo } from '@/types';
 
 export async function GET() {

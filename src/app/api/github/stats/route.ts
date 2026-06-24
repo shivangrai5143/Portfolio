@@ -3,6 +3,8 @@ import { GitHubService } from '@/lib/github';
 import { getDocument } from '@/lib/firestore';
 import type { GitHubStats } from '@/types';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     // 1. Try to fetch from Firestore
