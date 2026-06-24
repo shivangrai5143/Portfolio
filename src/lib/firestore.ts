@@ -1,4 +1,4 @@
-import { db } from './firebase';
+import { getDb } from './firebase';
 import {
   collection,
   doc,
@@ -23,7 +23,7 @@ export async function addDocument<T>(
   collectionName: string,
   data: DocumentData
 ): Promise<string> {
-  const colRef = collection(db, collectionName);
+  const colRef = collection(getDb(), collectionName);
   const docRef = await addDoc(colRef, data);
   return docRef.id;
 }
@@ -36,7 +36,7 @@ export async function getDocument<T>(
   collectionName: string,
   docId: string
 ): Promise<T | null> {
-  const docRef = doc(db, collectionName, docId);
+  const docRef = doc(getDb(), collectionName, docId);
   const snapshot = await getDoc(docRef);
   if (!snapshot.exists()) return null;
   return { id: snapshot.id, ...snapshot.data() } as T;
@@ -49,7 +49,7 @@ export async function getCollection<T>(
   collectionName: string,
   ...constraints: QueryConstraint[]
 ): Promise<T[]> {
-  const colRef = collection(db, collectionName);
+  const colRef = collection(getDb(), collectionName);
   const q = constraints.length > 0 ? query(colRef, ...constraints) : colRef;
   const snapshot = await getDocs(q);
   return snapshot.docs.map((d) => ({ id: d.id, ...d.data() }) as T);
@@ -64,7 +64,7 @@ export async function setDocument(
   docId: string,
   data: DocumentData
 ): Promise<void> {
-  const docRef = doc(db, collectionName, docId);
+  const docRef = doc(getDb(), collectionName, docId);
   await setDoc(docRef, data, { merge: true });
 }
 
@@ -76,7 +76,7 @@ export async function updateDocument(
   docId: string,
   data: DocumentData
 ): Promise<void> {
-  const docRef = doc(db, collectionName, docId);
+  const docRef = doc(getDb(), collectionName, docId);
   await updateDoc(docRef, data);
 }
 
@@ -87,6 +87,6 @@ export async function deleteDocument(
   collectionName: string,
   docId: string
 ): Promise<void> {
-  const docRef = doc(db, collectionName, docId);
+  const docRef = doc(getDb(), collectionName, docId);
   await deleteDoc(docRef);
 }

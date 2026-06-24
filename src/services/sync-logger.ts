@@ -1,4 +1,4 @@
-import { db } from '@/lib/firebase';
+import { getDb } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 export type SyncStatus = 'success' | 'error';
@@ -16,7 +16,7 @@ export interface SyncLog {
 
 export async function logSync(log: SyncLog) {
   try {
-    const logsRef = collection(db, 'syncLogs');
+    const logsRef = collection(getDb(), 'syncLogs');
     await addDoc(logsRef, {
       ...log,
       timestamp: serverTimestamp(),
