@@ -17,9 +17,14 @@ interface SkillPillProps {
 }
 
 const SkillPill = ({ item, index }: SkillPillProps) => {
-  const { label, iconName, color } = item;
+  const { label, iconName, color, proficiency = 80 } = item;
   const Icon = getIconByName(iconName);
   const [hovered, setHovered] = useState(false);
+
+  // SVG progress ring configuration
+  const radius = 28;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference - (proficiency / 100) * circumference;
 
   return (
     <motion.div
@@ -32,15 +37,48 @@ const SkillPill = ({ item, index }: SkillPillProps) => {
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center border transition-all duration-300
+        className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center border transition-all duration-300
           bg-white dark:bg-slate-900
           ${hovered
-            ? "border-transparent shadow-[0_0_28px_rgba(59,130,246,0.2)]"
+            ? "border-transparent shadow-[0_0_28px_rgba(59,130,246,0.15)]"
             : "border-gray-200 dark:border-slate-700/50"
           }`}
-        style={hovered ? { boxShadow: `0 0 28px ${color}30` } : {}}
+        style={hovered ? { boxShadow: `0 0 28px ${color}20` } : {}}
       >
+        {/* Animated SVG circular progress ring */}
+        {hovered && (
+          <svg className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none p-1">
+            <circle
+              cx="50%"
+              cy="50%"
+              r={radius}
+              fill="transparent"
+              stroke={`${color}15`}
+              strokeWidth="2.5"
+            />
+            <motion.circle
+              cx="50%"
+              cy="50%"
+              r={radius}
+              fill="transparent"
+              stroke={color}
+              strokeWidth="2.5"
+              strokeDasharray={circumference}
+              initial={{ strokeDashoffset: circumference }}
+              animate={{ strokeDashoffset }}
+              transition={{ duration: 0.65, ease: "easeOut" }}
+            />
+          </svg>
+        )}
+
         <Icon size={32} style={{ color: hovered ? color : "#64748b", transition: "color 0.3s" }} />
+
+        {/* Floating percentage badge on hover */}
+        {hovered && (
+          <span className="absolute -top-2.5 bg-slate-950 text-white dark:bg-white dark:text-slate-950 font-mono text-[9px] font-bold px-1.5 py-0.5 rounded-full shadow border border-slate-800 dark:border-slate-200 scale-90">
+            {proficiency}%
+          </span>
+        )}
       </div>
       <span
         className="font-sans text-[0.6rem] uppercase tracking-widest transition-colors duration-300 text-center"

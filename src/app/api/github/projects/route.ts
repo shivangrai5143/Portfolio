@@ -6,12 +6,32 @@ import type { Project, GitHubRepo } from '@/types';
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
+  const ALLOWED_IDS = [
+    'the-roasting-house',
+    'aptico',
+    'chat-app',
+    'traffic-intelligence-system',
+    'yojna-flow',
+  ];
+
+  const matchesWhitelist = (id: string, url: string) => {
+    const docId = id.toLowerCase();
+    const gitUrl = url.toLowerCase();
+    return ALLOWED_IDS.includes(docId) ||
+      gitUrl.includes("the-roasting-house") ||
+      gitUrl.includes("aptico") ||
+      gitUrl.includes("chat-app") ||
+      gitUrl.includes("traffic-intelligence-system") ||
+      gitUrl.includes("yojna-flow");
+  };
+
   // 1. Try Firestore (Admin SDK) — failure is non-fatal
   try {
     const fsProjects = await getAdminCollection<Project>('projects', 'updatedAt', 'desc');
 
     if (fsProjects.length > 0) {
-      const formattedForFrontend = fsProjects.map(p => ({
+      const allowed = fsProjects.filter(p => matchesWhitelist(p.id || '', p.githubUrl || ''));
+      const formattedForFrontend = allowed.map(p => ({
         name: p.title || p.id,
         description: p.description || '',
         htmlUrl: p.githubUrl || '',
@@ -34,7 +54,11 @@ export async function GET() {
   try {
     const service = GitHubService.getInstance();
     const projects = await service.getAllProjects();
-    return NextResponse.json(projects);
+    const allowed = projects.filter(p => {
+      const name = p.name.toLowerCase();
+      return name.includes('chat-app') || name.includes('traffic-intelligence-system') || name.includes('yojna-flow');
+    });
+    return NextResponse.json(allowed);
   } catch (error) {
     console.error('[API /github/projects] GitHub API error:', error);
     return NextResponse.json(

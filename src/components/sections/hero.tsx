@@ -8,7 +8,9 @@ import Link from "next/link";
 import SocialLinks from "@/components/social-links";
 import { siteConfig, ROLES } from "@/constants/site-config";
 import { getTechDetails } from "@/utils/github-utils";
-import type { GitHubRepo } from "@/types";
+import { getDocument, getCollection } from "@/lib/firestore";
+import type { GitHubRepo, HeroData } from "@/types";
+
 
 // ── Typing animation hook ──────────────────────────────────────────────────
 interface TypingOptions {
@@ -64,7 +66,38 @@ interface HeroProps {
 
 // ── Component ──────────────────────────────────────────────────────────────
 const Hero = ({ current: latestRepo, loading }: HeroProps) => {
-  const typedRole = useTypingAnimation(ROLES);
+  const [heroData, setHeroData] = useState<HeroData | null>(null);
+  const [resumeUrl, setResumeUrl] = useState<string | null>(null);
+
+  // Fetch hero data and resume URL from Firestore
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [heroDocs, resumeSettings] = await Promise.all([
+          getCollection<HeroData & { id: string }>("hero"),
+          getDocument<{ resumeUrl: string }>("settings", "resume"),
+        ]);
+        if (heroDocs.length > 0) {
+          const { id: _id, ...rest } = heroDocs[0];
+          setHeroData(rest as HeroData);
+        }
+        if (resumeSettings?.resumeUrl) {
+          setResumeUrl(resumeSettings.resumeUrl);
+        }
+      } catch (e) {
+        console.warn("Could not fetch hero/resume data from Firestore", e);
+      }
+    };
+    fetchData();
+  }, []);
+
+  // Use Firestore data if available, else fall back to constants
+  const displayName = heroData?.name ?? siteConfig.name;
+  const displayDescription = heroData?.description ?? siteConfig.description;
+  const displayPhoto = heroData?.profilePhoto ?? "/assets/copy.jpeg";
+  const displayRoles = heroData?.roles ?? ROLES;
+
+  const typedRole = useTypingAnimation(displayRoles);
 
   const scrollTo = useCallback((id: string) => {
     const el = document.getElementById(id);
@@ -168,9 +201,9 @@ const Hero = ({ current: latestRepo, loading }: HeroProps) => {
             <div className="absolute -inset-0.5 rounded-full bg-white dark:bg-slate-950" />
             {/* Image */}
             <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-2 border-white dark:border-slate-800 shadow-2xl">
-              <Image
-                src="/assets/copy.jpeg"
-                alt={siteConfig.name}
+                        <Image
+                src={displayPhoto}
+                alt={displayName}
                 fill
                 sizes="(max-width: 640px) 160px, 192px"
                 className="object-cover"
@@ -189,7 +222,7 @@ const Hero = ({ current: latestRepo, loading }: HeroProps) => {
         >
           Hi, I&apos;m{" "}
           <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-emerald-400 bg-clip-text text-transparent">
-            {siteConfig.name}
+            {displayName}
           </span>
         </motion.h1>
 
@@ -211,7 +244,7 @@ const Hero = ({ current: latestRepo, loading }: HeroProps) => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-base sm:text-lg text-gray-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed"
         >
-          {siteConfig.description}
+          {displayDescription}
         </motion.p>
 
         {/* Social Icons */}
@@ -231,13 +264,26 @@ const Hero = ({ current: latestRepo, loading }: HeroProps) => {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <Link
-            href="/resume"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-500 hover:bg-blue-600 text-white font-semibold text-base transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
-          >
-            <FaFileDownload />
-            View Resume
-          </Link>
+          {/* Resume Button — dynamic URL from Cloudinary or fallback to /resume page */}
+          {resumeUrl ? (
+            <a
+              href={resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-500 hover:bg-blue-600 text-white font-semibold text-base transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
+            >
+              <FaFileDownload />
+              View Resume
+            </a>
+          ) : (
+            <Link
+              href="/resume"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-500 hover:bg-blue-600 text-white font-semibold text-base transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
+            >
+              <FaFileDownload />
+              View Resume
+            </Link>
+          )}
 
           <button suppressHydrationWarning
             onClick={() => scrollTo("projects")}

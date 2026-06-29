@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   FolderOpen, Cpu, Briefcase, RefreshCw, CheckCircle2,
-  XCircle, Clock, Activity, TrendingUp, Zap,
+  XCircle, Clock, Activity, Zap, Trophy, MessageSquare,
 } from "lucide-react";
 import { getCollection, orderBy, limit } from "@/lib/firestore";
 import { triggerGitHubSync } from "@/actions/github";
 import { useAuth } from "@/contexts/auth-context";
+import { VisitorCounter } from "@/components/visitor-counter";
 
 interface SyncLog {
   id: string;
@@ -48,23 +49,42 @@ function StatCard({ label, value, icon: Icon, color, bg }: StatCard) {
   );
 }
 
+const QUICK_LINKS = [
+  { href: "/admin/projects", label: "Manage Projects", icon: FolderOpen, desc: "Edit or feature projects" },
+  { href: "/admin/skills", label: "Manage Skills", icon: Cpu, desc: "Update your tech stack" },
+  { href: "/admin/experience", label: "Manage Experience", icon: Briefcase, desc: "Add work & education" },
+  { href: "/admin/achievements", label: "Achievements", icon: Trophy, desc: "Add milestones" },
+  { href: "/admin/messages", label: "View Messages", icon: MessageSquare, desc: "Read contact submissions" },
+];
+
 export default function AdminDashboard() {
   const { user } = useAuth();
   const [logs, setLogs] = useState<SyncLog[]>([]);
-  const [counts, setCounts] = useState({ projects: 0, skills: 0, experience: 0 });
+  const [counts, setCounts] = useState({
+    projects: 0, skills: 0, experience: 0,
+    achievements: 0, unreadMessages: 0,
+  });
   const [syncing, setSyncing] = useState(false);
   const [syncMsg, setSyncMsg] = useState("");
 
   useEffect(() => {
     async function load() {
-      const [logsData, projects, skills, experience] = await Promise.all([
-        getCollection<SyncLog>("syncLogs", orderBy("timestamp", "desc"), limit(10)),
+      const [logsData, projects, skills, experience, achievements, messages] = await Promise.all([
+        getCollection<SyncLog>("syncLogs", orderBy("timestamp", "desc"), limit(8)),
         getCollection("projects"),
         getCollection("skills"),
         getCollection("experience"),
+        getCollection("achievements"),
+        getCollection<{ read: boolean }>("messages"),
       ]);
       setLogs(logsData);
-      setCounts({ projects: projects.length, skills: skills.length, experience: experience.length });
+      setCounts({
+        projects: projects.length,
+        skills: skills.length,
+        experience: experience.length,
+        achievements: achievements.length,
+        unreadMessages: messages.filter((m) => !m.read).length,
+      });
     }
     load();
   }, []);
@@ -76,8 +96,7 @@ export default function AdminDashboard() {
       const result = await triggerGitHubSync();
       if (result.success) {
         setSyncMsg(`✓ Synced ${result.count} projects successfully!`);
-        // Refresh logs
-        const newLogs = await getCollection<SyncLog>("syncLogs", orderBy("timestamp", "desc"), limit(10));
+        const newLogs = await getCollection<SyncLog>("syncLogs", orderBy("timestamp", "desc"), limit(8));
         setLogs(newLogs);
         setCounts((prev) => ({ ...prev, projects: result.count }));
       } else {
@@ -92,8 +111,15 @@ export default function AdminDashboard() {
   const stats: StatCard[] = [
     { label: "Projects", value: counts.projects, icon: FolderOpen, color: "text-blue-400", bg: "bg-blue-500/15" },
     { label: "Skills", value: counts.skills, icon: Cpu, color: "text-violet-400", bg: "bg-violet-500/15" },
-    { label: "Experience Entries", value: counts.experience, icon: Briefcase, color: "text-emerald-400", bg: "bg-emerald-500/15" },
-    { label: "Sync Logs", value: logs.length, icon: Activity, color: "text-amber-400", bg: "bg-amber-500/15" },
+    { label: "Experience", value: counts.experience, icon: Briefcase, color: "text-emerald-400", bg: "bg-emerald-500/15" },
+    { label: "Achievements", value: counts.achievements, icon: Trophy, color: "text-orange-400", bg: "bg-orange-500/15" },
+    {
+      label: "Unread Messages",
+      value: counts.unreadMessages,
+      icon: MessageSquare,
+      color: counts.unreadMessages > 0 ? "text-red-400" : "text-slate-400",
+      bg: counts.unreadMessages > 0 ? "bg-red-500/15" : "bg-slate-500/15",
+    },
   ];
 
   const hour = new Date().getHours();
@@ -101,13 +127,9 @@ export default function AdminDashboard() {
   const firstName = user?.displayName?.split(" ")[0] ?? "Admin";
 
   return (
-    <div className="p-6 max-w-5xl mx-auto">
+    <div className="p-6 max-w-6xl mx-auto space-y-8">
       {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: -12 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mb-8"
-      >
+      <motion.div initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }}>
         <div className="flex items-start justify-between">
           <div>
             <h1 className="text-2xl font-bold text-white">
@@ -141,30 +163,60 @@ export default function AdminDashboard() {
         )}
       </motion.div>
 
-      {/* Stat cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        {stats.map((s, i) => (
-          <motion.div
-            key={s.label}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.07 }}
-          >
-            <StatCard {...s} />
-          </motion.div>
-        ))}
+      {/* Visitor Counter */}
+      <div>
+        <p className="text-slate-500 text-xs uppercase tracking-widest mb-3">Visitor Analytics</p>
+        <VisitorCounter />
+      </div>
+
+      {/* Stat Cards */}
+      <div>
+        <p className="text-slate-500 text-xs uppercase tracking-widest mb-3">Content Overview</p>
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+          {stats.map((s, i) => (
+            <motion.div
+              key={s.label}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.06 }}
+            >
+              <StatCard {...s} />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Quick Links */}
+      <div>
+        <p className="text-slate-500 text-xs uppercase tracking-widest mb-3">Quick Actions</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {QUICK_LINKS.map((item, i) => (
+            <motion.a
+              key={item.href}
+              href={item.href}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + i * 0.06 }}
+              className="group bg-slate-900 border border-slate-800 hover:border-blue-500/40 rounded-2xl p-5 transition-all hover:bg-slate-800/60"
+            >
+              <item.icon size={20} className="text-blue-400 mb-3" />
+              <p className="text-white font-medium text-sm">{item.label}</p>
+              <p className="text-slate-500 text-xs mt-0.5">{item.desc}</p>
+            </motion.a>
+          ))}
+        </div>
       </div>
 
       {/* Sync Logs */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 }}
+        transition={{ delay: 0.4 }}
         className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden"
       >
         <div className="flex items-center gap-3 px-6 py-4 border-b border-slate-800">
           <Zap size={16} className="text-amber-400" />
-          <h2 className="text-white font-semibold text-sm">Recent Sync Activity</h2>
+          <h2 className="text-white font-semibold text-sm">Recent GitHub Sync Activity</h2>
         </div>
 
         {logs.length === 0 ? (
@@ -187,9 +239,7 @@ export default function AdminDashboard() {
                       : log.error ?? "Sync error"}
                   </p>
                   <p className="text-slate-500 text-xs mt-0.5">
-                    {log.startedAt
-                      ? new Date(log.startedAt).toLocaleString()
-                      : "Unknown time"}
+                    {log.startedAt ? new Date(log.startedAt).toLocaleString() : "Unknown time"}
                   </p>
                 </div>
                 <div className="flex items-center gap-1 text-slate-500 text-xs shrink-0">
@@ -210,28 +260,6 @@ export default function AdminDashboard() {
           </div>
         )}
       </motion.div>
-
-      {/* Quick Links */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
-        {[
-          { href: "/admin/projects", label: "Manage Projects", icon: FolderOpen, desc: "Edit or feature projects" },
-          { href: "/admin/skills", label: "Manage Skills", icon: Cpu, desc: "Update your tech stack" },
-          { href: "/admin/experience", label: "Manage Experience", icon: Briefcase, desc: "Add work & education" },
-        ].map((item, i) => (
-          <motion.a
-            key={item.href}
-            href={item.href}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 + i * 0.07 }}
-            className="group bg-slate-900 border border-slate-800 hover:border-blue-500/40 rounded-2xl p-5 transition-all hover:bg-slate-800/60"
-          >
-            <item.icon size={20} className="text-blue-400 mb-3" />
-            <p className="text-white font-medium text-sm">{item.label}</p>
-            <p className="text-slate-500 text-xs mt-0.5">{item.desc}</p>
-          </motion.a>
-        ))}
-      </div>
     </div>
   );
 }

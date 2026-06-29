@@ -1,8 +1,16 @@
 import { GitHubService } from '@/lib/github';
-import { setDocument, getCollection } from '@/lib/firestore';
+import { setDocument, getCollection, deleteDocument } from '@/lib/firestore';
 import { projectsData as staticProjects } from '@/constants/projects';
 import { detectRepoTechStack, aggregateSkills } from './tech-detector';
 import type { Project, GitHubRepo, Skill } from '@/types';
+
+const ALLOWED_PROJECT_IDS = [
+  'the-roasting-house',
+  'aptico',
+  'chat-app',
+  'traffic-intelligence-system',
+  'yojna-flow',
+];
 
 /**
  * Merges fresh GitHub data with existing Firestore projects,
@@ -31,12 +39,20 @@ export async function syncGitHubToFirestore() {
   const allRepoTechs: string[][] = [];
 
   // 3. Process each GitHub repo and format it as a Project
+  let processedCount = 0;
   for (const repo of repos) {
     const key = repo.htmlUrl.toLowerCase();
     
     // Check if it already exists in Firestore or static config
     const existing = existingMap.get(key);
     const fallback = staticMap.get(key);
+
+    const docId = fallback?.id || existing?.id || repo.name.toLowerCase();
+
+    // Skip if not in allowed whitelist
+    if (!ALLOWED_PROJECT_IDS.includes(docId)) {
+      continue;
+    }
 
     const isFeatured = repo.topics.includes('featured') || fallback?.featured || false;
 
@@ -73,13 +89,20 @@ export async function syncGitHubToFirestore() {
       updatedAt: repo.updatedAt,
     };
 
-    const docId = existing?.id || fallback?.id || repo.name.toLowerCase();
-
     // Write to Firestore
     await setDocument('projects', docId, projectData);
+    processedCount++;
   }
 
-  // 4. Aggregate all detected tech into global Skills and save to Firestore
+  // 4. Delete any projects in Firestore not in whitelist
+  for (const p of existingProjects) {
+    if (p.id && !ALLOWED_PROJECT_IDS.includes(p.id)) {
+      console.log(`[Sync] Deleting non-whitelisted project: ${p.id}`);
+      await deleteDocument('projects', p.id);
+    }
+  }
+
+  // 5. Aggregate all detected tech into global Skills and save to Firestore
   const aggregatedSkills = aggregateSkills(allRepoTechs);
   for (const skill of aggregatedSkills) {
     // Document ID safe encoding (lowercase, replace spaces with hyphens)
@@ -87,7 +110,7 @@ export async function syncGitHubToFirestore() {
     await setDocument('skills', skillDocId, skill as any);
   }
 
-  // 5. Save Stats & Current Project
+  // 6. Save Stats & Current Project
   if (stats) {
     await setDocument('platform', 'stats', stats as any);
   }
@@ -95,6 +118,6 @@ export async function syncGitHubToFirestore() {
     await setDocument('platform', 'currentProject', current as any);
   }
 
-  console.log(`[Sync] Sync completed. Projects: ${repos.length}, Skills: ${aggregatedSkills.length}`);
-  return { success: true, count: repos.length, skillsCount: aggregatedSkills.length };
+  console.log(`[Sync] Sync completed. Projects: ${processedCount}, Skills: ${aggregatedSkills.length}`);
+  return { success: true, count: processedCount, skillsCount: aggregatedSkills.length };
 }

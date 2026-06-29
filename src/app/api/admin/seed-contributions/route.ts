@@ -13,27 +13,27 @@ export const dynamic = 'force-dynamic';
 export async function POST() {
   const contributions = [
     {
-      id: 'the-roasting-house-contrib',
+      id: 'the-roasting-house',
       title: 'The Roasting House',
       description:
         'A collaborative MERN stack project simulating a real-world coffee shop with menu browsing, order management, and a responsive UI. Features JWT auth, Socket.io for real-time updates, Redux Toolkit, and an admin dashboard.',
       techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.io', 'Redux Toolkit', 'JWT', 'REST API'],
       githubUrl: 'https://github.com/VivekYadav-77/The-Roasting-House',
       liveUrl: '',
-      featured: false,
+      featured: true,
       stars: 2,
       isContribution: true,
       ownerLogin: 'VivekYadav-77',
     },
     {
-      id: 'aptico-contrib',
+      id: 'aptico',
       title: 'Aptico',
       description:
         'Aptico is built for people who are applying to jobs, improving their resume, preparing for interviews, and trying to stay consistent through a long hiring process. Features AI-powered resume tools, gamification, and resilience tracking.',
       techStack: ['JavaScript', 'Fastify', 'PostgreSQL', 'Redis', 'Drizzle ORM', 'Gemini AI', 'Monorepo', 'Vercel'],
       githubUrl: 'https://github.com/VivekYadav-77/Aptico',
       liveUrl: 'https://aptico-dev.vercel.app',
-      featured: false,
+      featured: true,
       stars: 0,
       isContribution: true,
       ownerLogin: 'VivekYadav-77',

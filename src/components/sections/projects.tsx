@@ -8,6 +8,8 @@ import { getCollection } from "@/lib/firestore";
 import type { GitHubRepo, FirestoreProject } from "@/types";
 import { Search } from "lucide-react";
 
+import { projectsData } from "@/constants/projects";
+
 // ── Skeleton Card ──────────────────────────────────────────────────────────
 const SkeletonCard = ({ lines = 3 }: { lines?: number }) => (
   <div className="space-y-3">
@@ -47,9 +49,49 @@ const Projects = ({ githubData }: ProjectsProps) => {
     const fetchProjects = async () => {
       try {
         const data = await getCollection<FirestoreProject>("projects");
-        setProjects(data.sort((a, b) => (b.stars ?? 0) - (a.stars ?? 0)));
+        
+        const ALLOWED_IDS = [
+          'the-roasting-house',
+          'aptico',
+          'chat-app',
+          'traffic-intelligence-system',
+          'yojna-flow',
+        ];
+
+        // Filter Firestore data to strictly include ONLY the 5 allowed projects
+        const filteredDb = data.filter((p) => {
+          const docId = p.id?.toLowerCase() || "";
+          const gitUrl = p.githubUrl?.toLowerCase() || "";
+          
+          return ALLOWED_IDS.includes(docId) ||
+            gitUrl.includes("the-roasting-house") ||
+            gitUrl.includes("aptico") ||
+            gitUrl.includes("chat-app") ||
+            gitUrl.includes("traffic-intelligence-system") ||
+            gitUrl.includes("yojna-flow");
+        });
+
+        // Merge Firestore data with static fallbacks to guarantee all 5 always render
+        const merged = [...filteredDb];
+        projectsData.forEach((staticProj) => {
+          const match = merged.find((p) => 
+            p.id === staticProj.id || 
+            p.githubUrl?.toLowerCase() === staticProj.githubUrl?.toLowerCase() ||
+            p.title?.toLowerCase() === staticProj.title?.toLowerCase()
+          );
+          if (!match) {
+            merged.push(staticProj as any);
+          } else {
+            // Keep manually updated fields from Firestore, but fill in details
+            match.id = staticProj.id;
+            match.title = staticProj.title;
+          }
+        });
+
+        setProjects(merged.sort((a, b) => (b.stars ?? 0) - (a.stars ?? 0)));
       } catch (error) {
-        console.error("Failed to load projects:", error);
+        console.error("Failed to load projects from DB, using fallback:", error);
+        setProjects(projectsData as any);
       } finally {
         setLoadingDb(false);
       }

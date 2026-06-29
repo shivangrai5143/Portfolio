@@ -1,7 +1,6 @@
 "use client";
 
-import { FaGithub, FaHeart } from "react-icons/fa";
-import { SiNextdotjs, SiTailwindcss } from "react-icons/si";
+import { FaGithub } from "react-icons/fa";
 import SocialLinks from "@/components/social-links";
 import { NAV_LINKS, siteConfig } from "@/constants/site-config";
 
@@ -48,15 +47,7 @@ const Footer = () => {
             &copy; {currentYear} {siteConfig.name}. All rights reserved.
           </p>
 
-          {/* Built with */}
-          <p className="flex items-center gap-1.5 flex-wrap justify-center">
-            Built with
-            <SiNextdotjs className="text-gray-700 dark:text-white" />
-            <span>Next.js,</span>
-            <SiTailwindcss className="text-sky-500" />
-            <span>Tailwind CSS, and</span>
-            <FaHeart className="text-red-500" />
-          </p>
+
 
           {/* GitHub link */}
           <a

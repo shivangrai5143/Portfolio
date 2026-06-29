@@ -13,6 +13,55 @@ export interface Project {
   forks?: number;
   updatedAt?: string;
   isGithub?: boolean;
+  // Extended fields
+  category?: "Full Stack" | "Frontend" | "Backend" | "Mobile" | "CLI" | "Other";
+  features?: string[];
+  status?: "completed" | "in-progress" | "archived";
+  startDate?: string;
+  endDate?: string;
+}
+
+// ─── About ─────────────────────────────────────────────────────────────────
+export interface AboutData {
+  bio: string[];
+  whatIBring: string[];
+  lookingFor: {
+    title: string;
+    description: string;
+    points: string[];
+  };
+  availableForWork: boolean;
+}
+
+// ─── Hero ──────────────────────────────────────────────────────────────────
+export interface HeroData {
+  name: string;
+  title: string;
+  description: string;
+  roles: string[];
+  profilePhoto?: string; // Cloudinary URL
+  availableForWork: boolean;
+}
+// ─── Achievements ──────────────────────────────────────────────────────────
+export interface Achievement {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  icon?: string;
+  category: "Hackathon" | "Award" | "Open Source" | "Academic" | "Community" | "Other";
+  link?: string;
+  featured?: boolean;
+}
+
+// ─── Contact Info ──────────────────────────────────────────────────────────
+export interface ContactInfo {
+  email: string;
+  linkedinUrl: string;
+  twitterUrl: string;
+  githubUrl: string;
+  githubUsername: string;
+  resumeUrl?: string; // Cloudinary PDF URL
 }
 
 export interface TechItem {
