@@ -1,5 +1,5 @@
 import { initializeApp, getApps, type FirebaseApp } from 'firebase/app';
-import { getFirestore, type Firestore, enableIndexedDbPersistence } from 'firebase/firestore';
+import { getFirestore, type Firestore, enableIndexedDbPersistence, setLogLevel } from 'firebase/firestore';
 import { getAuth, type Auth } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -28,6 +28,8 @@ function getApp(): FirebaseApp {
 export function getDb(): Firestore {
   if (!_db) {
     _db = getFirestore(getApp());
+    // Silence connection warnings ('Could not reach Cloud Firestore backend') by setting log level to 'error'
+    setLogLevel('error');
     // Enable offline persistence on client side
     if (typeof window !== 'undefined') {
       enableIndexedDbPersistence(_db).catch((err) => {
