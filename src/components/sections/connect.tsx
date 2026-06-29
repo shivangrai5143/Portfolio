@@ -4,7 +4,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaLinkedin, FaArrowRight, FaExternalLinkAlt } from "react-icons/fa";
 import { siteConfig } from "@/constants/site-config";
-import { addDocument } from "@/lib/firestore";
 
 // ── Contact Card ───────────────────────────────────────────────────────────
 interface ContactCardProps {
@@ -145,25 +144,29 @@ const ContactForm = () => {
     if (validateForm()) {
       setIsSubmitting(true);
       try {
-        const messageData = {
-          ...formData,
-          createdAt: new Date().toISOString(),
-          read: false,
-        };
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
 
-        await addDocument("messages", messageData);
+        if (!res.ok) {
+          const data = await res.json();
+          throw new Error(data.error || "Failed to send message");
+        }
 
         setFormData({ name: "", email: "", message: "" });
         setSubmitted(true);
-        setTimeout(() => setSubmitted(false), 5000);
+        setTimeout(() => setSubmitted(false), 6000);
       } catch (error) {
         console.error("Submission failed:", error);
-        alert("Sorry, there was an error sending your message.");
+        alert("Sorry, there was an error sending your message. Please try again.");
       } finally {
         setIsSubmitting(false);
       }
     }
   };
+
 
   const baseInputClass =
     "w-full bg-transparent border-0 border-b border-gray-300 dark:border-slate-700 focus:border-blue-500 focus:ring-0 px-2 py-4 text-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-slate-500 font-sans transition-colors outline-none";

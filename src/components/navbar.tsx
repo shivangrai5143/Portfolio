@@ -2,17 +2,18 @@
 
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { Command } from "lucide-react";
 import ThemeToggle from "@/components/theme-toggle";
 import { NAV_LINKS } from "@/constants/site-config";
-
 import { useRouter } from "next/navigation";
 
 interface NavbarProps {
   activeSection: string;
   onNavigate?: (id: string) => void;
+  onCommandPaletteOpen?: () => void;
 }
 
-const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
+const Navbar = ({ activeSection, onNavigate, onCommandPaletteOpen }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
@@ -60,6 +61,17 @@ const Navbar = ({ activeSection, onNavigate }: NavbarProps) => {
 
             {/* Theme Toggle */}
             <ThemeToggle />
+
+            {/* Command Palette trigger */}
+            <button
+              suppressHydrationWarning
+              onClick={onCommandPaletteOpen}
+              title="Open command palette (Ctrl+K)"
+              className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-gray-200 dark:border-slate-700 text-gray-500 dark:text-slate-400 hover:border-blue-400 hover:text-blue-500 dark:hover:text-blue-400 transition-all text-xs"
+            >
+              <Command size={12} />
+              <span>K</span>
+            </button>
           </div>
 
           {/* Mobile Toggle */}
