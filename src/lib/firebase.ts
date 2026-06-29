@@ -1,5 +1,12 @@
 import { initializeApp, getApps, type FirebaseApp } from 'firebase/app';
-import { getFirestore, type Firestore, enableIndexedDbPersistence, setLogLevel } from 'firebase/firestore';
+import {
+  getFirestore,
+  type Firestore,
+  setLogLevel,
+  initializeFirestore,
+  persistentLocalCache,
+  persistentMultipleTabManager,
+} from 'firebase/firestore';
 import { getAuth, type Auth } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -25,22 +32,38 @@ function getApp(): FirebaseApp {
   return _app;
 }
 
-export function getDb(): Firestore {
+export function isFirebaseConfigured(): boolean {
+  return !!firebaseConfig.projectId && !!firebaseConfig.apiKey;
+}
+
+export function getDb(): Firestore | null {
+  if (!isFirebaseConfigured()) return null;
   if (!_db) {
-    _db = getFirestore(getApp());
-    // Silence connection warnings ('Could not reach Cloud Firestore backend') by setting log level to 'error'
+    // Silence connection warnings by setting log level to 'error'
     setLogLevel('error');
-    // Enable offline persistence on client side
+    
+    // Modern v10+ Firestore persistent cache initialization
+    // Safely manages multiple tabs and prevents IndexedDB locks
     if (typeof window !== 'undefined') {
-      enableIndexedDbPersistence(_db).catch((err) => {
-        console.warn('[Firestore] Offline persistence initialization failed:', err.code);
-      });
+      try {
+        _db = initializeFirestore(getApp(), {
+          localCache: persistentLocalCache({
+            tabManager: persistentMultipleTabManager(),
+          }),
+        });
+      } catch (err) {
+        console.warn('[Firestore] Persistent cache initialization failed, falling back:', err);
+        _db = getFirestore(getApp());
+      }
+    } else {
+      _db = getFirestore(getApp());
     }
   }
   return _db;
 }
 
-export function getAuthInstance(): Auth {
+export function getAuthInstance(): Auth | null {
+  if (!isFirebaseConfigured()) return null;
   if (!_auth) _auth = getAuth(getApp());
   return _auth;
 }

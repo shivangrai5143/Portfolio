@@ -16,7 +16,12 @@ export interface SyncLog {
 
 export async function logSync(log: SyncLog) {
   try {
-    const logsRef = collection(getDb(), 'syncLogs');
+    const db = getDb();
+    if (!db) {
+      console.warn('[SyncLogger] Firestore is not configured. Sync logging skipped.');
+      return;
+    }
+    const logsRef = collection(db, 'syncLogs');
     await addDoc(logsRef, {
       ...log,
       timestamp: serverTimestamp(),

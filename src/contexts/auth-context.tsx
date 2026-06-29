@@ -26,7 +26,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(getAuthInstance(), (firebaseUser) => {
+    const auth = getAuthInstance();
+    if (!auth) {
+      setLoading(false);
+      return;
+    }
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       setUser(firebaseUser);
       setLoading(false);
     });
@@ -34,16 +39,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const signIn = async (email: string, password: string) => {
-    await signInWithEmailAndPassword(getAuthInstance(), email, password);
+    const auth = getAuthInstance();
+    if (!auth) throw new Error("Firebase Auth is not configured in .env.local.");
+    await signInWithEmailAndPassword(auth, email, password);
   };
 
   const signInWithGoogle = async () => {
+    const auth = getAuthInstance();
+    if (!auth) throw new Error("Firebase Auth is not configured in .env.local.");
     const provider = new GoogleAuthProvider();
-    await signInWithPopup(getAuthInstance(), provider);
+    await signInWithPopup(auth, provider);
   };
 
   const signOut = async () => {
-    await firebaseSignOut(getAuthInstance());
+    const auth = getAuthInstance();
+    if (!auth) return;
+    await firebaseSignOut(auth);
   };
 
   return (
