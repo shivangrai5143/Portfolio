@@ -13,7 +13,7 @@ export default function ResumePage() {
   const [resumeUrl, setResumeUrl] = useState<string | null>(null);
 
   // Static fallback PDF route (exists in the codebase)
-  const FALLBACK_URL = "/api/resume/download";
+  const FALLBACK_URL = "/api/resume/download?v=latest";
 
   useEffect(() => {
     getDocument<{ resumeUrl: string }>("settings", "resume")
