@@ -30,7 +30,9 @@ function LoginForm() {
       await signIn(email, password);
       router.replace("/admin");
     } catch (err: any) {
+      console.error("Sign in error:", err);
       const code = err?.code ?? "";
+      const message = err?.message ?? "";
       if (code === "auth/invalid-credential" || code === "auth/wrong-password") {
         setError("Invalid email or password.");
       } else if (code === "auth/user-not-found") {
@@ -38,7 +40,7 @@ function LoginForm() {
       } else if (code === "auth/too-many-requests") {
         setError("Too many attempts. Please try again later.");
       } else {
-        setError("Sign in failed. Please try again.");
+        setError(`Sign in failed: ${message} (${code})`);
       }
     } finally {
       setIsSubmitting(false);
@@ -50,8 +52,20 @@ function LoginForm() {
     try {
       await signInWithGoogle();
       router.replace("/admin");
-    } catch {
-      setError("Google sign-in failed. Please try again.");
+    } catch (err: any) {
+      console.error("Google sign-in error:", err);
+      const code = err?.code ?? "";
+      if (code === "auth/popup-closed-by-user") {
+        setError("The sign-in window was closed before completion. Please try again.");
+      } else if (code === "auth/popup-blocked") {
+        setError("The sign-in popup was blocked by your browser. Please enable popups.");
+      } else if (code === "auth/unauthorized-domain") {
+        setError("This domain is not authorized in Firebase Console. Please add it to Authorized Domains.");
+      } else if (code === "auth/operation-not-allowed") {
+        setError("Google sign-in is not enabled in Firebase Console.");
+      } else {
+        setError(`Google sign-in failed: ${err?.message ?? "Please try again."} (${code})`);
+      }
     }
   };
 
