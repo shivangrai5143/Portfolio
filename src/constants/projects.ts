@@ -2,58 +2,47 @@ import type { Project } from "@/types";
 
 export const projectsData: Project[] = [
   {
-    id: "the-roasting-house",
-    title: "The Roasting House",
-    description:
-      "A collaborative MERN stack project simulating a real-world coffee shop with menu browsing, order management, and a responsive UI. Features JWT auth, Socket.io for real-time updates, Redux Toolkit, and an admin dashboard.",
-    image: "",
-    techStack: ["React", "Node.js", "Express", "MongoDB", "Socket.io", "Redux Toolkit", "JWT", "REST API"],
-    githubUrl: "https://github.com/VivekYadav-77/The-Roasting-House",
-    liveUrl: "",
-    featured: true,
-  },
-  {
     id: "aptico",
-    title: "Aptico",
+    title: "Aptico — Career Progress & Gamification Platform",
     description:
-      "Aptico is built for people who are applying to jobs, improving their resume, preparing for interviews, and trying to stay consistent through a long hiring process. Features AI-powered resume tools, gamification, and resilience tracking.",
+      "Architected a 3-agent AI orchestration system (Auditor, Strategist, Copywriter) via Gemini API with Pydantic validation, eliminating untyped JSON output failures. Implemented Server-Sent Events (SSE) for zero-polling live feedback on React UI, integrating Redis-cached XP progression and leaderboard rankings.",
     image: "",
-    techStack: ["JavaScript", "Fastify", "PostgreSQL", "Redis", "Drizzle ORM", "Gemini AI", "Monorepo", "Vercel"],
+    techStack: ["React.js", "FastAPI", "Gemini API", "Pydantic", "Redis"],
     githubUrl: "https://github.com/VivekYadav-77/Aptico",
     liveUrl: "https://aptico-dev.vercel.app",
     featured: true,
   },
   {
     id: "chat-app",
-    title: "Chat App",
+    title: "Real-Time Chat & Calling Application",
     description:
-      "A full-stack chat app built with React.js, Firebase, and WebRTC, enabling real-time messaging, one-to-one & group chats, status stories, end-to-end encrypted messages, and voice/video calling.",
+      "Engineered messaging platform with Firebase Firestore snapshot listeners, supporting 1-on-1/group chats, typing indicators, and presence tracking with sub-second latency. Integrated WebRTC mesh architecture for direct peer-to-peer encrypted voice and video calls with automated client-side media compression.",
     image: "",
-    techStack: ["React", "Firebase", "WebRTC", "JavaScript", "Tailwind CSS"],
+    techStack: ["React.js", "Firebase Firestore", "WebRTC", "Tailwind CSS"],
     githubUrl: "https://github.com/shivangrai5143/CHAT-APP",
     liveUrl: "https://chat-app-brown-zeta-84.vercel.app",
     featured: true,
   },
   {
     id: "traffic-intelligence-system",
-    title: "Traffic Intelligence System",
+    title: "Traffic Intelligence & Analytics System",
     description:
-      "Traffic Intelligence System is a full-stack data analytics platform that analyzes road accident and transport datasets to uncover patterns and insights. Built with React, Python, and pandas, it features interactive dashboards, API-driven architecture, and data visualization to support traffic analysis and decision-making.",
+      "Processed 50k+ road transport records using Pandas & NumPy to analyze accident clusters, casualty severity, and peak congestion trends. Created interactive heatmaps using Leaflet and React, powered by asynchronous FastAPI endpoints for rapid data filtering.",
     image: "",
-    techStack: ["React", "Python", "pandas", "JavaScript", "Tailwind CSS", "Data Analytics"],
+    techStack: ["Python", "FastAPI", "React.js", "Pandas", "Leaflet"],
     githubUrl: "https://github.com/shivangrai5143/Traffic-intelligence-System",
     liveUrl: "https://intelligent-traffic.vercel.app/",
     featured: true,
   },
   {
-    id: "yojna-flow",
-    title: "Yojna Flow",
+    id: "the-roasting-house",
+    title: "The Roasting House — E-Commerce Platform",
     description:
-      "A full-stack project management system with Firebase authentication and Firestore database.",
+      "Built an e-commerce platform with JWT authentication, role-based access control (Admin/Customer), persistent cart state, and order lifecycle workflows. Integrated AWS S3 for product media uploads and configured automated GitHub Actions CI/CD workflows for continuous deployment.",
     image: "",
-    techStack: ["React", "Firebase", "Firestore", "JavaScript", "Tailwind CSS"],
-    githubUrl: "https://github.com/shivangrai5143/Yojna-Flow",
-    liveUrl: "https://yojnaflow.vercel.app",
+    techStack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "AWS S3"],
+    githubUrl: "https://github.com/VivekYadav-77/The-Roasting-House",
+    liveUrl: "",
     featured: true,
   },
 ];

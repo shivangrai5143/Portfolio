@@ -3,9 +3,9 @@ import type { SiteConfig } from "@/types";
 export const siteConfig: SiteConfig = {
   name: "Shivang Rai",
   email: "raishivang69@gmail.com",
-  title: "Full Stack Developer",
+  title: "Full-Stack Developer · AI Automation & Data Science",
   description:
-    "Building scalable, interactive web applications with modern technologies. Passionate about clean code, great UX, and shipping products that matter.",
+    "Full-Stack Developer with hands-on experience building scalable web applications, AI multi-agent orchestration, and production backend systems. Proficient in React.js, .NET MVC, C#, SQL Server, Node.js, and Python.",
   githubUsername: "shivangrai5143",
   githubUrl: "https://github.com/shivangrai5143",
   linkedinUrl: "https://linkedin.com/in/shivang-rai-58b45728b",
