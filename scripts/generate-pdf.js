@@ -9,37 +9,40 @@ const __dirname = path.dirname(__filename);
 
 const styles = StyleSheet.create({
   page: {
-    paddingTop: 24,
-    paddingBottom: 24,
-    paddingLeft: 32,
-    paddingRight: 32,
+    paddingTop: 36,
+    paddingBottom: 36,
+    paddingLeft: 40,
+    paddingRight: 40,
     fontFamily: 'Helvetica',
-    fontSize: 9.5,
-    color: '#1f2937',
-    lineHeight: 1.35,
+    fontSize: 10,
+    color: '#1e293b',
+    lineHeight: 1.45,
   },
   header: {
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: '#cbd5e1',
+    paddingBottom: 10,
   },
   name: {
     fontSize: 22,
     fontFamily: 'Helvetica-Bold',
     color: '#0f172a',
     letterSpacing: 0.5,
-    marginBottom: 3,
+    marginBottom: 4,
   },
   subtitle: {
-    fontSize: 11,
+    fontSize: 11.5,
     fontFamily: 'Helvetica-Bold',
     color: '#1e3a8a',
-    marginBottom: 4,
+    marginBottom: 6,
   },
   contactLine: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: 9,
+    fontSize: 9.5,
     color: '#475569',
     flexWrap: 'wrap',
     gap: 4,
@@ -48,78 +51,84 @@ const styles = StyleSheet.create({
     color: '#2563eb',
     textDecoration: 'none',
   },
+  titleLink: {
+    color: '#0f172a',
+    textDecoration: 'none',
+    fontFamily: 'Helvetica-Bold',
+  },
   separator: {
     color: '#94a3b8',
     marginHorizontal: 3,
   },
   section: {
-    marginBottom: 8,
+    marginBottom: 12,
   },
   sectionTitle: {
-    fontSize: 10.5,
+    fontSize: 12,
     fontFamily: 'Helvetica-Bold',
     color: '#1e3a8a',
     textTransform: 'uppercase',
     letterSpacing: 0.5,
-    paddingBottom: 2,
+    paddingBottom: 3,
     borderBottomWidth: 1.5,
     borderBottomColor: '#1e3a8a',
-    marginBottom: 5,
+    marginBottom: 8,
   },
   summaryText: {
-    fontSize: 9,
+    fontSize: 10,
     color: '#334155',
-    lineHeight: 1.35,
+    lineHeight: 1.45,
   },
   eduHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'baseline',
+    marginBottom: 2,
   },
   eduDegree: {
     fontFamily: 'Helvetica-Bold',
-    fontSize: 9.5,
+    fontSize: 10.5,
     color: '#0f172a',
   },
   eduDate: {
-    fontSize: 8.5,
+    fontSize: 9.5,
     color: '#475569',
   },
   eduInstitution: {
-    fontSize: 9,
+    fontSize: 10,
     color: '#334155',
-    marginBottom: 2,
+    marginBottom: 3,
   },
   eduCoursework: {
-    fontSize: 8.5,
+    fontSize: 9.5,
     color: '#475569',
   },
   skillsRow: {
     flexDirection: 'row',
-    marginBottom: 2.5,
-    fontSize: 8.5,
+    marginBottom: 4,
+    fontSize: 9.5,
   },
   skillCategory: {
     fontFamily: 'Helvetica-Bold',
     color: '#0f172a',
-    width: 115,
+    width: 125,
   },
   skillList: {
     color: '#334155',
     flex: 1,
   },
   itemGroup: {
-    marginBottom: 6,
+    marginBottom: 10,
   },
   itemHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'baseline',
-    marginBottom: 2,
+    marginBottom: 3,
   },
   itemTitle: {
     fontFamily: 'Helvetica-Bold',
-    fontSize: 9.5,
+    fontSize: 10.5,
     color: '#0f172a',
   },
   itemCompany: {
@@ -127,30 +136,30 @@ const styles = StyleSheet.create({
     color: '#1e3a8a',
   },
   itemTech: {
-    fontSize: 8.5,
+    fontSize: 9,
     color: '#475569',
     fontFamily: 'Helvetica',
   },
   itemDate: {
-    fontSize: 8.5,
+    fontSize: 9.5,
     color: '#475569',
   },
   bulletPoint: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginBottom: 1.5,
+    marginBottom: 3,
     paddingLeft: 2,
   },
   bulletDot: {
-    width: 8,
-    fontSize: 9,
+    width: 10,
+    fontSize: 10,
     color: '#0f172a',
   },
   bulletText: {
     flex: 1,
-    fontSize: 8.5,
+    fontSize: 9.5,
     color: '#334155',
-    lineHeight: 1.3,
+    lineHeight: 1.4,
   },
   boldLabel: {
     fontFamily: 'Helvetica-Bold',
@@ -289,6 +298,7 @@ const ResumeDocument = () => React.createElement(
       [
         {
           title: "APTICO — CAREER PROGRESS & GAMIFICATION PLATFORM",
+          githubUrl: "https://github.com/VivekYadav-77/Aptico",
           tech: "React.js, FastAPI, Gemini API, Pydantic, Redis",
           bullets: [
             ["Multi-Agent AI Pipeline : ", "Architected a 3-agent orchestration system (Auditor, Strategist, Copywriter) via Gemini API with Pydantic validation, eliminating untyped JSON output failures."],
@@ -297,6 +307,7 @@ const ResumeDocument = () => React.createElement(
         },
         {
           title: "REAL-TIME CHAT & CALLING APPLICATION",
+          githubUrl: "https://github.com/shivangrai5143/CHAT-APP",
           tech: "React.js, Firebase Firestore, WebRTC, Tailwind CSS",
           bullets: [
             ["Real-Time Messaging: ", "Engineered messaging platform with Firebase Firestore snapshot listeners, supporting 1-on-1/group chats, typing indicators, and presence tracking with sub-second latency."],
@@ -305,6 +316,7 @@ const ResumeDocument = () => React.createElement(
         },
         {
           title: "TRAFFIC INTELLIGENCE & ANALYTICS SYSTEM",
+          githubUrl: "https://github.com/shivangrai5143/Traffic-intelligence-System",
           tech: "Python, FastAPI, React.js, Pandas, Leaflet",
           bullets: [
             ["Data Pipeline : ", "Processed 50k+ road transport records using Pandas & NumPy to analyze accident clusters, casualty severity, and peak congestion trends."],
@@ -313,6 +325,7 @@ const ResumeDocument = () => React.createElement(
         },
         {
           title: "THE ROASTING HOUSE — E-COMMERCE PLATFORM",
+          githubUrl: "https://github.com/VivekYadav-77/The-Roasting-House",
           tech: "Next.js, TypeScript, Node.js, PostgreSQL, AWS S3",
           bullets: [
             ["Auth & Storefront : ", "Built an e-commerce platform with JWT authentication, role-based access control (Admin/Customer), persistent cart state, and order lifecycle workflows."],
@@ -326,7 +339,11 @@ const ResumeDocument = () => React.createElement(
           React.createElement(
             View,
             { style: styles.itemHeader },
-            React.createElement(Text, { style: styles.itemTitle }, proj.title),
+            React.createElement(
+              Text,
+              { style: styles.itemTitle },
+              React.createElement(Link, { src: proj.githubUrl, style: styles.titleLink }, proj.title)
+            ),
             React.createElement(Text, { style: styles.itemTech }, proj.tech)
           ),
           proj.bullets.map(([label, text], j) =>
