@@ -9,40 +9,40 @@ const __dirname = path.dirname(__filename);
 
 const styles = StyleSheet.create({
   page: {
-    paddingTop: 36,
-    paddingBottom: 36,
-    paddingLeft: 40,
-    paddingRight: 40,
+    paddingTop: 22,
+    paddingBottom: 22,
+    paddingLeft: 32,
+    paddingRight: 32,
     fontFamily: 'Helvetica',
-    fontSize: 10,
+    fontSize: 9,
     color: '#1e293b',
-    lineHeight: 1.45,
+    lineHeight: 1.3,
   },
   header: {
     alignItems: 'center',
-    marginBottom: 14,
+    marginBottom: 6,
     borderBottomWidth: 1,
     borderBottomColor: '#cbd5e1',
-    paddingBottom: 10,
+    paddingBottom: 5,
   },
   name: {
-    fontSize: 22,
+    fontSize: 19,
     fontFamily: 'Helvetica-Bold',
     color: '#0f172a',
     letterSpacing: 0.5,
-    marginBottom: 4,
+    marginBottom: 2,
   },
   subtitle: {
-    fontSize: 11.5,
+    fontSize: 10,
     fontFamily: 'Helvetica-Bold',
     color: '#1e3a8a',
-    marginBottom: 6,
+    marginBottom: 3,
   },
   contactLine: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: 9.5,
+    fontSize: 8.8,
     color: '#475569',
     flexWrap: 'wrap',
     gap: 4,
@@ -61,74 +61,74 @@ const styles = StyleSheet.create({
     marginHorizontal: 3,
   },
   section: {
-    marginBottom: 12,
+    marginBottom: 6,
   },
   sectionTitle: {
-    fontSize: 12,
+    fontSize: 11,
     fontFamily: 'Helvetica-Bold',
     color: '#1e3a8a',
     textTransform: 'uppercase',
     letterSpacing: 0.5,
-    paddingBottom: 3,
+    paddingBottom: 2,
     borderBottomWidth: 1.5,
     borderBottomColor: '#1e3a8a',
-    marginBottom: 8,
+    marginBottom: 5,
   },
   summaryText: {
-    fontSize: 10,
+    fontSize: 9,
     color: '#334155',
-    lineHeight: 1.45,
+    lineHeight: 1.35,
   },
   eduHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'baseline',
-    marginBottom: 2,
+    marginBottom: 1,
   },
   eduDegree: {
     fontFamily: 'Helvetica-Bold',
-    fontSize: 10.5,
+    fontSize: 9.5,
     color: '#0f172a',
   },
   eduDate: {
-    fontSize: 9.5,
+    fontSize: 9,
     color: '#475569',
   },
   eduInstitution: {
-    fontSize: 10,
+    fontSize: 9.5,
     color: '#334155',
-    marginBottom: 3,
+    marginBottom: 2,
   },
   eduCoursework: {
-    fontSize: 9.5,
+    fontSize: 9,
     color: '#475569',
   },
   skillsRow: {
     flexDirection: 'row',
-    marginBottom: 4,
-    fontSize: 9.5,
+    marginBottom: 2.5,
+    fontSize: 9,
   },
   skillCategory: {
     fontFamily: 'Helvetica-Bold',
     color: '#0f172a',
-    width: 125,
+    width: 120,
   },
   skillList: {
     color: '#334155',
     flex: 1,
   },
   itemGroup: {
-    marginBottom: 10,
+    marginBottom: 6,
   },
   itemHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'baseline',
-    marginBottom: 3,
+    marginBottom: 2,
   },
   itemTitle: {
     fontFamily: 'Helvetica-Bold',
-    fontSize: 10.5,
+    fontSize: 9.5,
     color: '#0f172a',
   },
   itemCompany: {
@@ -136,30 +136,30 @@ const styles = StyleSheet.create({
     color: '#1e3a8a',
   },
   itemTech: {
-    fontSize: 9,
+    fontSize: 8.5,
     color: '#475569',
     fontFamily: 'Helvetica',
   },
   itemDate: {
-    fontSize: 9.5,
+    fontSize: 9,
     color: '#475569',
   },
   bulletPoint: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginBottom: 3,
+    marginBottom: 2,
     paddingLeft: 2,
   },
   bulletDot: {
     width: 10,
-    fontSize: 10,
+    fontSize: 9,
     color: '#0f172a',
   },
   bulletText: {
     flex: 1,
-    fontSize: 9.5,
+    fontSize: 8.8,
     color: '#334155',
-    lineHeight: 1.4,
+    lineHeight: 1.3,
   },
   boldLabel: {
     fontFamily: 'Helvetica-Bold',
@@ -182,7 +182,7 @@ const ResumeDocument = () => React.createElement(
       React.createElement(
         View,
         { style: styles.contactLine },
-        React.createElement(Link, { src: "mailto:raishivang69@gmail.com", style: styles.link }, "Gmail"),
+        React.createElement(Link, { src: "mailto:raishivang69@gmail.com", style: styles.link }, "raishivang69@gmail.com"),
         React.createElement(Text, { style: styles.separator }, "|"),
         React.createElement(Link, { src: "https://github.com/shivangrai5143", style: styles.link }, "GitHub"),
         React.createElement(Text, { style: styles.separator }, "|"),
@@ -204,7 +204,7 @@ const ResumeDocument = () => React.createElement(
       React.createElement(
         Text,
         { style: styles.summaryText },
-        "Full-Stack Developer with hands-on experience building scalable web applications, AI multi-agent orchestration, and production backend systems. Proficient in React.js, .NET MVC, C#, SQL Server, Node.js, and Python. Adept at full-stack architecture, REST API engineering, real-time systems, and delivering robust software solutions."
+        "Full-Stack Developer specializing in AI-integrated systems, with hands-on experience building scalable web applications, multi-agent AI pipelines, and cloud-deployed backend services. Proficient across modern frontend, backend, and database technologies, with hands-on experience in both JavaScript (Node.js/Express) and Python (Django/FastAPI) ecosystems, along with REST API design, authentication systems, real-time data streaming (WebSockets/SSE), and cloud infrastructure (AWS, GCP). Seeking a Software Engineering Internship to contribute this experience to production-scale engineering problems."
       )
     ),
 
@@ -270,10 +270,10 @@ const ResumeDocument = () => React.createElement(
           React.createElement(Text, { style: styles.itemDate }, "Aug 2026 – Present")
         ),
         [
-          ["Frontend Development : ", "Built and maintained responsive, cross-browser web interfaces using React.js, JavaScript, HTML, and CSS, managing client-side application routes for smooth navigation."],
-          [".NET MVC & REST APIs : ", "Developed and modified application features in .NET MVC (C#), engineering REST APIs and backend request routing for seamless frontend-backend communication."],
-          ["Database & SQL Server : ", "Managed database operations with SQL Server, executing queries and optimizing data retrieval for core business modules."],
-          ["Debugging & Git Collaboration : ", "Diagnosed and resolved end-to-end frontend and backend issues to boost system stability, using Git for version control within an agile team environment."]
+          ["Frontend Development : ", "Translated 15+ complex Figma mockups into fully responsive React components, ensuring strict cross-browser compatibility and improving client-side routing."],
+          [".NET MVC & REST APIs : ", "Configured working Docker environments for the frontend architecture, streamlining local development and reducing onboarding setup time by roughly 40%."],
+          ["Database & SQL Server : ", "Engineered and maintained 10+ REST API endpoints in .NET MVC, successfully handling data routing for core business modules."],
+          ["Debugging & Git Collaboration : ", "Resolved 20+ critical bugs across the frontend and backend during agile sprints, significantly boosting system stability."]
         ].map(([label, text], i) =>
           React.createElement(
             View,
@@ -301,8 +301,8 @@ const ResumeDocument = () => React.createElement(
           githubUrl: "https://github.com/VivekYadav-77/Aptico",
           tech: "React.js, FastAPI, Gemini API, Pydantic, Redis",
           bullets: [
-            ["Multi-Agent AI Pipeline : ", "Architected a 3-agent orchestration system (Auditor, Strategist, Copywriter) via Gemini API with Pydantic validation, eliminating untyped JSON output failures."],
-            ["Real-Time Streaming : ", "Implemented Server-Sent Events (SSE) for zero-polling live feedback on React UI, integrating Redis-cached XP progression and leaderboard rankings."]
+            ["", "Engineered a full-stack platform (Next.js, Fastify, PostgreSQL/Neon via Drizzle ORM) that transforms job-search activity into a gamified XP and achievement system, leveraging an event-driven architecture that decouples XP calculation from reward delivery."],
+            ["", "Integrated the Google Gemini API for AI-driven resume feedback and WebSockets for real-time multi-user progress synchronization; enforced Zod schema validation on the API layer and implemented TanStack Query on the frontend for type-safe, optimistic data fetching."]
           ]
         },
         {
@@ -328,8 +328,8 @@ const ResumeDocument = () => React.createElement(
           githubUrl: "https://github.com/VivekYadav-77/The-Roasting-House",
           tech: "Next.js, TypeScript, Node.js, PostgreSQL, AWS S3",
           bullets: [
-            ["Auth & Storefront : ", "Built an e-commerce platform with JWT authentication, role-based access control (Admin/Customer), persistent cart state, and order lifecycle workflows."],
-            ["Cloud Storage & CI/CD : ", "Integrated AWS S3 for product media uploads and configured automated GitHub Actions CI/CD workflows for continuous deployment."]
+            ["", "Built a full-stack e-commerce platform (React, Node.js, Express, MongoDB) with JWT-based authentication (access/refresh tokens), OTP email verification, and a complete cart-to-checkout order flow."],
+            ["", "Implemented real-time order tracking using Socket.io for live status updates and an integrated Gemini API chatbot for customer support."]
           ]
         }
       ].map((proj, i) =>
@@ -354,7 +354,7 @@ const ResumeDocument = () => React.createElement(
               React.createElement(
                 Text,
                 { style: styles.bulletText },
-                React.createElement(Text, { style: styles.boldLabel }, label),
+                label ? React.createElement(Text, { style: styles.boldLabel }, label) : null,
                 text
               )
             )

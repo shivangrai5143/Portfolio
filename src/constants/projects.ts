@@ -3,9 +3,9 @@ import type { Project } from "@/types";
 export const projectsData: Project[] = [
   {
     id: "aptico",
-    title: "Aptico — Career Progress & Gamification Platform",
+    title: "APTICO — CAREER PROGRESS & GAMIFICATION PLATFORM",
     description:
-      "Architected a 3-agent AI orchestration system (Auditor, Strategist, Copywriter) via Gemini API with Pydantic validation, eliminating untyped JSON output failures. Implemented Server-Sent Events (SSE) for zero-polling live feedback on React UI, integrating Redis-cached XP progression and leaderboard rankings.",
+      "Engineered a full-stack platform (Next.js, Fastify, PostgreSQL/Neon via Drizzle ORM) that transforms job-search activity into a gamified XP and achievement system, leveraging an event-driven architecture that decouples XP calculation from reward delivery. Integrated the Google Gemini API for AI-driven resume feedback and WebSockets for real-time multi-user progress synchronization; enforced Zod schema validation on the API layer and implemented TanStack Query on the frontend for type-safe, optimistic data fetching.",
     image: "",
     techStack: ["React.js", "FastAPI", "Gemini API", "Pydantic", "Redis"],
     githubUrl: "https://github.com/VivekYadav-77/Aptico",
@@ -14,7 +14,7 @@ export const projectsData: Project[] = [
   },
   {
     id: "chat-app",
-    title: "Real-Time Chat & Calling Application",
+    title: "REAL-TIME CHAT & CALLING APPLICATION",
     description:
       "Engineered messaging platform with Firebase Firestore snapshot listeners, supporting 1-on-1/group chats, typing indicators, and presence tracking with sub-second latency. Integrated WebRTC mesh architecture for direct peer-to-peer encrypted voice and video calls with automated client-side media compression.",
     image: "",
@@ -25,7 +25,7 @@ export const projectsData: Project[] = [
   },
   {
     id: "traffic-intelligence-system",
-    title: "Traffic Intelligence & Analytics System",
+    title: "TRAFFIC INTELLIGENCE & ANALYTICS SYSTEM",
     description:
       "Processed 50k+ road transport records using Pandas & NumPy to analyze accident clusters, casualty severity, and peak congestion trends. Created interactive heatmaps using Leaflet and React, powered by asynchronous FastAPI endpoints for rapid data filtering.",
     image: "",
@@ -36,9 +36,9 @@ export const projectsData: Project[] = [
   },
   {
     id: "the-roasting-house",
-    title: "The Roasting House — E-Commerce Platform",
+    title: "THE ROASTING HOUSE — E-COMMERCE PLATFORM",
     description:
-      "Built an e-commerce platform with JWT authentication, role-based access control (Admin/Customer), persistent cart state, and order lifecycle workflows. Integrated AWS S3 for product media uploads and configured automated GitHub Actions CI/CD workflows for continuous deployment.",
+      "Built a full-stack e-commerce platform (React, Node.js, Express, MongoDB) with JWT-based authentication (access/refresh tokens), OTP email verification, and a complete cart-to-checkout order flow. Implemented real-time order tracking using Socket.io for live status updates and an integrated Gemini API chatbot for customer support.",
     image: "",
     techStack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "AWS S3"],
     githubUrl: "https://github.com/VivekYadav-77/The-Roasting-House",

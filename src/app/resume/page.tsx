@@ -117,7 +117,7 @@ export default function ResumePage() {
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-slate-600 mt-2 font-medium">
                   <a href="mailto:raishivang69@gmail.com" className="text-blue-600 hover:underline">
-                    Gmail
+                    raishivang69@gmail.com
                   </a>
                   <span className="text-slate-400">|</span>
                   <a href="https://github.com/shivangrai5143" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
@@ -144,7 +144,7 @@ export default function ResumePage() {
                   SUMMARY
                 </h2>
                 <p className="text-xs text-slate-700 leading-relaxed">
-                  Full-Stack Developer with hands-on experience building scalable web applications, AI multi-agent orchestration, and production backend systems. Proficient in React.js, .NET MVC, C#, SQL Server, Node.js, and Python. Adept at full-stack architecture, REST API engineering, real-time systems, and delivering robust software solutions.
+                  Full-Stack Developer specializing in AI-integrated systems, with hands-on experience building scalable web applications, multi-agent AI pipelines, and cloud-deployed backend services. Proficient across modern frontend, backend, and database technologies, with hands-on experience in both JavaScript (Node.js/Express) and Python (Django/FastAPI) ecosystems, along with REST API design, authentication systems, real-time data streaming (WebSockets/SSE), and cloud infrastructure (AWS, GCP). Seeking a Software Engineering Internship to contribute this experience to production-scale engineering problems.
                 </p>
               </section>
 

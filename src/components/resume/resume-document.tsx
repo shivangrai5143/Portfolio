@@ -3,40 +3,40 @@ import { Document, Page, Text, View, StyleSheet, Link } from '@react-pdf/rendere
 
 const styles = StyleSheet.create({
   page: {
-    paddingTop: 36,
-    paddingBottom: 36,
-    paddingLeft: 40,
-    paddingRight: 40,
+    paddingTop: 22,
+    paddingBottom: 22,
+    paddingLeft: 32,
+    paddingRight: 32,
     fontFamily: 'Helvetica',
-    fontSize: 10,
+    fontSize: 9,
     color: '#1e293b',
-    lineHeight: 1.45,
+    lineHeight: 1.3,
   },
   header: {
     alignItems: 'center',
-    marginBottom: 14,
+    marginBottom: 6,
     borderBottomWidth: 1,
     borderBottomColor: '#cbd5e1',
-    paddingBottom: 10,
+    paddingBottom: 5,
   },
   name: {
-    fontSize: 22,
+    fontSize: 19,
     fontFamily: 'Helvetica-Bold',
     color: '#0f172a',
     letterSpacing: 0.5,
-    marginBottom: 4,
+    marginBottom: 2,
   },
   subtitle: {
-    fontSize: 11.5,
+    fontSize: 10,
     fontFamily: 'Helvetica-Bold',
     color: '#1e3a8a',
-    marginBottom: 6,
+    marginBottom: 3,
   },
   contactLine: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: 9.5,
+    fontSize: 8.8,
     color: '#475569',
     flexWrap: 'wrap',
     gap: 4,
@@ -55,74 +55,74 @@ const styles = StyleSheet.create({
     marginHorizontal: 3,
   },
   section: {
-    marginBottom: 12,
+    marginBottom: 6,
   },
   sectionTitle: {
-    fontSize: 12,
+    fontSize: 11,
     fontFamily: 'Helvetica-Bold',
     color: '#1e3a8a',
     textTransform: 'uppercase',
     letterSpacing: 0.5,
-    paddingBottom: 3,
+    paddingBottom: 2,
     borderBottomWidth: 1.5,
     borderBottomColor: '#1e3a8a',
-    marginBottom: 8,
+    marginBottom: 5,
   },
   summaryText: {
-    fontSize: 10,
+    fontSize: 9,
     color: '#334155',
-    lineHeight: 1.45,
+    lineHeight: 1.35,
   },
   eduHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'baseline',
-    marginBottom: 2,
+    marginBottom: 1,
   },
   eduDegree: {
     fontFamily: 'Helvetica-Bold',
-    fontSize: 10.5,
+    fontSize: 9.5,
     color: '#0f172a',
   },
   eduDate: {
-    fontSize: 9.5,
+    fontSize: 9,
     color: '#475569',
   },
   eduInstitution: {
-    fontSize: 10,
+    fontSize: 9.5,
     color: '#334155',
-    marginBottom: 3,
+    marginBottom: 2,
   },
   eduCoursework: {
-    fontSize: 9.5,
+    fontSize: 9,
     color: '#475569',
   },
   skillsRow: {
     flexDirection: 'row',
-    marginBottom: 4,
-    fontSize: 9.5,
+    marginBottom: 2.5,
+    fontSize: 9,
   },
   skillCategory: {
     fontFamily: 'Helvetica-Bold',
     color: '#0f172a',
-    width: 125,
+    width: 120,
   },
   skillList: {
     color: '#334155',
     flex: 1,
   },
   itemGroup: {
-    marginBottom: 10,
+    marginBottom: 6,
   },
   itemHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'baseline',
-    marginBottom: 3,
+    marginBottom: 2,
   },
   itemTitle: {
     fontFamily: 'Helvetica-Bold',
-    fontSize: 10.5,
+    fontSize: 9.5,
     color: '#0f172a',
   },
   itemCompany: {
@@ -130,30 +130,30 @@ const styles = StyleSheet.create({
     color: '#1e3a8a',
   },
   itemTech: {
-    fontSize: 9,
+    fontSize: 8.5,
     color: '#475569',
     fontFamily: 'Helvetica',
   },
   itemDate: {
-    fontSize: 9.5,
+    fontSize: 9,
     color: '#475569',
   },
   bulletPoint: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginBottom: 3,
+    marginBottom: 2,
     paddingLeft: 2,
   },
   bulletDot: {
     width: 10,
-    fontSize: 10,
+    fontSize: 9,
     color: '#0f172a',
   },
   bulletText: {
     flex: 1,
-    fontSize: 9.5,
+    fontSize: 8.8,
     color: '#334155',
-    lineHeight: 1.4,
+    lineHeight: 1.3,
   },
   boldLabel: {
     fontFamily: 'Helvetica-Bold',
@@ -169,7 +169,7 @@ export const ResumeDocument = () => (
         <Text style={styles.name}>SHIVANG RAI</Text>
         <Text style={styles.subtitle}>Full-Stack Developer · AI Automation & Data Science</Text>
         <View style={styles.contactLine}>
-          <Link src="mailto:raishivang69@gmail.com" style={styles.link}>Gmail</Link>
+          <Link src="mailto:raishivang69@gmail.com" style={styles.link}>raishivang69@gmail.com</Link>
           <Text style={styles.separator}>|</Text>
           <Link src="https://github.com/shivangrai5143" style={styles.link}>GitHub</Link>
           <Text style={styles.separator}>|</Text>
@@ -187,7 +187,7 @@ export const ResumeDocument = () => (
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>SUMMARY</Text>
         <Text style={styles.summaryText}>
-          Full-Stack Developer with hands-on experience building scalable web applications, AI multi-agent orchestration, and production backend systems. Proficient in React.js, .NET MVC, C#, SQL Server, Node.js, and Python. Adept at full-stack architecture, REST API engineering, real-time systems, and delivering robust software solutions.
+          Full-Stack Developer specializing in AI-integrated systems, with hands-on experience building scalable web applications, multi-agent AI pipelines, and cloud-deployed backend services. Proficient across modern frontend, backend, and database technologies, with hands-on experience in both JavaScript (Node.js/Express) and Python (Django/FastAPI) ecosystems, along with REST API design, authentication systems, real-time data streaming (WebSockets/SSE), and cloud infrastructure (AWS, GCP). Seeking a Software Engineering Internship to contribute this experience to production-scale engineering problems.
         </Text>
       </View>
 
@@ -248,28 +248,28 @@ export const ResumeDocument = () => (
             <Text style={styles.bulletDot}>•</Text>
             <Text style={styles.bulletText}>
               <Text style={styles.boldLabel}>Frontend Development : </Text>
-              Built and maintained responsive, cross-browser web interfaces using <Text style={styles.boldLabel}>React.js, JavaScript, HTML, and CSS</Text>, managing client-side application routes for smooth navigation.
+              Translated 15+ complex Figma mockups into fully responsive React components, ensuring strict cross-browser compatibility and improving client-side routing.
             </Text>
           </View>
           <View style={styles.bulletPoint}>
             <Text style={styles.bulletDot}>•</Text>
             <Text style={styles.bulletText}>
               <Text style={styles.boldLabel}>.NET MVC & REST APIs : </Text>
-              Developed and modified application features in <Text style={styles.boldLabel}>.NET MVC (C#)</Text>, engineering <Text style={styles.boldLabel}>REST APIs</Text> and backend request routing for seamless frontend-backend communication.
+              Configured working Docker environments for the frontend architecture, streamlining local development and reducing onboarding setup time by roughly 40%.
             </Text>
           </View>
           <View style={styles.bulletPoint}>
             <Text style={styles.bulletDot}>•</Text>
             <Text style={styles.bulletText}>
               <Text style={styles.boldLabel}>Database & SQL Server : </Text>
-              Managed database operations with <Text style={styles.boldLabel}>SQL Server</Text>, executing queries and optimizing data retrieval for core business modules.
+              Engineered and maintained 10+ REST API endpoints in .NET MVC, successfully handling data routing for core business modules.
             </Text>
           </View>
           <View style={styles.bulletPoint}>
             <Text style={styles.bulletDot}>•</Text>
             <Text style={styles.bulletText}>
               <Text style={styles.boldLabel}>Debugging & Git Collaboration : </Text>
-              Diagnosed and resolved end-to-end frontend and backend issues to boost system stability, using <Text style={styles.boldLabel}>Git</Text> for version control within an agile team environment.
+              Resolved 20+ critical bugs across the frontend and backend during agile sprints, significantly boosting system stability.
             </Text>
           </View>
         </View>
@@ -292,15 +292,13 @@ export const ResumeDocument = () => (
           <View style={styles.bulletPoint}>
             <Text style={styles.bulletDot}>•</Text>
             <Text style={styles.bulletText}>
-              <Text style={styles.boldLabel}>Multi-Agent AI Pipeline : </Text>
-              Architected a 3-agent orchestration system (Auditor, Strategist, Copywriter) via <Text style={styles.boldLabel}>Gemini API</Text> with <Text style={styles.boldLabel}>Pydantic</Text> validation, eliminating untyped JSON output failures.
+              Engineered a full-stack platform (Next.js, Fastify, PostgreSQL/Neon via Drizzle ORM) that transforms job-search activity into a gamified XP and achievement system, leveraging an event-driven architecture that decouples XP calculation from reward delivery.
             </Text>
           </View>
           <View style={styles.bulletPoint}>
             <Text style={styles.bulletDot}>•</Text>
             <Text style={styles.bulletText}>
-              <Text style={styles.boldLabel}>Real-Time Streaming : </Text>
-              Implemented <Text style={styles.boldLabel}>Server-Sent Events (SSE)</Text> for zero-polling live feedback on React UI, integrating <Text style={styles.boldLabel}>Redis-cached</Text> XP progression and leaderboard rankings.
+              Integrated the Google Gemini API for AI-driven resume feedback and WebSockets for real-time multi-user progress synchronization; enforced Zod schema validation on the API layer and implemented TanStack Query on the frontend for type-safe, optimistic data fetching.
             </Text>
           </View>
         </View>
@@ -326,7 +324,7 @@ export const ResumeDocument = () => (
             <Text style={styles.bulletDot}>•</Text>
             <Text style={styles.bulletText}>
               <Text style={styles.boldLabel}>P2P Audio/Video : </Text>
-              Integrated <Text style={styles.boldLabel}>WebRTC</Text> mesh architecture for direct peer-to-peer encrypted voice and video calls with automated client-side media compression.
+              Integrated WebRTC mesh architecture for direct peer-to-peer encrypted voice and video calls with automated client-side media compression.
             </Text>
           </View>
         </View>
@@ -345,14 +343,14 @@ export const ResumeDocument = () => (
             <Text style={styles.bulletDot}>•</Text>
             <Text style={styles.bulletText}>
               <Text style={styles.boldLabel}>Data Pipeline : </Text>
-              Processed 50k+ road transport records using <Text style={styles.boldLabel}>Pandas & NumPy</Text> to analyze accident clusters, casualty severity, and peak congestion trends.
+              Processed 50k+ road transport records using Pandas & NumPy to analyze accident clusters, casualty severity, and peak congestion trends.
             </Text>
           </View>
           <View style={styles.bulletPoint}>
             <Text style={styles.bulletDot}>•</Text>
             <Text style={styles.bulletText}>
               <Text style={styles.boldLabel}>Geospatial Dashboard : </Text>
-              Created interactive heatmaps using <Text style={styles.boldLabel}>Leaflet</Text> and React, powered by asynchronous <Text style={styles.boldLabel}>FastAPI</Text> endpoints for rapid data filtering.
+              Created interactive heatmaps using Leaflet and React, powered by asynchronous FastAPI endpoints for rapid data filtering.
             </Text>
           </View>
         </View>
@@ -370,15 +368,13 @@ export const ResumeDocument = () => (
           <View style={styles.bulletPoint}>
             <Text style={styles.bulletDot}>•</Text>
             <Text style={styles.bulletText}>
-              <Text style={styles.boldLabel}>Auth & Storefront : </Text>
-              Built an e-commerce platform with JWT authentication, role-based access control (Admin/Customer), persistent cart state, and order lifecycle workflows.
+              Built a full-stack e-commerce platform (React, Node.js, Express, MongoDB) with JWT-based authentication (access/refresh tokens), OTP email verification, and a complete cart-to-checkout order flow.
             </Text>
           </View>
           <View style={styles.bulletPoint}>
             <Text style={styles.bulletDot}>•</Text>
             <Text style={styles.bulletText}>
-              <Text style={styles.boldLabel}>Cloud Storage & CI/CD : </Text>
-              Integrated <Text style={styles.boldLabel}>AWS S3</Text> for product media uploads and configured automated GitHub Actions CI/CD workflows for continuous deployment.
+              Implemented real-time order tracking using Socket.io for live status updates and an integrated Gemini API chatbot for customer support.
             </Text>
           </View>
         </View>
